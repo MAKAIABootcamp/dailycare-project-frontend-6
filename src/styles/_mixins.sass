@@ -1,0 +1,47 @@
+@use './_variables' as *
+
+@mixin flexCenter($direction, $justify, $align, $gap)
+  display: flex
+  flex-direction: $direction
+  justify-content: $justify
+  align-items: $align
+  gap: $gap
+
+@mixin labelStyle()
+  font-size: 1.6rem
+  font-weight: $light-weight
+
+@mixin inputWrapper()
+  width: 100%
+  height: 56px
+  border-radius: 250px
+  display: flex
+  gap: 10px
+  align-items: center
+  background-color: rgba($tertiary-color, 0.37)
+  padding: 0 20px
+
+@mixin inputStyle()
+  width: 250px
+  height: 100%
+  padding: 10px
+  background-color: transparent
+  font-size: 1.6rem
+  &::placeholder
+    color: rgba($primary-text-color, 0.37)
+  &:focus
+    outline: none
+
+@mixin iconInputStyle()
+  font-size: 2rem
+  color: rgba($primary-text-color, 0.37)
+
+@mixin buttonStyle($width, $height, $border-radius, $bg-color, $font-size, $font-weight, $letter-color, $letter-spacing)
+  width: $width
+  height: $height
+  border-radius: $border-radius
+  background-color: $bg-color
+  font-size: $font-size
+  font-weight: $font-weight
+  color: $letter-color
+  letter-spacing: $letter-spacing
