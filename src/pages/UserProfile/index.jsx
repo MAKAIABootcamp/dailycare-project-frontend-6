@@ -1,6 +1,8 @@
+import { Link } from 'react-router-dom'
 import { FaRegUser, FaRegHeart  } from 'react-icons/fa6'
 import { MdModeEdit, MdOutlineLock } from 'react-icons/md' 
 import { TbTargetArrow } from 'react-icons/tb'
+import { IoClose } from 'react-icons/io5'
 import wallpaper from '../../assets/images/wallpaper-3.png'
 import profilePicture from '../../assets/images/profile-picture.jpg'
 import './styles.sass'
@@ -20,6 +22,9 @@ const UserProfile = () => {
         <span className='user-profile__contact-info--text'>Company name</span>
         <span className='user-profile__contact-info--span'>Resumen</span>
       </section>
+      <Link className='close-edit'>
+        <IoClose />
+      </Link>
       <section className='sign-in__form-wrapper'>
         <h2 className='sign-in__form-wrapper--title'>Tu información personal</h2>
         <form className='sign-in__form-wrapper--form form'>
