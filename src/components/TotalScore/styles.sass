@@ -1,0 +1,23 @@
+@use '../../styles/_variables' as *
+@use '../../styles/_mixins' as *
+
+.total-score
+  width: 338px
+  height: 92px
+  border-radius: 20px
+  background-color: $quaternary-color
+  position: absolute
+  z-index: 8
+  top: 120px
+  left: calc(50% - 338px/2 )
+  @include flexCenter(row, space-between, center, 10px)
+  padding: 0 30px
+  &__items
+    display: grid
+    justify-items: center
+    color: $secondary-color
+    &--number
+      font-size: 3.2rem
+      font-weight: $bold-weight
+    &--span
+      font-size: 1.2rem
