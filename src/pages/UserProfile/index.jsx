@@ -3,7 +3,7 @@ import { FaRegUser, FaRegHeart  } from 'react-icons/fa6'
 import { MdModeEdit, MdOutlineLock } from 'react-icons/md' 
 import { TbTargetArrow } from 'react-icons/tb'
 import { IoClose } from 'react-icons/io5'
-import wallpaper from '../../assets/images/wallpaper-3.png'
+import wallpaper from '../../assets/images/wallpaper-profile.png'
 import profilePicture from '../../assets/images/profile-picture.jpg'
 import './styles.sass'
 
