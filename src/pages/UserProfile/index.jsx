@@ -1,180 +1,136 @@
-import { MdOutlineMailOutline, MdOutlineLock  } from 'react-icons/md'
-import { FiPhone } from 'react-icons/fi'
-import { FcGoogle } from 'react-icons/fc'
+import { FaRegUser, FaRegHeart  } from 'react-icons/fa6'
+import { MdModeEdit, MdOutlineLock } from 'react-icons/md' 
+import { TbTargetArrow } from 'react-icons/tb'
 import wallpaper from '../../assets/images/wallpaper-3.png'
+import profilePicture from '../../assets/images/profile-picture.jpg'
 import './styles.sass'
-import { Link } from 'react-router-dom'
 
 
 const UserProfile = () => {
   return (
-    <main className='sign-in'>
+    <main className='sign-in user-profile'>
       <section className='sign-in__wallpaper-container'>
-        <img src={wallpaper} alt='' />
+        <img src={wallpaper} alt='background wallpaper' />
+      </section>
+      <section className='user-profile__picture-container'>
+        <img src={profilePicture} alt='profile picture' />
+      </section>
+      <section className='user-profile__contact-info'>
+        <h2 className='user-profile__contact-info--title'>Username</h2>
+        <span className='user-profile__contact-info--text'>Company name</span>
+        <span className='user-profile__contact-info--span'>Resumen</span>
       </section>
       <section className='sign-in__form-wrapper'>
+        <h2 className='sign-in__form-wrapper--title'>Tu información personal</h2>
         <form className='sign-in__form-wrapper--form form'>
           <div className='form__input-label'>
             <label 
-              htmlFor='email-input'
+              htmlFor='name-input'
               className='form__input-label--label'
             >
-              Email
+              Nombre
             </label>
-            
             <div className='form__input-label--wrapper'>
-              <label htmlFor='email-input' className='icon'>
-                <MdOutlineMailOutline />
+              <label htmlFor='name-input' className='icon'>
+                <FaRegUser />
               </label>
               <input 
-                type='email' 
-                placeholder='example@email.com' 
-                id='email-input' 
+                type='text' 
+                placeholder='Jane Doe' 
+                id='name-input' 
                 className='input'
               />
             </div>
           </div>
           <div className='form__input-label'>
             <label 
-              htmlFor='email-input'
+              htmlFor='genre-input'
               className='form__input-label--label'
             >
-              Email
+              Género
             </label>
-            
             <div className='form__input-label--wrapper'>
-              <label htmlFor='email-input' className='icon'>
-                <MdOutlineMailOutline />
+              <label htmlFor='genre-input' className='icon'>
+                <FaRegHeart />
+              </label>
+              <select name='' id='genre-input' className='input'>
+                <option value=''>Femenino</option>
+                <option value=''>Masculino</option>
+                <option value=''>No binario</option>
+                <option value=''>Agénero</option>
+                <option value=''>Bigénero</option>
+                <option value=''>Fluido</option>
+                <option value=''>Tercer género</option>
+              </select>
+            </div>
+          </div>
+          <div className='form__input-label'>
+            <label 
+              htmlFor='quote-input'
+              className='form__input-label--label'
+            >
+              Frase favorita | cómo te sientes
+            </label>
+            <div className='form__input-label--wrapper'>
+              <label htmlFor='quote-input' className='icon'>
+                <MdModeEdit />
               </label>
               <input 
-                type='email' 
-                placeholder='example@email.com' 
-                id='email-input' 
+                type='text' 
+                placeholder='Mi frase favorita' 
+                id='quote-input' 
                 className='input'
               />
             </div>
           </div>
           <div className='form__input-label'>
             <label 
-              htmlFor='email-input'
+              htmlFor='goals-input'
               className='form__input-label--label'
             >
-              Email
+              Género
             </label>
-            
             <div className='form__input-label--wrapper'>
-              <label htmlFor='email-input' className='icon'>
-                <MdOutlineMailOutline />
+              <label htmlFor='goals-input' className='icon'>
+                <TbTargetArrow />
               </label>
-              <input 
-                type='email' 
-                placeholder='example@email.com' 
-                id='email-input' 
-                className='input'
-              />
+              <select name='' id='goals-input' className='input'>
+                <option value=''>Aliviar estrés</option>
+                <option value=''>Relaciones interpersonales</option>
+                <option value=''>Concentración y memoria</option>
+                <option value=''>Estiramientos</option>
+                <option value=''>Pensamiento creativo</option>
+                <option value=''>Cominucación asertiva</option>
+              </select>
             </div>
           </div>
           <div className='form__input-label'>
             <label 
-              htmlFor='email-input'
+              htmlFor='password-confirm-input'
               className='form__input-label--label'
             >
-              Email
-            </label>
-            
-            <div className='form__input-label--wrapper'>
-              <label htmlFor='email-input' className='icon'>
-                <MdOutlineMailOutline />
-              </label>
-              <input 
-                type='email' 
-                placeholder='example@email.com' 
-                id='email-input' 
-                className='input'
-              />
-            </div>
-          </div>
-          <div className='form__input-label'>
-            <label 
-              htmlFor='email-input'
-              className='form__input-label--label'
-            >
-              Email
-            </label>
-            
-            <div className='form__input-label--wrapper'>
-              <label htmlFor='email-input' className='icon'>
-                <MdOutlineMailOutline />
-              </label>
-              <input 
-                type='email' 
-                placeholder='example@email.com' 
-                id='email-input' 
-                className='input'
-              />
-            </div>
-          </div>
-          <div className='form__input-label'>
-            <label 
-              htmlFor='email-input'
-              className='form__input-label--label'
-            >
-              Email
-            </label>
-            
-            <div className='form__input-label--wrapper'>
-              <label htmlFor='email-input' className='icon'>
-                <MdOutlineMailOutline />
-              </label>
-              <input 
-                type='email' 
-                placeholder='example@email.com' 
-                id='email-input' 
-                className='input'
-              />
-            </div>
-          </div>
-          <div className='form__input-label'>
-            <label 
-              htmlFor='password-input'
-              className='form__input-label--label'
-            >
-              Contraseña
+              Confirmar contraseña
             </label>
             <div className='form__input-label--wrapper'>
-              <label htmlFor='password-input' className='icon'>
+              <label htmlFor='password-confirm-input' className='icon'>
                 <MdOutlineLock />
               </label>
               <input 
                 type='password' 
                 placeholder='***********' 
-                id='password-input' 
+                id='password-confirm-input' 
                 className='input'
               />
             </div>
           </div>
           <div className='form__buttons-container'>
             <button
-              className='form__buttons-container--sign-in'
+              className='form__buttons-container--sign-in user-profile-button'
             >
-              Iniciar sesión
-            </button>
-            <button
-              className='form__buttons-container--google flex'
-            >
-              <span>Google</span>
-              <span>
-                <FcGoogle />
-              </span>
-            </button>
-            <button
-              className='form__buttons-container--phone'
-            >
-              <FiPhone />
+              Actualizar perfil
             </button>
           </div>
         </form>
-        <p className='sign-in__form-wrapper--text'>¿No tienes cuenta? <Link to='/sign-up'>crea una cuenta</Link></p>
       </section>
     </main>
   )
