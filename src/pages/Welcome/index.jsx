@@ -1,21 +1,23 @@
+import "./styles.sass"
+import adminImage from "../../assets/images/admin.png"
+import userImage from "../../assets/images/user.png"
 
 const Welcome = () => {
   return (
-    <main>
+    <main className="main-welcome">
       <div className="container">
-        <div className="background"></div>
-        <h1>Bienvenido</h1>
-        <h2>Elige tu rol</h2>
-        <div className="icons">
-          <div className="icon">
-            <img src="icon1.png" alt="Icon 1" />
+        <h1 className="container__title">Bienvenido</h1>
+        <h2 className="container__subtitle">Elige tu rol</h2>
+        <section className="container-rols">
+          <div className="rol container-rols__admin">
+            <img src={adminImage} alt="admin" />
             <p>Admin</p>
           </div>
-          <div className="icon">
-            <img src="icon2.png" alt="Icon 2" />
+          <div className="rol container-rols__user">
+            <img src={userImage} alt="user" />
             <p>Usuario</p>
           </div>
-        </div>
+        </section>
       </div>
     </main>
 );
