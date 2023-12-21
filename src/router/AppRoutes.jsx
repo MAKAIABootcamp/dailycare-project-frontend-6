@@ -4,6 +4,7 @@ import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import ReadingDetail from '../pages/ReadingDetail'
 import VideoDetail from '../pages/VideoDetail'
+import UserProfile from '../pages/UserProfile'
 
 const AppRoutes = () => {
   return (
@@ -13,6 +14,7 @@ const AppRoutes = () => {
       <Route path='sign-up' element={<SignUp />} />
       <Route path='reading-detail' element={<ReadingDetail />} />
       <Route path='video-detail' element={<VideoDetail />} />
+      <Route path='user-profile' element={<UserProfile />} />
     </Routes>
   )
 }

@@ -1,5 +1,6 @@
 @use '../../styles/_variables' as *
-  
+@use '../../styles/_mixins' as *
+
 .sign-in
   width: 100%
   height: 100%
@@ -19,6 +20,7 @@
     &--title
       font-size: 3.2rem
       font-weight: $bold-weight
+      line-height: 30px
     .form
       width: 100%
       height: 100%
@@ -28,30 +30,13 @@
         display: grid
         gap: 10px
         &--label
-          font-size: 1.6rem
-          font-weight: $light-weight
+          @include labelStyle()
         &--wrapper
-          width: 100%
-          height: 56px
-          border-radius: 250px
-          display: flex
-          gap: 10px
-          align-items: center
-          background-color: rgba($tertiary-color, 0.37)
-          padding: 0 20px
+          @include inputWrapper()
           .icon
-            font-size: 2rem
-            color: rgba($primary-text-color, 0.37)
+            @include iconInputStyle()
           .input
-            width: 250px
-            height: 100%
-            padding: 10px
-            background-color: transparent
-            font-size: 1.6rem
-            &::placeholder
-              color: rgba($primary-text-color, 0.37)
-            &:focus
-              outline: none
+            @include inputStyle()
       &__buttons-container
         width: 100%
         height: 100%
@@ -61,43 +46,16 @@
         gap: 10px
         &--sign-in
           grid-area: sign
-          width: 100%
-          height: 56px
-          background-color: $primary-color
-          border-radius: 250px
-          color: $light-color
-          font-size: 2.4rem
-          font-weight: $medium-weight
-          letter-spacing: 0.96px
+          @include buttonStyle($width: 100%, $height: 56px, $border-radius: 250px, $bg-color: $primary-color, $font-size: 2.4rem, $font-weight: $medium-weight, $letter-color: $light-color, $letter-spacing: 0.96px)
         &--google 
           grid-area: google 
-          width: 142px
-          height: 56px
-          border-radius: 250px
-          background-color: $secondary-color
-          display: flex
-          justify-content: center
-          align-items: center
-          gap: 5px
-          font-size: 2.4rem
-          font-weight: $medium-weight
-          color: $light-color
-          letter-spacing: 0.96px
+          @include buttonStyle($width: 142px, $height: 56px, $border-radius: 250px, $bg-color: $secondary-color, $font-size: 2.4rem, $font-weight: $medium-weight, $letter-color: $light-color, $letter-spacing: 0.96px)
+          @include flexCenter($direction: row, $justify: center, $align: center, $gap: 5px)
         &--phone
           grid-area: phone
-          width: 142px
-          height: 56px
-          border-radius: 250px
-          background-color: $tertiary-color
           justify-self: end
-          display: flex
-          justify-content: center
-          align-items: center
-          gap: 5px
-          font-size: 3.4rem
-          font-weight: $medium-weight
-          color: $primary-color
-          letter-spacing: 0.96px
+          @include buttonStyle($width: 142px, $height: 56px, $border-radius: 250px, $bg-color: $tertiary-color, $font-size: 3.4rem, $font-weight: $medium-weight, $letter-color: $primary-color, $letter-spacing: 0.96px)
+          @include flexCenter($direction: row, $justify: center, $align: center, $gap: 5px)
     &--text
       font-size: 1.6rem
       text-align: center
