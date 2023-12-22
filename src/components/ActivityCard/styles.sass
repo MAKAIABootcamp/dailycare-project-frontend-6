@@ -1,0 +1,47 @@
+@use '../../styles/_variables' as *
+@use '../../styles/_mixins' as *
+
+$icon-wrapper: #FFEAE2
+.activity-card
+  width: 343px
+  height: 120px
+  background-image: url('../../assets/images/activity-card-bg.svg')
+  display: grid
+  place-items: center
+  &__content-card
+    width: 100%
+    height: 100%
+    padding: 0 15px
+    @include flexCenter(row, space-between, center, 0)
+    &--icon
+      width: 80px
+      height: 80px
+      background-color: $icon-wrapper
+      border-radius: 50%
+      display: grid
+      place-content: center
+      img
+        width: 50px
+        height: 50px
+        object-fit: cover
+    &--description
+      display: grid
+      justify-items: start
+      .name
+        font-size: 1.4rem
+        font-weight: $bold-weight
+      .points-number
+        font-size: 1.1rem
+        font-weight: $light-weight
+    &--reward
+      display: grid
+      justify-items: center
+      gap: 10px
+      .reward-icon
+        width: 36px
+        height: 36px
+        object-fit: cover
+      .reward-name
+        font-size: 1.1rem
+        font-weight: $regular-weight
+
