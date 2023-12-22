@@ -2,33 +2,37 @@
 @use '../../styles/_mixins' as *
 
 $background-color-btn: rgb(206, 217, 167, 20%)
+$background-color-btn-logout: #F28826
 
 .ant-drawer-content-wrapper
     width: 60% !important
     
 .buttons-container
-    display: flex
-    justify-content: center
+    @include flexCenter(column, center, center, 60px)    
     color: $primary-text-color
     font-family: $font-source
     font-weight: $medium-weight
-    font-size: 1.2rem
     &__main-btns
-        display: flex
-        flex-direction: column
-        justify-content: center
-        gap: 20px
+        @include flexCenter(column, center, center, 20px)    
         &--btn-styles
-            display: flex
-            justify-content: center
-            align-items: center
-            background-color: $background-color-btn
-            height: 45px
-            width: 200px
+            @include flexCenter(row, center, center, 0)
+            @include buttonStyle(200px, 45px, 11px, (1px 1px 5px #cecece,-1px 5px 5px #ffffff), $background-color-btn, 1.2rem, $medium-weight, $font-source, normal)
             .span-btn
                 display: flex
                 align-items: center
+                gap: 7px
                 width: 80%
                 .icon
-                    @include iconButtonStyle()
-    // &__logout
+                    @include iconStyle(1.5rem, $primary-text-color)
+                .icon-privacy
+                    @include iconStyle(1.8rem, $primary-text-color)
+        span
+        .hr-title
+            position: absolute
+            width: 100%
+    &__logout
+        color: white
+        @include buttonStyle(200px, 45px, 11px, (1px 1px 5px #cecece,-1px 5px 5px #ffffff), $background-color-btn-logout, 1.2rem, $medium-weight, $font-source, normal)
+
+.ant-modal-content
+    border: 1px solid black !important
