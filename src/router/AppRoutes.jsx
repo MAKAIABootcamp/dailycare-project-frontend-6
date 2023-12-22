@@ -5,6 +5,7 @@ import SignUp from '../pages/SignUp'
 import ReadingDetail from '../pages/ReadingDetail'
 import VideoDetail from '../pages/VideoDetail'
 import Welcome from '../pages/Welcome'
+import ExploreActivity from '../pages/Explore_activity'
 
 const AppRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const AppRoutes = () => {
       <Route path='reading-detail' element={<ReadingDetail />} />
       <Route path='video-detail' element={<VideoDetail />} />
       <Route path='welcome' element={<Welcome />} />
+      <Route path='explore-activity' element={<ExploreActivity />} />
     </Routes>
   )
 }
