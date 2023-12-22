@@ -6,6 +6,7 @@ import './styles.sass'
 import EditProfileForm from '../../components/EditProfileForm'
 import TotalScore from '../../components/TotalScore'
 import PersonalContent from '../../components/PersonalContent'
+import Footer from '../../components/Footer'
 
 
 const UserProfile = () => {
@@ -30,6 +31,7 @@ const UserProfile = () => {
         {/* <EditProfileForm /> */}
         <PersonalContent />
       </section>
+      <Footer />
     </main>
   )
 }
