@@ -1,180 +1,34 @@
-import { MdOutlineMailOutline, MdOutlineLock  } from 'react-icons/md'
-import { FiPhone } from 'react-icons/fi'
-import { FcGoogle } from 'react-icons/fc'
-import wallpaper from '../../assets/images/wallpaper-3.png'
-import './styles.sass'
 import { Link } from 'react-router-dom'
+import { IoClose } from 'react-icons/io5'
+import wallpaper from '../../assets/images/wallpaper-profile.png'
+import profilePicture from '../../assets/images/profile-picture.jpg'
+import './styles.sass'
+import EditProfileForm from '../../components/EditProfileForm'
+import TotalScore from '../../components/TotalScore'
+import PersonalContent from '../../components/PersonalContent'
 
 
 const UserProfile = () => {
   return (
-    <main className='sign-in'>
+    <main className='sign-in user-profile'>
       <section className='sign-in__wallpaper-container'>
-        <img src={wallpaper} alt='' />
+        <img src={wallpaper} alt='background wallpaper' />
       </section>
+      <section className='user-profile__picture-container'>
+        <img src={profilePicture} alt='profile picture' />
+      </section>
+      <section className='user-profile__contact-info'>
+        <h2 className='user-profile__contact-info--title'>Username</h2>
+        <span className='user-profile__contact-info--text'>Company name</span>
+        <span className='user-profile__contact-info--span'>Resumen</span>
+      </section>
+      <TotalScore />
+      <Link className='close-edit'>
+        <IoClose />
+      </Link>
       <section className='sign-in__form-wrapper'>
-        <form className='sign-in__form-wrapper--form form'>
-          <div className='form__input-label'>
-            <label 
-              htmlFor='email-input'
-              className='form__input-label--label'
-            >
-              Email
-            </label>
-            
-            <div className='form__input-label--wrapper'>
-              <label htmlFor='email-input' className='icon'>
-                <MdOutlineMailOutline />
-              </label>
-              <input 
-                type='email' 
-                placeholder='example@email.com' 
-                id='email-input' 
-                className='input'
-              />
-            </div>
-          </div>
-          <div className='form__input-label'>
-            <label 
-              htmlFor='email-input'
-              className='form__input-label--label'
-            >
-              Email
-            </label>
-            
-            <div className='form__input-label--wrapper'>
-              <label htmlFor='email-input' className='icon'>
-                <MdOutlineMailOutline />
-              </label>
-              <input 
-                type='email' 
-                placeholder='example@email.com' 
-                id='email-input' 
-                className='input'
-              />
-            </div>
-          </div>
-          <div className='form__input-label'>
-            <label 
-              htmlFor='email-input'
-              className='form__input-label--label'
-            >
-              Email
-            </label>
-            
-            <div className='form__input-label--wrapper'>
-              <label htmlFor='email-input' className='icon'>
-                <MdOutlineMailOutline />
-              </label>
-              <input 
-                type='email' 
-                placeholder='example@email.com' 
-                id='email-input' 
-                className='input'
-              />
-            </div>
-          </div>
-          <div className='form__input-label'>
-            <label 
-              htmlFor='email-input'
-              className='form__input-label--label'
-            >
-              Email
-            </label>
-            
-            <div className='form__input-label--wrapper'>
-              <label htmlFor='email-input' className='icon'>
-                <MdOutlineMailOutline />
-              </label>
-              <input 
-                type='email' 
-                placeholder='example@email.com' 
-                id='email-input' 
-                className='input'
-              />
-            </div>
-          </div>
-          <div className='form__input-label'>
-            <label 
-              htmlFor='email-input'
-              className='form__input-label--label'
-            >
-              Email
-            </label>
-            
-            <div className='form__input-label--wrapper'>
-              <label htmlFor='email-input' className='icon'>
-                <MdOutlineMailOutline />
-              </label>
-              <input 
-                type='email' 
-                placeholder='example@email.com' 
-                id='email-input' 
-                className='input'
-              />
-            </div>
-          </div>
-          <div className='form__input-label'>
-            <label 
-              htmlFor='email-input'
-              className='form__input-label--label'
-            >
-              Email
-            </label>
-            
-            <div className='form__input-label--wrapper'>
-              <label htmlFor='email-input' className='icon'>
-                <MdOutlineMailOutline />
-              </label>
-              <input 
-                type='email' 
-                placeholder='example@email.com' 
-                id='email-input' 
-                className='input'
-              />
-            </div>
-          </div>
-          <div className='form__input-label'>
-            <label 
-              htmlFor='password-input'
-              className='form__input-label--label'
-            >
-              Contraseña
-            </label>
-            <div className='form__input-label--wrapper'>
-              <label htmlFor='password-input' className='icon'>
-                <MdOutlineLock />
-              </label>
-              <input 
-                type='password' 
-                placeholder='***********' 
-                id='password-input' 
-                className='input'
-              />
-            </div>
-          </div>
-          <div className='form__buttons-container'>
-            <button
-              className='form__buttons-container--sign-in'
-            >
-              Iniciar sesión
-            </button>
-            <button
-              className='form__buttons-container--google flex'
-            >
-              <span>Google</span>
-              <span>
-                <FcGoogle />
-              </span>
-            </button>
-            <button
-              className='form__buttons-container--phone'
-            >
-              <FiPhone />
-            </button>
-          </div>
-        </form>
-        <p className='sign-in__form-wrapper--text'>¿No tienes cuenta? <Link to='/sign-up'>crea una cuenta</Link></p>
+        {/* <EditProfileForm /> */}
+        <PersonalContent />
       </section>
     </main>
   )
