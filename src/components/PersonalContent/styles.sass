@@ -1,0 +1,43 @@
+@use '../../styles/_variables' as *
+@use '../../styles/_mixins' as *
+
+.personal-content
+  &__options
+    width: 100%
+    height: 120px
+    &--list
+      width: 318px
+      display: flex
+      justify-content: space-between
+      align-items: center
+      gap: 20px
+      overflow-x: scroll
+      &::-webkit-scrollbar
+        width: 5px
+        height: 8px
+        background-color: $light-color
+        border-radius: 10px
+      &::-webkit-scrollbar-thumb
+        background-color: rgba($tertiary-color, 0.2)
+        border-radius: 10px
+      .item
+        cursor: pointer
+        display: grid
+        justify-items: center
+        gap: 10px
+        .thumbnail
+          width: 50px
+          height: 40px
+          border-radius: 10px
+          object-fit: cover
+        span
+          font-size: 1.2rem
+          text-align: center
+          line-height: 12px
+          color: $primary-text-color
+  &__card-container
+    width: 100%
+    height: auto
+    display: grid
+    justify-items: center
+    gap: 10px
