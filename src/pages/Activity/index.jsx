@@ -1,6 +1,7 @@
 import wavingHand from '../../assets/icons/waving-hand.svg'
 import star from '../../assets/icons/star.svg'
 import ActivityCard from '../../components/ActivityCard'
+import Footer from '../../components/Footer'
 import './styles.sass'
 
 const Activity = () => {
@@ -28,6 +29,7 @@ const Activity = () => {
         <ActivityCard />
         <ActivityCard />
       </section>
+      <Footer />
     </main>
   )
 }
