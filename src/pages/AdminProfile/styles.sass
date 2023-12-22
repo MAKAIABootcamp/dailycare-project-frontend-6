@@ -1,0 +1,23 @@
+@use '../../styles/_variables' as *
+@use '../../styles/_mixins' as *
+
+.admin-profile
+  &__contact-info
+    @include profileContent($dark-color)
+  &__picture-container
+    @include profilePictureStyles
+  &__progress-counter
+    width: 120px
+    height: 120px
+    background-color: $quaternary-color
+    position: absolute
+    z-index: 3
+    top: 120px
+    left: calc( 50% - 60px )
+    border-radius: 50%
+    display: grid
+    place-content: center
+    &--number
+      font-size: 3.2rem
+      font-weight: $extrabold-weight
+      color: $secondary-color
