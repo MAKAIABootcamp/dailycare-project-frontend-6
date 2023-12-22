@@ -50,3 +50,39 @@
   font-weight: $font-weight
   color: $letter-color
   letter-spacing: $letter-spacing
+
+@mixin profileContent($userinfo-color)
+  position: absolute
+  z-index: 3
+  top: 15px
+  right: 20px
+  text-align: right
+  color: $userinfo-color
+  display: grid
+  grid-template-rows: 45px
+  &--title
+    font-size: 3.6rem
+    font-weight: $extrabold-weight
+  &--text
+    font-size: 2rem
+    font-weight: $medium-weight
+  &--span
+    font-size: 1.3rem
+    font-weight: $medium-weight
+
+@mixin profilePictureStyles()
+  width: 92px
+  height: 92px
+  background-color: $tertiary-color
+  position: absolute
+  z-index: 6
+  top: 15px
+  left: 15px
+  display: grid
+  place-content: center
+  border-radius: 50%
+  img
+    width: 82px
+    height: 82px
+    border-radius: 50%
+  
