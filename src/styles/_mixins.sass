@@ -32,19 +32,15 @@
   &:focus
     outline: none
 
-@mixin iconInputStyle()
-  font-size: 2rem
-  color: rgba($primary-text-color, 0.37)
+@mixin iconStyle($font-size, $color)
+  font-size: $font-size
+  color: $color
 
-@mixin iconButtonStyle()
-  font-size: 1.5rem
-  color: $primary-text-color
-
-
-@mixin buttonStyle($width, $height, $border-radius, $bg-color, $font-size, $font-weight, $letter-color, $letter-spacing)
+@mixin buttonStyle($width, $height, $border-radius, $box-shadow, $bg-color, $font-size, $font-weight, $letter-color, $letter-spacing)
   width: $width
   height: $height
   border-radius: $border-radius
+  box-shadow: $box-shadow
   background-color: $bg-color
   font-size: $font-size
   font-weight: $font-weight

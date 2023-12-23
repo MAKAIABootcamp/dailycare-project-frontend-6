@@ -1,0 +1,54 @@
+@use '../../styles/_variables' as *
+@use '../../styles/_mixins' as *
+
+body
+    background-color: white !important
+
+.reminder-card
+    @include flexCenter(row, center, center, 8px)
+    width: 356px
+    height: 120px
+    border-radius: 30px
+    background-color: rgba(251, 227, 191, 0.33)
+    position: relative
+    z-index: 8
+    top: 10px
+    padding: 15px
+    &__category-icon
+        width: 80px
+        height: 80px
+        margin-right: 10px
+        figure
+            @include flexCenter(row, center, center, none)
+            border-radius: 50%
+            height: 100%
+    &__content
+        max-width: 140px
+        color: $primary-text-color
+        &--title
+            font-size: 1.4rem
+            font-weight: $medium-weight
+        &--description
+            font-size: 0.8rem
+            font-weight: $medium-weight
+        &--description-content
+            font-size: 1rem
+            font-weight: $light-weight
+    &__hr-reminder
+        transform: rotate(180deg)
+        background-color: $secondary-color
+        width: 1px
+        height: 80%
+    &__time-detail
+        @include flexCenter(column, center, center, 1px)
+        color: $secondary-color
+        font-weight: $medium-weight
+        &--time
+            font-size: 2rem
+            margin-bottom: -3px
+        &--day-period, &--frequency
+            font-size: 1.3rem
+        
+            
+        
+        
