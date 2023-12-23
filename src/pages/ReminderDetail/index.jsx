@@ -5,7 +5,9 @@ import { TbReload } from "react-icons/tb";
 import { TbClockPlus } from "react-icons/tb";
 import { BiCategoryAlt } from "react-icons/bi";
 import wallpaper from '../../assets/images/wallpaper-4.png'
-import DatePickerAntD from '../../components/DatePicker';
+import { CategoriesPicker, DatePickerAntD, DatePickerPeriod } from '../../components/DatePicker';
+
+const { TextArea } = Input;
 
 const ReminderDetail = () => {
   return (
@@ -37,7 +39,8 @@ const ReminderDetail = () => {
             <div className='reminder-detail__info-time__hour'>
                 <Input placeholder="H" bordered={false} />
                 <p className='points'>:</p>
-                <Input placeholder="M" bordered={false} />
+                <Input placeholder="M" bordered={false} style={{marginRight: '10px'}}/>
+                <DatePickerPeriod />
             </div>
         </div>
         <div className='reminder-detail__description-section'>
@@ -47,13 +50,27 @@ const ReminderDetail = () => {
                 </section>
             </section>
             <section className='reminder-detail__description-section__content'>
+                <h1 className='reminder-detail__description-section__content--title'>Descripción</h1>
+                <div className='reminder-detail__description-section__content--text-area'>
+                    <TextArea
+                        placeholder="¡Recuerda que tienes esta actividad pendiente!"
+                        autoSize={{
+                        minRows: 2,
+                        maxRows: 6,
+                        }}
+                        bordered={false}
+                    />
+                </div>
                 <div className='reminder-detail__info-time__frequency'>
                     <span className="reminder-detail__info-time__frequency__title">
                         <label htmlFor="icon-modal-notification" className="icon">
                             <BiCategoryAlt />
                         </label>
-                        <h1 className="reminder-detail__info-time__frequency__title--text">Categorías</h1>
+                        <h1 className="reminder-detail__info-time__frequency__title--text" id='category-title'>Categorías</h1>
                     </span>
+                </div>
+                <div className='reminder-detail__description-section__content--category'>
+                    <CategoriesPicker/>
                 </div>
             </section>
             

@@ -20,7 +20,7 @@ body
                     font-size: 15px
                     font-weight: $medium-weight
         &__hour
-            @include flexCenter(row, center, center, none)
+            @include flexCenter(row, center, center, 5px)
             .ant-input
                 width: 35px
                 font-size: 3rem
@@ -50,8 +50,29 @@ body
     &__description-section
         margin-top: 40px
         &__content
+            display: grid
             width: 100%
             position: absolute
+            right: 0
+            top: 45%
+            &--title
+                text-align: center
+                font-size: 2rem
+                color: #324D30
+                font-weight: $medium-weight
+            &--text-area
+                display: flex
+                justify-self: center
+                width: 320px
+                .ant-input
+                    color: #324D30
+                    font-size: 1.6rem
+            &--category
+                margin-top: 20px
+                text-align: center
+                @include flexCenter(row, center, center, 0)
+            
+
     
 
         
