@@ -1,0 +1,57 @@
+@use '../../styles/_variables' as *
+@use '../../styles/_mixins' as *
+
+
+body
+    background-color: white !important
+
+.reminder-detail
+    &__info-time
+        &__frequency
+            @include flexCenter(row, left, center, 80px)
+            margin-left: 40px
+            margin-top: 30px
+            &__title
+                @include flexCenter(row, center, center, 8px)
+                .icon
+                    @include iconStyle(2.2rem, black)
+                &--text
+                    color: black
+                    font-size: 15px
+                    font-weight: $medium-weight
+        &__hour
+            @include flexCenter(row, center, center, none)
+            .ant-input
+                width: 35px
+                font-size: 3rem
+                padding-inline: 0
+                border-bottom: 1px solid black
+                &::placeholder
+                    padding-left: 5px
+            .points
+                color: black
+                font-size: 3rem
+                margin-right: 2px 
+
+    .reminder-title
+        @include flexCenter(row, center, center, none)
+        margin-top: 80px
+        .ant-input
+            border-radius: 0
+            font-family: $font-source
+            font-size: 3rem
+            color: #3F615A
+            width: 320px
+            &:focus
+                border-bottom: 1px solid $primary-color
+                box-shadow: 0px 3px 5px -3px $primary-color
+            &::placeholder
+                color: #3f615a77
+    &__description-section
+        margin-top: 40px
+        &__content
+            width: 100%
+            position: absolute
+    
+
+        
