@@ -13,22 +13,24 @@ const ExploreActivity = () => {
         <div className="container__title">
           <h1>Explorar Actividad</h1>
         </div>
-        <section className="container-activity-A">
-          <div className="activity-1">
-            <img src={enfoqueImage} alt="" />
-            <p>Enfoque</p>
-          </div>
-          <div className="activity-1">
-            <img src={vueltaImage} alt="" />
-            <p>Vuelta a la calma</p>
-          </div>
-          <div className="activity-1">
-            <img src={yogaImage} alt="" />
-            <p>Relajación</p>
+        <section className="container__activity__A">
+          <div className="container__activity__A--nivel1">
+            <div className="activity-1">
+              <img src={enfoqueImage} alt="" />
+              <p>Enfoque</p>
+            </div>
+            <div className="activity-1">
+              <img src={vueltaImage} alt="" />
+              <p>Vuelta a la calma</p>
+            </div>
+            <div className="activity-1">
+              <img src={yogaImage} alt="" />
+              <p>Relajación</p>
+            </div>
           </div>
         </section>
-        <section className="container-activity-B">
-          <div className="container__subtitle">
+        <section className="container__activity__B">
+          <div className="ccontainer__activity__B--nivel2">
             <h2>Meditaciones básicas</h2>
           </div>
           <div className="activity-2">
@@ -41,7 +43,7 @@ const ExploreActivity = () => {
           </div>
         </section>
         <section className="container-activity-C">
-          <div>
+          <div className="container-activity-C--nivel1">
             <img src={playlistImage} alt="" />
             <h2>Playlist para entrar en mood</h2>
           </div>
