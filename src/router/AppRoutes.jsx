@@ -8,6 +8,9 @@ import Welcome from '../pages/Welcome'
 import UserProfile from '../pages/UserProfile'
 import RemindersView from '../pages/RemindersView'
 import ReminderDetail from '../pages/ReminderDetail'
+import Activity from '../pages/Activity'
+import AdminProfile from '../pages/AdminProfile'
+
 
 const AppRoutes = () => {
   return (
@@ -21,6 +24,9 @@ const AppRoutes = () => {
       <Route path='user-profile' element={<UserProfile />} />
       <Route path='reminders-view' element={<RemindersView />} />
       <Route path='reminder-detail' element={<ReminderDetail />} />
+      <Route path='activity' element={<Activity />} />
+      <Route path='admin-profile' element={<AdminProfile />} />
+
     </Routes>
   )
 }

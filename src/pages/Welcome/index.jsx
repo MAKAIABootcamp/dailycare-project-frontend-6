@@ -9,12 +9,16 @@ const Welcome = () => {
         <h1 className="container__title">Bienvenido</h1>
         <h2 className="container__subtitle">Elige tu rol</h2>
         <section className="container-rols">
-          <div className="rol container-rols__admin">
-            <img src={adminImage} alt="admin" />
-            <p>Admin</p>
+          <div className="container-rols__div">
+            <button className="rol container-rols__div--admin">
+              <img src={adminImage} alt="admin" />
+            </button>
+          <p>Admin</p>
           </div>
-          <div className="rol container-rols__user">
-            <img src={userImage} alt="user" />
+          <div className="container-rols__div">
+            <button className="rol container-rols__div--user">
+              <img src={userImage} alt="user" />
+            </button>
             <p>Usuario</p>
           </div>
         </section>
