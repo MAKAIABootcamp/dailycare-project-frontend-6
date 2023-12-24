@@ -10,7 +10,8 @@
   width: 394px
   height: 424px
   background: white
-  border-radius: 73px
+  border-top-left-radius: 73px
+  border-top-right-radius: 73px
   display: flex
   flex-direction: column
   align-itmes: center
@@ -38,20 +39,34 @@
   display: flex
   flex-direction: row
   justify-content: center
+  align-items: center
   gap: 96px
+  &__div
+    display: grid
+    justify-items: center
+    &--admin
+      background: rgba($tertiary-color, 0.3)
+      border-radius: 10px
+  
+    &--user
+      background: rgba($tertiary-color, 0.3)
+      border-radius: 10px
 
+
+  
+ 
 .rol
   display: flex
   flex-direction: column
   justify-content: center
-  align-items:center
+  align-items: center
   
   img
     width: 50px
     weight: 50px
   p
-    font-size: 16px
+    font-size: 1.6rem
     font-style: normal
-    font-weight: 400
     line-height: 87.741% /* 14.039px */
     letter-spacing: 0.64px
+    text-align: center

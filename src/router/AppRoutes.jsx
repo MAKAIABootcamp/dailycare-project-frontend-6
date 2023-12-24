@@ -6,6 +6,11 @@ import ReadingDetail from '../pages/ReadingDetail'
 import VideoDetail from '../pages/VideoDetail'
 import Welcome from '../pages/Welcome'
 import ExploreActivity from '../pages/Explore_activity'
+import UserProfile from '../pages/UserProfile'
+import RemindersView from '../pages/RemindersView'
+import ReminderDetail from '../pages/ReminderDetail'
+import Activity from '../pages/Activity'
+import AdminProfile from '../pages/AdminProfile'
 
 const AppRoutes = () => {
   return (
@@ -17,6 +22,11 @@ const AppRoutes = () => {
       <Route path='video-detail' element={<VideoDetail />} />
       <Route path='welcome' element={<Welcome />} />
       <Route path='explore-activity' element={<ExploreActivity />} />
+      <Route path='user-profile' element={<UserProfile />} />
+      <Route path='reminders-view' element={<RemindersView />} />
+      <Route path='reminder-detail' element={<ReminderDetail />} />
+      <Route path='activity' element={<Activity />} />
+      <Route path='admin-profile' element={<AdminProfile />} />
     </Routes>
   )
 }
