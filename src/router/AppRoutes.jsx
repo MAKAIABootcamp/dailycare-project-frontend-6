@@ -7,6 +7,7 @@ import VideoDetail from '../pages/VideoDetail'
 import Welcome from '../pages/Welcome'
 import ExploreActivity from '../pages/Explore_activity'
 
+
 const AppRoutes = () => {
   return (
     <Routes>

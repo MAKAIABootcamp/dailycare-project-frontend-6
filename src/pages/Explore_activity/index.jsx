@@ -5,47 +5,65 @@ import yogaImage from "../../assets/images/woman-yoga.png";
 import basicosImage from "../../assets/images/basicos-meditacion.png";
 import estresImage from "../../assets/images/reducir-estres.png";
 import playlistImage from "../../assets/images/playlist.png";
+import playImage from "../../assets/images/playImage.png";
 
 const ExploreActivity = () => {
   return (
     <main className="main-explore">
-      <div className="container">
-        <div className="container__title">
+      <div className="container3">
+        <div className="container3__title">
           <h1>Explorar Actividad</h1>
         </div>
-        <section className="container__activity__A">
-          <div className="container__activity__A--nivel1">
-            <div className="activity-1">
-              <img src={enfoqueImage} alt="" />
-              <p>Enfoque</p>
+        <section className="container3__activity__A">
+          <div className="container3__activity__A__nivel1">
+            <div className="container3__activity__A__nivel1__X">
+                <img className="line1"src={enfoqueImage} alt="" />
+              <div className="line2">
+                <p className="line3">Enfoque</p>
+              </div>
             </div>
-            <div className="activity-1">
-              <img src={vueltaImage} alt="" />
-              <p>Vuelta a la calma</p>
+            <div className="container3__activity__A__nivel1__X">
+                <img className="line1" src={vueltaImage} alt="" />
+              <div className="line2">
+                <p className="line3">Vuelta a la calma</p>
+              </div>
             </div>
-            <div className="activity-1">
-              <img src={yogaImage} alt="" />
-              <p>Relajación</p>
-            </div>
+            <div className="container3__activity__A__nivel1__X">
+                <img className="line1" src={yogaImage} alt="" />
+              <div className="line2">
+                <p className="line3">Relajación</p>
+              </div>
+          </div>
           </div>
         </section>
-        <section className="container__activity__B">
-          <div className="ccontainer__activity__B--nivel2">
-            <h2>Meditaciones básicas</h2>
+        <div className="container3__subtitle">
+          <h2>Meditaciones básicas</h2>
+        </div>
+        <section className="container3__activity__B">
+          <div className="container3__activity__B__nivel2">
+            <div className="container3__activity__B__nivel2__Y">
+              <img className="container3__activity__B__nivel2__Y--line4" src={basicosImage} alt="admin" />
+              <p className="container3__activity__B__nivel2__Y--line5">Básicos de la meditación</p>
           </div>
-          <div className="activity-2">
-            <img src={basicosImage} alt="admin" />
-            <p>Básicos de la meditación</p>
+          <div className="container3__activity__B__nivel2">
+            <div className="container3__activity__B__nivel2__Y">
+              <img className="container3__activity__B__nivel2__Y--line4" src={estresImage} alt="user" />
+              <p className="container3__activity__B__nivel2__Y--line5">Reducir estrés y ansiedad</p>
+            </div>
           </div>
-          <div className="activity-2">
-            <img src={estresImage} alt="user" />
-            <p>Reducir estrés y ansiedad</p>
           </div>
         </section>
-        <section className="container-activity-C">
-          <div className="container-activity-C--nivel1">
-            <img src={playlistImage} alt="" />
-            <h2>Playlist para entrar en mood</h2>
+        <section className="container3__activity__C">
+          <div className="container3__activity__C__nivel1">
+            <div>
+              <img className="container3__activity__C__nivel1__Z--line6" src={playlistImage} alt="" />
+            </div>
+            <div className="container3__activity__C__nivel1__Z">
+                <img className="container3__activity__C__nivel1__Z--line7" src={playImage} alt="" />
+              <div className="container3__activity__C__nivel1__Z--line8">
+                <h3>Playlist para entrar en mood</h3>
+              </div>
+            </div>
           </div>
         </section>
       </div>
