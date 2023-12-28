@@ -1,18 +1,30 @@
-import './styles.sass'
-import { Input } from 'antd';
+import { useNavigate } from 'react-router-dom'
+import { Input } from 'antd'
 import { FaChevronLeft } from 'react-icons/fa'
-import { TbReload } from "react-icons/tb";
-import { TbClockPlus } from "react-icons/tb";
-import { BiCategoryAlt } from "react-icons/bi";
+import { TbReload } from "react-icons/tb"
+import { TbClockPlus } from "react-icons/tb"
+import { BiCategoryAlt } from "react-icons/bi"
 import wallpaper from '../../assets/images/wallpaper-4.png'
-import { CategoriesPicker, DatePickerAntD, DatePickerPeriod } from '../../components/DatePicker';
+import { CategoriesPicker, DatePickerAntD, DatePickerPeriod } from '../../components/DatePicker'
+import './styles.sass'
 
-const { TextArea } = Input;
+
+const { TextArea } = Input
 
 const ReminderDetail = () => {
+    const navigate = useNavigate()
+
+    const goTo = () => {
+        navigate('/home')
+    }
+    
+
     return (
         <main className='reminder-detail'>
-            <button className='content-detail__back-button m-3'>
+            <button 
+                className='content-detail__back-button m-3'
+                onClick={() => goTo()}
+            >
                 <FaChevronLeft />
             </button>
             <div className='reminder-title'>
