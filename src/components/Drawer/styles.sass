@@ -1,0 +1,34 @@
+@use '../../styles/_variables' as *
+@use '../../styles/_mixins' as *
+
+$background-color-btn: rgb(206, 217, 167, 20%)
+
+.ant-drawer-content-wrapper
+    width: 60% !important
+    
+.buttons-container
+    display: flex
+    justify-content: center
+    color: $primary-text-color
+    font-family: $font-source
+    font-weight: $medium-weight
+    font-size: 1.2rem
+    &__main-btns
+        display: flex
+        flex-direction: column
+        justify-content: center
+        gap: 20px
+        &--btn-styles
+            display: flex
+            justify-content: center
+            align-items: center
+            background-color: $background-color-btn
+            height: 45px
+            width: 200px
+            .span-btn
+                display: flex
+                align-items: center
+                width: 80%
+                .icon
+                    @include iconStyle(1.5rem, $primary-text-color)
+    // &__logout

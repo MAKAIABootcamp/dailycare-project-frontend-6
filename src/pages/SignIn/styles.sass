@@ -20,6 +20,7 @@
     &--title
       font-size: 3.2rem
       font-weight: $bold-weight
+      line-height: 30px
     .form
       width: 100%
       height: 100%
@@ -33,7 +34,7 @@
         &--wrapper
           @include inputWrapper()
           .icon
-            @include iconInputStyle()
+            @include iconStyle(2rem, rgba($primary-text-color, 0.37))
           .input
             @include inputStyle()
       &__buttons-container
@@ -45,15 +46,15 @@
         gap: 10px
         &--sign-in
           grid-area: sign
-          @include buttonStyle($width: 100%, $height: 56px, $border-radius: 250px, $bg-color: $primary-color, $font-size: 2.4rem, $font-weight: $medium-weight, $letter-color: $light-color, $letter-spacing: 0.96px)
+          @include buttonStyle($width: 100%, $height: 56px, $border-radius: 250px, $box-shadow: none, $bg-color: $primary-color, $font-size: 2.4rem, $font-weight: $medium-weight, $letter-color: $light-color, $letter-spacing: 0.96px)
         &--google 
           grid-area: google 
-          @include buttonStyle($width: 142px, $height: 56px, $border-radius: 250px, $bg-color: $secondary-color, $font-size: 2.4rem, $font-weight: $medium-weight, $letter-color: $light-color, $letter-spacing: 0.96px)
+          @include buttonStyle($width: 142px, $height: 56px, $border-radius: 250px, $box-shadow: none, $bg-color: $secondary-color, $font-size: 2.4rem, $font-weight: $medium-weight, $letter-color: $light-color, $letter-spacing: 0.96px)
           @include flexCenter($direction: row, $justify: center, $align: center, $gap: 5px)
         &--phone
           grid-area: phone
           justify-self: end
-          @include buttonStyle($width: 142px, $height: 56px, $border-radius: 250px, $bg-color: $tertiary-color, $font-size: 3.4rem, $font-weight: $medium-weight, $letter-color: $primary-color, $letter-spacing: 0.96px)
+          @include buttonStyle($width: 142px, $height: 56px, $border-radius: 250px, $box-shadow: none, $bg-color: $tertiary-color, $font-size: 3.4rem, $font-weight: $medium-weight, $letter-color: $primary-color, $letter-spacing: 0.96px)
           @include flexCenter($direction: row, $justify: center, $align: center, $gap: 5px)
     &--text
       font-size: 1.6rem
@@ -63,4 +64,3 @@
       a
         color: $secondary-color
         text-decoration: underline
-

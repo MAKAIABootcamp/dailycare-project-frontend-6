@@ -1,0 +1,17 @@
+@use '../../styles/_variables' as *
+@use '../../styles/_mixins' as *
+
+.user-profile
+  &__contact-info
+    @include profileContent($light-color)
+  &__picture-container
+    @include profilePictureStyles
+  .close-edit
+    position: absolute
+    top: 200px
+    right: 25px
+    font-size: 2rem
+    color: $primary-text-color
+    z-index: 3
+.user-profile-button
+  background-color: $secondary-color !important

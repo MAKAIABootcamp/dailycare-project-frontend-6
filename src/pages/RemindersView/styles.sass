@@ -1,0 +1,40 @@
+@use '../../styles/_variables' as *
+@use '../../styles/_mixins' as *
+    
+.reminders-view
+    @include flexCenter(column, center, center, 10px)
+    &__title
+        @include flexCenter(row, center, center, 8px)
+        margin-top: 50px
+        .icon
+            @include iconStyle(2.2rem, #3F615A)
+        &--text
+            color: #3F615A
+            font-size: 20px
+            font-weight: $medium-weight
+            text-shadow: 0px 3px 3px rgba(63, 97, 90, 0.363)
+    &--container
+        @include flexCenter(column, center, center, 25px)
+    &--description-text
+        color: black
+        font-size: 1.1rem
+
+.icon-add-reminder-background
+    position: absolute
+    background-color: #3f615a31
+    border-radius: 50%
+    width: 30px
+    height: 30px
+    right: 0
+    bottom: 0
+    margin: 25px
+    z-index: 2
+.icon-add
+    position: absolute
+    width: 40px
+    height: 40px
+    right: 0
+    bottom: 0
+    margin: 20px
+    z-index: 1
+    @include iconStyle(4rem, #3F615A)
