@@ -1,14 +1,25 @@
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
+import { createAnAccountAsync } from '../../store/users/userThunks'
 import { MdOutlineMailOutline, MdOutlineLock  } from 'react-icons/md'
 import { FaRegUser } from 'react-icons/fa6'
 import wallpaper from '../../assets/images/wallpaper-2.png'
 
 const SignUp = () => {
+  const dispatch = useDispatch()
+
   const { register, formState: { errors }, handleSubmit } = useForm()
 
-  const onSubmit = ( userData ) => {
+  const handleRegister = ( registerData ) => {
+    const userData = {
+      name: registerData.name,
+      email: registerData.email,
+      password: registerData.password,
+      confirmPassword: registerData.confirmPassword
+    }
     console.log(userData)
+    dispatch(createAnAccountAsync(userData))
   }
 
   return (
@@ -20,7 +31,7 @@ const SignUp = () => {
         <h2 className='sign-in__form-wrapper--title'>Crear cuenta</h2>
         <form 
           className='sign-in__form-wrapper--form form'
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(handleRegister)}
         >
           <div className='form__input-label'>
             <label 
