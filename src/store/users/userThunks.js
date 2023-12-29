@@ -57,6 +57,7 @@ export const loginWithGoogle = () => {
   }
 }
 
+
 export const loginWithEmailAndPassword = ({ email, password }) => async ( dispatch ) => {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password)

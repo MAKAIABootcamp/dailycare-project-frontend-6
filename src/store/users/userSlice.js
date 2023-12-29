@@ -20,6 +20,7 @@ const userSlice = createSlice({
   }
 })
 
+
 export const { setUser, setError, setIsAuthenticated } = userSlice.actions
 
 export default userSlice.reducer
