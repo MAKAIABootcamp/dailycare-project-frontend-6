@@ -12,6 +12,7 @@ import ReminderDetail from '../pages/ReminderDetail'
 import Activity from '../pages/Activity'
 import AdminProfile from '../pages/AdminProfile'
 
+
 const AppRoutes = () => {
   return (
     <Routes>

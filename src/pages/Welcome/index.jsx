@@ -1,6 +1,7 @@
 import "./styles.sass"
 import adminImage from "../../assets/images/admin.png"
 import userImage from "../../assets/images/user.png"
+import { Link } from "react-router-dom";
 
 const Welcome = () => {
   return (
