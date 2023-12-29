@@ -5,10 +5,13 @@ import { FaRegUser } from 'react-icons/fa6'
 import wallpaper from '../../assets/images/wallpaper-2.png'
 
 const SignUp = () => {
+
+
   const { register, formState: { errors }, handleSubmit } = useForm()
 
   const onSubmit = ( userData ) => {
     console.log(userData)
+
   }
 
   return (

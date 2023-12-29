@@ -15,7 +15,7 @@ const ReminderDetail = () => {
     const navigate = useNavigate()
 
     const goTo = () => {
-        navigate('/home')
+        navigate('/reminders-view')
     }
     
 

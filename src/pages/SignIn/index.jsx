@@ -7,10 +7,12 @@ import wallpaper from '../../assets/images/wallpaper-1.png'
 import './styles.sass'
 
 const SignIn = () => {
-  const { register, formState: { errors }, handleSubmit } = useForm()
+
+const { register, formState: { errors }, handleSubmit } = useForm()
 
   const onSubmit = ( userData ) => {
     console.log(userData)
+    
   }
 
   return (
