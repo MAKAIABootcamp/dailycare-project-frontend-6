@@ -5,6 +5,9 @@ import Divider from "../../components/Divider";
 const Home = () => {
   return (
     <main className="homeMain">
+      <div className="menuContainer">
+        <img src="src/assets/icons/menu.svg" alt="Hamburger Menu" />
+      </div>
       <div className="padding">
         <h1 className="title">
           Bienvenido <span className="title-user">Usuario</span>

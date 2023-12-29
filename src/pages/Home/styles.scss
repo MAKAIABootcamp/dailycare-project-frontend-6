@@ -4,6 +4,11 @@
   width: 100%;
   background-color: $light-color;
 }
+.menuContainer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 2rem 0;
+}
 
 .home {
   width: 100%;
