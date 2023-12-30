@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import Home from '../pages/Home'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
@@ -11,25 +11,38 @@ import RemindersView from '../pages/RemindersView'
 import ReminderDetail from '../pages/ReminderDetail'
 import Activity from '../pages/Activity'
 import AdminProfile from '../pages/AdminProfile'
-
+import PublicRoutes from './PublicRoutes'
+import PrivatedRoutes from './PrivatedRoutes'
 
 const AppRoutes = () => {
+  const { isAuthenticated, user } = useSelector( store => store.user )
+  
   return (
-    <Routes>
-      <Route path='home' element={<Home />} />
-      <Route path='sign-in' element={<SignIn />} />
-      <Route path='sign-up' element={<SignUp />} />
-      <Route path='reading-detail' element={<ReadingDetail />} />
-      <Route path='video-detail' element={<VideoDetail />} />
-      <Route path='welcome' element={<Welcome />} />
-      <Route path='explore-activity' element={<ExploreActivity />} />
-      <Route path='user-profile' element={<UserProfile />} />
-      <Route path='reminders-view' element={<RemindersView />} />
-      <Route path='reminder-detail' element={<ReminderDetail />} />
-      <Route path='activity' element={<Activity />} />
-      <Route path='admin-profile' element={<AdminProfile />} />
-    </Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/'>
+          <Route element={<PublicRoutes isAuthenticate={isAuthenticate} />}>
+            <Route path='welcome' element={<Welcome />} />
+            <Route path='sign-in' element={<SignIn />} />
+            <Route path='sign-up' element={<SignUp />} />
+          </Route>
+          <Route element={<PrivatedRoutes isAuthenticate={isAuthenticate} />}>
+            <Route path='reading-detail' element={<ReadingDetail />} />
+            <Route path='video-detail' element={<VideoDetail />} />
+            <Route path='explore-activity' element={<ExploreActivity />} />
+            <Route path='user-profile' element={<UserProfile />} />
+            <Route path='reminders-view' element={<RemindersView />} />
+            <Route path='reminders-detail' element={<ReminderDetail />} />
+            <Route path='activity' element={<Activity />} />
+            <Route path='admin-profile' element={<AdminProfile />} />
+            <Route path='home' element={<Home />} />
+            <Route index element={<Home />} />
+          </Route>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
-export default AppRoutes
+
+export default AppRouter
