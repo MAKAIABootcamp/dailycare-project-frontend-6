@@ -99,6 +99,7 @@ const SignIn = () => {
             </button>
             <button
               className='form__buttons-container--phone'
+              onClick={() => navigate('/sign-in-phone')}
             >
               <FiPhone />
             </button>
