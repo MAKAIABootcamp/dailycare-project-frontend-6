@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Button, Drawer } from "antd";
-import { IoNotificationsOutline } from "react-icons/io5";
+import { FaRegClock } from "react-icons/fa6";
+import { LuShieldCheck } from "react-icons/lu";
+import NotificationsModal from "../NotificationsModal";
 import "./styles.sass";
 
 const DrawerAntD = () => {
@@ -17,39 +19,33 @@ const DrawerAntD = () => {
         Open
       </Button>
       <Drawer
-        title="Basic Drawer"
         placement="right"
         onClose={onClose}
         open={open}
       >
         <div className="buttons-container">
           <div className="buttons-container__main-btns">
+            <NotificationsModal />
             <button className="buttons-container__main-btns--btn-styles">
                 <span className="span-btn">
                     <label htmlFor="notification-style" className="icon">
-                        <IoNotificationsOutline />
-                    </label>
-                    Notificaciones
-                </span>
-            </button>
-            <button className="buttons-container__main-btns--btn-styles">
-                <span className="span-btn">
-                    <label htmlFor="notification-style" className="icon">
-                        <IoNotificationsOutline />
+                        <FaRegClock />
                     </label>
                     Recordatorios
                 </span>
             </button>
             <button className="buttons-container__main-btns--btn-styles">
                 <span className="span-btn">
-                    <label htmlFor="notification-style" className="icon">
-                        <IoNotificationsOutline />
+                    <label htmlFor="notification-style" className="icon-privacy">
+                        <LuShieldCheck />
                     </label>
                     Política de privacidad
                 </span>
             </button>
           </div>
-          <button className="buttons-container__logout"></button>
+          <button className="buttons-container__logout">
+            Cerrar sesión
+          </button>
         </div>
       </Drawer>
     </>
