@@ -1,11 +1,14 @@
 import React, { useState } from "react";
-import { Button, Drawer } from "antd";
+import { useNavigate } from "react-router";
+import { Drawer } from "antd";
 import { FaRegClock } from "react-icons/fa6";
 import { LuShieldCheck } from "react-icons/lu";
 import NotificationsModal from "../NotificationsModal";
 import "./styles.sass";
 
 const DrawerAntD = () => {
+
+  const navigate = useNavigate()
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
@@ -15,9 +18,9 @@ const DrawerAntD = () => {
   };
   return (
     <>
-      <Button type="primary" onClick={showDrawer}>
-        Open
-      </Button>
+      <div className="menuContainer" onClick={showDrawer}>
+        <img src="src/assets/icons/menu.svg" alt="Hamburger Menu" />
+      </div>
       <Drawer
         placement="right"
         onClose={onClose}
@@ -26,7 +29,7 @@ const DrawerAntD = () => {
         <div className="buttons-container">
           <div className="buttons-container__main-btns">
             <NotificationsModal />
-            <button className="buttons-container__main-btns--btn-styles">
+            <button className="buttons-container__main-btns--btn-styles" onClick={() => navigate('/reminders-view')}>
                 <span className="span-btn">
                     <label htmlFor="notification-style" className="icon">
                         <FaRegClock />

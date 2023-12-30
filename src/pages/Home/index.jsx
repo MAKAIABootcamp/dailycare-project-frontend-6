@@ -2,12 +2,11 @@ import "./styles.scss";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import Divider from "../../components/Divider";
+import DrawerAntD from "../../components/Drawer";
 const Home = () => {
   return (
     <main className="homeMain">
-      <div className="menuContainer">
-        <img src="src/assets/icons/menu.svg" alt="Hamburger Menu" />
-      </div>
+      <DrawerAntD/>
       <div className="padding">
         <h1 className="title">
           Bienvenido <span className="title-user">Usuario</span>
