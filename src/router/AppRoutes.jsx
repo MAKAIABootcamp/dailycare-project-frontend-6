@@ -13,6 +13,8 @@ import Activity from '../pages/Activity'
 import AdminProfile from '../pages/AdminProfile'
 import PublicRoutes from './PublicRoutes'
 import PrivatedRoutes from './PrivatedRoutes'
+import CodeForm from '../pages/CodeForm'
+import SignInWithPhone from '../pages/SignInWithPhone'
 
 const AppRoutes = () => {
   const { isAuthenticated, user } = useSelector( store => store.user )
@@ -24,6 +26,8 @@ const AppRoutes = () => {
           <Route element={<PublicRoutes isAuthenticate={isAuthenticate} />}>
             <Route path='welcome' element={<Welcome />} />
             <Route path='sign-in' element={<SignIn />} />
+            <Route path='sign-in-phone' element={<SignInWithPhone />} />
+            <Route path='code-form' element={<CodeForm />} />
             <Route path='sign-up' element={<SignUp />} />
           </Route>
           <Route element={<PrivatedRoutes isAuthenticate={isAuthenticate} />}>

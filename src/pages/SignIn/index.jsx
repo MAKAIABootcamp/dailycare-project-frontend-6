@@ -9,10 +9,11 @@ import wallpaper from '../../assets/images/wallpaper-1.png'
 import './styles.sass'
 
 const SignIn = () => {
+
   const dispatch =  useDispatch()
   const navigate = useNavigate()
-  
   const { register, formState: { errors }, handleSubmit } = useForm()
+
 
   const handleLoginWithGoogle = () => {
     dispatch(loginWithGoogle())
@@ -99,6 +100,7 @@ const SignIn = () => {
             </button>
             <button
               className='form__buttons-container--phone'
+              onClick={() => navigate('/sign-in-phone')}
             >
               <FiPhone />
             </button>
