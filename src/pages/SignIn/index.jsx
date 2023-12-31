@@ -1,5 +1,7 @@
-import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
+import { loginWithEmailAndPassword, loginWithGoogle } from '../../store/users/userThunks'
 import { MdOutlineMailOutline, MdOutlineLock  } from 'react-icons/md'
 import { FiPhone } from 'react-icons/fi'
 import { FcGoogle } from 'react-icons/fc'
@@ -8,11 +10,21 @@ import './styles.sass'
 
 const SignIn = () => {
 
-const { register, formState: { errors }, handleSubmit } = useForm()
+  const dispatch =  useDispatch()
+  const navigate = useNavigate()
+  const { register, formState: { errors }, handleSubmit } = useForm()
 
-  const onSubmit = ( userData ) => {
+
+  const handleLoginWithGoogle = () => {
+    dispatch(loginWithGoogle())
+    navigate('/home') /* Provicional mientras estan implementadas las rutas protegidas */
+  }
+
+
+  const handleLoginWithEmailAndPassword = ( userData ) => {
     console.log(userData)
-    
+    dispatch(loginWithEmailAndPassword(userData))
+    navigate('/home') /* Provicional mientras estan implementadas las rutas protegidas */
   }
 
   return (
@@ -24,7 +36,7 @@ const { register, formState: { errors }, handleSubmit } = useForm()
         <h2 className='sign-in__form-wrapper--title'>Iniciar sesión</h2>
         <form 
           className='sign-in__form-wrapper--form form'
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(handleLoginWithEmailAndPassword)}
         >
           <div className='form__input-label'>
             <label 
@@ -79,6 +91,7 @@ const { register, formState: { errors }, handleSubmit } = useForm()
             </button>
             <button
               className='form__buttons-container--google flex'
+              onClick={() => handleLoginWithGoogle()}
             >
               <span>Google</span>
               <span>
@@ -87,6 +100,7 @@ const { register, formState: { errors }, handleSubmit } = useForm()
             </button>
             <button
               className='form__buttons-container--phone'
+              onClick={() => navigate('/sign-in-phone')}
             >
               <FiPhone />
             </button>

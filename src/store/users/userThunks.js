@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth'
+import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import { auth } from '../../firebase/firebaseConfig'
 import { setError, setIsAuthenticated, setUser } from './userSlice'
 import { createUserInCollection, getUserFromCollection, loginFromFirestore } from '../../services/userServices'
@@ -12,12 +12,12 @@ export const createAnAccountAsync = ( newUser ) => async ( dispatch ) => {
       newUser.password
     )
     await updateProfile(auth.currentUser, {
-      displayName: newUser.name
+      displayName: newUser.name,
       photoURL: newUser.photoURL
     })
     const userLogged = await createUserInCollection(user.uid, {
       name: newUser.name,
-      photoURL: newUser.photoURL,
+      // photoURL: newUser.photoURL,
       accessToken: user.accessToken,
       email: newUser.email
     })
@@ -56,6 +56,7 @@ export const loginWithGoogle = () => {
     }
   }
 }
+
 
 export const loginWithEmailAndPassword = ({ email, password }) => async ( dispatch ) => {
   try {

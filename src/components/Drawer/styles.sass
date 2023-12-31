@@ -2,33 +2,79 @@
 @use '../../styles/_mixins' as *
 
 $background-color-btn: rgb(206, 217, 167, 20%)
+$background-color-btn-logout: #F28826
 
 .ant-drawer-content-wrapper
     width: 60% !important
     
 .buttons-container
-    display: flex
-    justify-content: center
+    @include flexCenter(column, center, center, 60px)    
     color: $primary-text-color
     font-family: $font-source
     font-weight: $medium-weight
-    font-size: 1.2rem
     &__main-btns
-        display: flex
-        flex-direction: column
-        justify-content: center
-        gap: 20px
+        @include flexCenter(column, center, center, 20px)    
         &--btn-styles
-            display: flex
-            justify-content: center
-            align-items: center
-            background-color: $background-color-btn
-            height: 45px
-            width: 200px
+            @include flexCenter(row, center, center, 0)
+            @include buttonStyle(200px, 45px, 11px, (1px 1px 5px #cecece,-1px 5px 5px #ffffff), $background-color-btn, 1.2rem, $medium-weight, $font-source, normal)
             .span-btn
                 display: flex
                 align-items: center
+                gap: 7px
                 width: 80%
                 .icon
                     @include iconStyle(1.5rem, $primary-text-color)
-    // &__logout
+                .icon-privacy
+                    @include iconStyle(1.8rem, $primary-text-color)
+    &__logout
+        color: white
+        @include buttonStyle(200px, 45px, 11px, (1px 1px 5px #cecece,-1px 5px 5px #ffffff), $background-color-btn-logout, 1.2rem, $medium-weight, $font-source, normal)
+
+.ant-modal-content
+    border: 1px solid black !important
+    border-radius: 25px !important
+    padding-inline: 0 !important
+    .span-modal-title
+        @include flexCenter(row, left, center, 8px)
+        margin-top: -5px
+        margin-left: 20px
+        .icon
+            @include iconStyle(2.5rem, #3F615A)
+        &--text
+            color: #3F615A
+            font-size: 20px
+            text-shadow: 0px 3px 5px rgba(0, 0, 0, 0.363)
+    .ant-modal-body
+        margin-bottom: 70px
+        .hr-title
+            margin-top: 15px
+            margin-bottom: 20px
+            background-color: black
+            height: 2px
+        .notifications-config
+            @include flexCenter(column, center, center, 5px)
+            &__span
+                display: flex
+                justify-content: space-between
+                font-weight: $bold-weight
+                font-size: 1.3rem
+                color: #3F615A
+                padding-top: 8px
+                padding-bottom: 8px
+                width: 80%
+            &--hr
+                height: 2px
+                width: 80%
+                background-color: #e2e2e2
+            .ant-switch
+                min-width: 30px
+                height: 19px
+                background-color: #FFCC4D !important
+                border: 1px solid #FFAC33 !important
+            .ant-switch-checked
+                background-color: #CDE280 !important
+                border: 1px solid rgb(78, 121, 73, 30%) !important
+            .ant-switch-handle
+                width: 13px
+                height: 13px
+                margin-left: 3px

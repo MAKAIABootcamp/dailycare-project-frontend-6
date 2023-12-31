@@ -1,7 +1,13 @@
 @use "../../styles/_variables" as *;
 
-main {
+.homeMain {
   width: 100%;
+  background-color: $light-color;
+}
+.menuContainer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px 2rem 0;
 }
 
 .home {
@@ -24,11 +30,18 @@ main {
   }
 }
 .padding {
-  padding: 0 2rem;
+  padding: 20px 2rem;
 }
 .altcard {
+  display: flex;
+  justify-content: flex-start;
   background-color: #f5f7ed;
   padding: 10px;
+  border-radius: 10px;
+}
+.simpleAltcard {
+  display: flex;
+  justify-content: flex-start;
   border-radius: 10px;
 }
 .text-time {
@@ -48,15 +61,34 @@ main {
   font-weight: 500;
 }
 
+.customSplide {
+  margin: 30px 0;
+}
+
 .img {
   object-fit: cover;
   width: 100%;
   border-radius: 20px;
 }
+
+.todayImage {
+  width: 100px;
+  aspect-ratio: 1/1;
+}
+
 .img-container {
   position: relative;
   cursor: pointer;
   border-radius: 20px;
+}
+.overText {
+  position: absolute;
+  z-index: 1;
+  bottom: 10px;
+  left: 20px;
+  font-size: 16px;
+  font-weight: 700;
+  color: $light-color;
 }
 .img-container::before {
   border-radius: 20px;
@@ -78,8 +110,14 @@ main {
     font-weight: 400;
   }
 }
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
 .subtitle {
   color: #959595;
   font-weight: 400;
   font-size: 20px;
+  margin: 20px 0;
 }

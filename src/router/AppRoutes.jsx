@@ -11,6 +11,8 @@ import RemindersView from '../pages/RemindersView'
 import ReminderDetail from '../pages/ReminderDetail'
 import Activity from '../pages/Activity'
 import AdminProfile from '../pages/AdminProfile'
+import CodeForm from '../pages/CodeForm'
+import SignInWithPhone from '../pages/SignInWithPhone'
 
 
 const AppRoutes = () => {
@@ -18,6 +20,8 @@ const AppRoutes = () => {
     <Routes>
       <Route path='home' element={<Home />} />
       <Route path='sign-in' element={<SignIn />} />
+      <Route path='sign-in-phone' element={<SignInWithPhone />} />
+      <Route path='code-form' element={<CodeForm />} />
       <Route path='sign-up' element={<SignUp />} />
       <Route path='reading-detail' element={<ReadingDetail />} />
       <Route path='video-detail' element={<VideoDetail />} />
