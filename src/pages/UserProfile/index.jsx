@@ -10,6 +10,8 @@ import Footer from '../../components/Footer'
 
 
 const UserProfile = () => {
+  
+
   return (
     <main className='sign-in user-profile'>
       <section className='sign-in__wallpaper-container'>

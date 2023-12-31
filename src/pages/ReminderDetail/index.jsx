@@ -16,7 +16,7 @@ const { TextArea } = Input;
 const ReminderDetail = () => {
   return (
     <main className="reminder-detail">
-      <button className="reminder-detail__back-button m-3">
+      <button className="reminder-detail__back-button m-3" onClick={() => goTo()}>
         <FaChevronLeft />
       </button>
       <div className="reminder-title">

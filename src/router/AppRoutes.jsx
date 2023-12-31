@@ -32,6 +32,7 @@ const AppRoutes = () => {
       <Route path='reminder-detail' element={<ReminderDetail />} />
       <Route path='activity' element={<Activity />} />
       <Route path='admin-profile' element={<AdminProfile />} />
+      <Route path='/' element={<Home />} />
     </Routes>
   )
 }

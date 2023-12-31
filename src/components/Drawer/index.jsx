@@ -4,11 +4,14 @@ import { Drawer } from "antd";
 import { FaRegClock } from "react-icons/fa6";
 import { LuShieldCheck } from "react-icons/lu";
 import NotificationsModal from "../NotificationsModal";
+import { useNavigate } from "react-router-dom";
 import "./styles.sass";
 
 const DrawerAntD = () => {
 
   const navigate = useNavigate()
+  const goTo = () => navigate('/reminders-view');
+  const goTo1 = () => navigate('/welcome')
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
     setOpen(true);
@@ -29,7 +32,7 @@ const DrawerAntD = () => {
         <div className="buttons-container">
           <div className="buttons-container__main-btns">
             <NotificationsModal />
-            <button className="buttons-container__main-btns--btn-styles" onClick={() => navigate('/reminders-view')}>
+            <button className="buttons-container__main-btns--btn-styles" onClick={() => goTo()}>
                 <span className="span-btn">
                     <label htmlFor="notification-style" className="icon">
                         <FaRegClock />
@@ -46,7 +49,7 @@ const DrawerAntD = () => {
                 </span>
             </button>
           </div>
-          <button className="buttons-container__logout">
+          <button className="buttons-container__logout" onClick={() => goTo1()}></button>
             Cerrar sesión
           </button>
         </div>
