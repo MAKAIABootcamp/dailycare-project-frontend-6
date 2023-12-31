@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router";
 import { Input } from "antd";
 import { FaChevronLeft } from "react-icons/fa";
 import { TbReload } from "react-icons/tb";
@@ -14,6 +15,11 @@ import "./styles.sass";
 const { TextArea } = Input;
 
 const ReminderDetail = () => {
+
+  const navigate = useNavigate()
+
+  const goTo = () => navigate('/reminders-view')
+
   return (
     <main className="reminder-detail">
       <button className="reminder-detail__back-button m-3" onClick={() => goTo()}>

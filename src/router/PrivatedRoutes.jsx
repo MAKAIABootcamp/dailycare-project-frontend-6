@@ -6,7 +6,7 @@ const PrivatedRoutes = ({
   redirectPath = "/sign-in",
   children,
 }) => {
-  if (!IsAuthenticated) return <Navigate to={redirectPath} />;
+  if (!isAuthenticated) return <Navigate to={redirectPath} />;
   return <div>{children ? children : <Outlet />}</div>;
 };
 

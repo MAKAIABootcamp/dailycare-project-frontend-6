@@ -4,7 +4,6 @@ import { Drawer } from "antd";
 import { FaRegClock } from "react-icons/fa6";
 import { LuShieldCheck } from "react-icons/lu";
 import NotificationsModal from "../NotificationsModal";
-import { useNavigate } from "react-router-dom";
 import "./styles.sass";
 
 const DrawerAntD = () => {
@@ -49,12 +48,12 @@ const DrawerAntD = () => {
                 </span>
             </button>
           </div>
-          <button className="buttons-container__logout" onClick={() => goTo1()}></button>
+          <button className="buttons-container__logout" onClick={() => goTo1()}>
             Cerrar sesión
           </button>
         </div>
       </Drawer>
     </>
-  );
-};
+  )
+}
 export default DrawerAntD;

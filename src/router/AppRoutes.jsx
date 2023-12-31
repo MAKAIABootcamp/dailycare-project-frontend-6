@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 import Home from '../pages/Home'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
@@ -17,20 +18,19 @@ import CodeForm from '../pages/CodeForm'
 import SignInWithPhone from '../pages/SignInWithPhone'
 
 const AppRoutes = () => {
-  const { isAuthenticated, user } = useSelector( store => store.user )
+  const { isAuthenticated } = useSelector( store => store.user )
   
   return (
-    <BrowserRouter>
       <Routes>
         <Route path='/'>
-          <Route element={<PublicRoutes isAuthenticate={isAuthenticate} />}>
+          <Route element={<PublicRoutes isAuthenticated={isAuthenticated} />}>
             <Route path='welcome' element={<Welcome />} />
             <Route path='sign-in' element={<SignIn />} />
             <Route path='sign-in-phone' element={<SignInWithPhone />} />
             <Route path='code-form' element={<CodeForm />} />
             <Route path='sign-up' element={<SignUp />} />
           </Route>
-          <Route element={<PrivatedRoutes isAuthenticate={isAuthenticate} />}>
+          <Route element={<PrivatedRoutes isAuthenticated={isAuthenticated} />}>
             <Route path='reading-detail' element={<ReadingDetail />} />
             <Route path='video-detail' element={<VideoDetail />} />
             <Route path='explore-activity' element={<ExploreActivity />} />
@@ -44,9 +44,8 @@ const AppRoutes = () => {
           </Route>
         </Route>
       </Routes>
-    </BrowserRouter>
   )
 }
 
 
-export default AppRouter
+export default AppRoutes
