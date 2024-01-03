@@ -58,6 +58,8 @@
     &__nivel1
       display: flex
       gap: 20px
+     
+
     
             
       &__X
@@ -65,15 +67,29 @@
         gap: 20px
         flex-direction: column
         align-items: center
+        border-radius: 9px
+        
+        img
+           transition: transform 0.3s ease
+        &:hover img
+          transform: scale(1.3)
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+          border-radius: 9px
+          border: 1px solid #F2F2F2
+        &--efectoiconos
+          
+
+       
         
         .line1
           width: 70px
           height: 70px
           margin-bottom: 0px
+          cursor: pointer
 
         .line2
           display: flex
-          margin-top: -15px
+          margin-top: 0px
           
           
         
@@ -85,6 +101,7 @@
           font-family: $font-source
           font-weight: $regular-weight
           line-height: 139.176% /* 16.701px */
+          cursor: pointer
 
         
       
@@ -111,9 +128,11 @@
         height: 125px
         border-radius: 8px
         margin-top: 8px
+        cursor: pointer
         &--line4
           widht: 153px
           height: 124px
+          cursor: pointer
         &--line5
           margin-top: -15px
           font-size: 12px
@@ -122,6 +141,8 @@
           font-family: $font-source
           font-weight: $light-weight
           line-height: 139.176% /* 16.701px */
+          cursor: pointer
+
 
 
 
@@ -144,7 +165,8 @@
           width: 100%
           height: auto
           border-radius: 8px
-          z-index: 1
+          position: relative
+          
           &:before
             content: ""
             position: absolute
@@ -153,8 +175,10 @@
             width: 100%
             height: 100%
             background: linear-gradient(180deg, rgba(255, 251, 251, 0.27) 0%, rgba(149, 173, 144, 0.42) 59.9%, rgba(78, 121, 73, 0.70) 100%, rgba(205, 226, 128, 0.22) 100%)
-            z-index: 2
+            opacity: 1
             
+        &--line7
+          cursor: pointer    
       
         &--line8
           color: $light-color

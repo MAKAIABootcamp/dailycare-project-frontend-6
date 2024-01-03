@@ -17,19 +17,25 @@ const ExploreActivity = () => {
         <section className="container3__activity__A">
           <div className="container3__activity__A__nivel1">
             <div className="container3__activity__A__nivel1__X">
-                <img className="line1"src={enfoqueImage} alt="" />
+                <div className="container3__activity__A__nivel1__X--efectoiconos">
+                  <img className="line1"src={enfoqueImage} alt="" />
+                </div>
               <div className="line2">
                 <p className="line3">Enfoque</p>
               </div>
             </div>
             <div className="container3__activity__A__nivel1__X">
+              <div className="container3__activity__A__nivel1__X--efectoiconos">
                 <img className="line1" src={vueltaImage} alt="" />
+              </div>
               <div className="line2">
                 <p className="line3">Vuelta a la calma</p>
               </div>
             </div>
             <div className="container3__activity__A__nivel1__X">
-                <img className="line1" src={yogaImage} alt="" />
+                <div className="container3__activity__A__nivel1__X--efectoiconos">
+                  <img className="line1" src={yogaImage} alt="" />
+                </div>
               <div className="line2">
                 <p className="line3">Relajación</p>
               </div>
@@ -55,8 +61,8 @@ const ExploreActivity = () => {
         </section>
         <section className="container3__activity__C">
           <div className="container3__activity__C__nivel1">
-            <div>
-              <img className="container3__activity__C__nivel1__Z--line6" src={playlistImage} alt="" />
+            <div className="container3__activity__C__nivel1__Z--line6">
+              <img src={playlistImage} alt="" />
             </div>
             <div className="container3__activity__C__nivel1__Z">
                 <img className="container3__activity__C__nivel1__Z--line7" src={playImage} alt="" />
