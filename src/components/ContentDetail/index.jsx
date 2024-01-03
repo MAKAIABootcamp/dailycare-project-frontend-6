@@ -1,14 +1,19 @@
+import { useNavigate } from "react-router";
 import image from '../../assets/images/med.png'
 import { FaChevronLeft } from 'react-icons/fa'
 import './styles.sass'
 
 const ContentDetail = ({ children }) => {
+  const navigate = useNavigate()
+
+    const goTo = () => navigate('/home');
+
   return (
     <section className='content-detail'>
       <section className='content-detail__hero-container'>
         <img className='content-detail__hero-container--image' src={image} alt='' />
       </section>
-      <button className='content-detail__back-button'>
+      <button className='content-detail__back-button'onClick={() => goTo()}>
         <FaChevronLeft />
       </button>
       <h1 className='content-detail__title'>Titulo de la actividad</h1>

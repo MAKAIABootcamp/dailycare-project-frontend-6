@@ -34,7 +34,7 @@ function SignInWithPhone() {
         console.log(response)
         Swal.fire({
           title: 'Excelente!',
-          text: `Te enviaremos un mensaje de texto para confirmar al numero celular ${phone}`,
+          text: `Te enviaremos un mensaje de texto para confirmar al número celular ${phone}`,
           icon: 'success'
         })
           .then(() => navigate('/code-form'))
@@ -59,7 +59,7 @@ function SignInWithPhone() {
         <input  
           className='border border-indigo-300 rounded-md my-3 h-10 text-indigo-700 px-5' 
           type='number' 
-          placeholder='ingrese su numero celular' 
+          placeholder='ingrese su número celular' 
           { ...register('phone') }
         />
         <button
