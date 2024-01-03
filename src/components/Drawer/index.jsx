@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router'
 import { Drawer } from 'antd'
+import { IoNotificationsOutline } from 'react-icons/io5'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
 import { FaRegClock } from 'react-icons/fa6'
 import { LuShieldCheck } from 'react-icons/lu'
 import NotificationsModal from '../NotificationsModal'
@@ -12,8 +13,11 @@ const DrawerAntD = () => {
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
+
   const goTo = () => navigate('/reminders-view')
+  
   const goTo1 = () => navigate('/welcome')
+
   const [open, setOpen] = useState(false)
   const showDrawer = () => {
     setOpen(true)
