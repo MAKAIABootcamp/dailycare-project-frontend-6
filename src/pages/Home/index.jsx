@@ -3,7 +3,15 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/react-splide/css";
 import Divider from "../../components/Divider";
 import DrawerAntD from "../../components/Drawer";
+import { useNavigate } from "react-router";
+
 const Home = () => {
+  const navigate = useNavigate()
+
+    const goTo2 = () => navigate('/reading-detail');
+    const goTo3 = () => navigate('/video-detail')
+    
+
   return (
     <main className="homeMain">
       <DrawerAntD/>
@@ -24,7 +32,7 @@ const Home = () => {
           aria-label="My Favorite Images"
         >
           <SplideSlide>
-            <div className="img-container">
+            <div className="img-container" onClick={() => goTo2()}>
               <p className="overText">Correr</p>
               <img
                 className="img"
@@ -34,7 +42,7 @@ const Home = () => {
             </div>
           </SplideSlide>
           <SplideSlide>
-            <div className="img-container">
+            <div className="img-container" onClick={() => goTo3()}>
               <p className="overText">Estirar</p>
               <img
                 className="img"
@@ -61,7 +69,7 @@ const Home = () => {
         >
           <SplideSlide>
             <div className="card">
-              <div className="img-container">
+              <div className="img-container" onClick={() => goTo3()}>
                 <img
                   className="img"
                   src="src/assets/images/run.jpg"
@@ -77,7 +85,7 @@ const Home = () => {
           </SplideSlide>
           <SplideSlide>
             <div className="card">
-              <div className="img-container">
+              <div className="img-container" onClick={() => goTo3()}>
                 <img
                   className="img"
                   src="src/assets/images/stretch.png"
@@ -105,7 +113,7 @@ const Home = () => {
           aria-label="My Favorite Images"
         >
           <SplideSlide>
-            <div className="card altcard">
+            <div className="card altcard" onClick={() => goTo2()}>
               <img
                 className="img todayImage"
                 src="src/assets/images/run.jpg"
@@ -119,7 +127,7 @@ const Home = () => {
             </div>
           </SplideSlide>
           <SplideSlide>
-            <div className="card altcard">
+            <div className="card altcard" onClick={() => goTo2()}>
               <img
                 className="img todayImage"
                 src="src/assets/images/stretch.png"
@@ -148,7 +156,7 @@ const Home = () => {
         >
           <SplideSlide>
             <div className="card">
-              <div className="img-container">
+              <div className="img-container" onClick={() => goTo2()}>
                 <img
                   className="img todayImage"
                   src="src/assets/images/run.jpg"
@@ -164,7 +172,7 @@ const Home = () => {
           </SplideSlide>
           <SplideSlide>
             <div className="card">
-              <div className="img-container">
+              <div className="img-container" onClick={() => goTo2()}>
                 <img
                   className="img todayImage"
                   src="src/assets/images/stretch.png"
@@ -192,7 +200,7 @@ const Home = () => {
         >
           <SplideSlide>
             <div className="card">
-              <div className="img-container">
+              <div className="img-container" onClick={() => goTo3()}>
                 <img
                   className="img todayImage"
                   src="src/assets/images/run.jpg"
@@ -208,7 +216,7 @@ const Home = () => {
           </SplideSlide>
           <SplideSlide>
             <div className="card">
-              <div className="img-container">
+              <div className="img-container" onClick={() => goTo3()}>
                 <img
                   className="img todayImage"
                   src="src/assets/images/stretch.png"
@@ -229,7 +237,7 @@ const Home = () => {
         <h3 className="subtitle">Herramientas Gestión del estrés</h3>
         <div className="cardContainer">
           <div className="card simpleAltcard">
-            <div className="img-container">
+            <div className="img-container" onClick={() => goTo3()}>
               <img
                 className="img todayImage"
                 src="src/assets/images/run.jpg"
@@ -243,7 +251,7 @@ const Home = () => {
             </div>
           </div>
           <div className="card simpleAltcard">
-            <div className="img-container">
+            <div className="img-container" onClick={() => goTo3()}>
               <img
                 className="img todayImage"
                 src="src/assets/images/run.jpg"
@@ -257,7 +265,7 @@ const Home = () => {
             </div>
           </div>
           <div className="card simpleAltcard">
-            <div className="img-container">
+            <div className="img-container" onClick={() => goTo3()}>
               <img
                 className="img todayImage"
                 src="src/assets/images/run.jpg"
@@ -271,7 +279,7 @@ const Home = () => {
             </div>
           </div>
           <div className="card simpleAltcard">
-            <div className="img-container">
+            <div className="img-container" onClick={() => goTo3()}>
               <img
                 className="img todayImage"
                 src="src/assets/images/run.jpg"
