@@ -1,11 +1,18 @@
-import React, { useState } from "react";
-import { Button, Drawer } from "antd";
+import { Drawer } from "antd";
 import { IoNotificationsOutline } from "react-icons/io5";
-import "./styles.sass";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import { FaRegClock } from "react-icons/fa6";
+import { LuShieldCheck } from "react-icons/lu";
+import NotificationsModal from "../NotificationsModal";
+import "./styles.sass";
+import { useDispatch } from "react-redux";
+import { logoutAsync } from "../../store/users/userThunks";
+
 
 const DrawerAntD = () => {
 
+  const dispatch = useDispatch()
   const navigate = useNavigate()
 
   const goTo = () => navigate('/reminders-view');
@@ -21,46 +28,43 @@ const DrawerAntD = () => {
   };
   return (
     <>
-      <Button type="primary" onClick={showDrawer}>
-        Open
-      </Button>
+      <div className='menuContainer' onClick={showDrawer}>
+        <img src='src/assets/icons/menu.svg' alt='Hamburger Menu' />
+      </div>
       <Drawer
-        title="Basic Drawer"
-        placement="right"
+        placement='right'
         onClose={onClose}
         open={open}
       >
-        <div className="buttons-container">
-          <div className="buttons-container__main-btns">
-            <button className="buttons-container__main-btns--btn-styles">
-                <span className="span-btn">
-                    <label onClick={() => goTo()} htmlFor="notification-style" className="icon">
-                        <IoNotificationsOutline />
-                    </label>
-                    Notificaciones
-                </span>
-            </button>
-            <button className="buttons-container__main-btns--btn-styles">
-                <span onClick={() => goTo()} className="span-btn">
-                    <label htmlFor="notification-style" className="icon">
-                        <IoNotificationsOutline />
+        <div className='buttons-container'>
+          <div className='buttons-container__main-btns'>
+            <NotificationsModal />
+            <button className='buttons-container__main-btns--btn-styles' onClick={() => goTo()}>
+                <span className='span-btn'>
+                    <label htmlFor='notification-style' className='icon'>
+                        <FaRegClock />
                     </label>
                     Recordatorios
                 </span>
             </button>
-            <button className="buttons-container__main-btns--btn-styles">
-                <span className="span-btn">
-                    <label htmlFor="notification-style" className="icon">
-                        <IoNotificationsOutline />
+            <button className='buttons-container__main-btns--btn-styles'>
+                <span className='span-btn'>
+                    <label htmlFor='notification-style' className='icon-privacy'>
+                        <LuShieldCheck />
                     </label>
                     Política de privacidad
                 </span>
             </button>
           </div>
-          <button className="buttons-container__logout" onClick={() => goTo1()}></button>
+          <button 
+            className='buttons-container__logout'
+            onClick={() => dispatch(logoutAsync())}
+          >
+            Cerrar sesión
+          </button>
         </div>
       </Drawer>
     </>
-  );
-};
+  )
+}
 export default DrawerAntD;

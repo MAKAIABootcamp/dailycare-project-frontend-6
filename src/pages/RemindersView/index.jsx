@@ -12,7 +12,8 @@ const RemindersView = () => {
 
   const navigate = useNavigate()
 
-  const goTo = () => navigate('/reminder-detail')
+  const goTo = () => navigate('/reminders-detail')
+  const goTo1 = () => navigate('/home')
 
   const categoryInfo = [
     {
@@ -33,7 +34,7 @@ const RemindersView = () => {
   ]
   return (
     <main className='reminders-view'>
-      <button className='content-detail__back-button m-3'>
+      <button className='content-detail__back-button m-3' onClick={() => goTo1()}>
         <FaChevronLeft />
       </button>
       <span className="reminders-view__title">

@@ -1,4 +1,5 @@
-import { useDispatch } from 'react-redux'
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { loginWithEmailAndPassword, loginWithGoogle } from '../../store/users/userThunks'
@@ -6,26 +7,41 @@ import { MdOutlineMailOutline, MdOutlineLock  } from 'react-icons/md'
 import { FiPhone } from 'react-icons/fi'
 import { FcGoogle } from 'react-icons/fc'
 import wallpaper from '../../assets/images/wallpaper-1.png'
+import Swal from 'sweetalert2'
 import './styles.sass'
 
 const SignIn = () => {
 
   const dispatch =  useDispatch()
   const navigate = useNavigate()
+  const { user, error } = useSelector(( store ) => store.user)
   const { register, formState: { errors }, handleSubmit } = useForm()
 
 
   const handleLoginWithGoogle = () => {
     dispatch(loginWithGoogle())
-    navigate('/home') /* Provicional mientras estan implementadas las rutas protegidas */
   }
-
 
   const handleLoginWithEmailAndPassword = ( userData ) => {
-    console.log(userData)
     dispatch(loginWithEmailAndPassword(userData))
-    navigate('/home') /* Provicional mientras estan implementadas las rutas protegidas */
   }
+
+  useEffect(() => {
+    if (error) {
+      Swal.fire({
+        title: 'Ooops!',
+        text: 'Ha ocurrido un error, por favor verifique sus credenciales',
+        icon: 'error'
+      })
+    } 
+    if (error === false) { /** esta pasando derecho sin entrar aca  */
+      Swal.fire({
+        title: `Bienvenido ${user?.name}`,
+        text: 'Has iniciado sesión exitosamente',
+        icon: 'success'
+      })
+    }
+  }, [error])
 
   return (
     <main className='sign-in'>
