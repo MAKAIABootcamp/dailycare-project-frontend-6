@@ -1,56 +1,190 @@
 @use '../../styles/_variables' as *
 @use '../../styles/_mixins' as *
 
+
 .main-explore
-  width: 100%
-  height: 100%
   background: $light-color
   display: flex
+  flex-direction: column
+  justify-content: center
+  
 
-.container
+.container3
   width: 100%
-  height: 424px
-  @include flexCenter(column, center, center, 0)
+  height: 100%
+  min-height: 100vh
+  display: flex
+  flex-direction: column
+  align-items: center 
 
   &__title
     width: 206px
     height: 66px
     display: flex
     flex-direction: column
-    color: #3F615A
+    align-items: center
+    color: $primary-text-color
+    font-weight: $extrabold-weight
     text-align: center
-    font-size: 24px
-    font-size: 2.4 rem
-    line-height: 139.176% /* 33.402px */
+    font-size: 2.4rem
+    line-height: 139.176%
     letter-spacing: 1.92px
-    margin-bottom: 100px
+    margin-bottom: 61px // Ajusta según sea necesario
+    margin-top: 40px
+
+  &__subtitle
+    color: $primary-text-color
+    width: 330px
+    height: 30px
+    font-family: $font-source
+    font-size: 16px
+    font-weight: $medium-weight
+    line-height: 139.176% /* 22.268px */
+    text-align: left
+    margin-top: 34px
+    margin-left: 0px
+    
+
 
   &__activity__A
+    width: 320px
+    height: 140px
     display: flex
+    justify-content: space-around
+    flex-direction: row
     gap: 10px
-    &--nivel1
+    margin-top: 10px
+
+    &__nivel1
       display: flex
       gap: 20px
+     
+
+    
+            
+      &__X
+        display: flex
+        gap: 20px
+        flex-direction: column
+        align-items: center
+        border-radius: 9px
+        
+        img
+           transition: transform 0.3s ease
+        &:hover img
+          transform: scale(1.3)
+          box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
+          border-radius: 9px
+          border: 1px solid #F2F2F2
+        &--efectoiconos
+          
+
+       
+        
+        .line1
+          width: 70px
+          height: 70px
+          margin-bottom: 0px
+          cursor: pointer
+
+        .line2
+          display: flex
+          margin-top: 0px
+          
+          
+        
+        .line3
+          margin-top: 0px
+          font-size: 12px
+          text-align: center
+          color: $primary-text-color
+          font-family: $font-source
+          font-weight: $regular-weight
+          line-height: 139.176% /* 16.701px */
+          cursor: pointer
+
+        
       
-.activity-1
-  width: 70px
-  height: 70px
-  border-radius: 8px
-      
-  p
-    margin-top: 8px
-    font-size: 14px
-  
+          
+
+
 
   &__activity__B
     display: flex
     gap: 10px
-    align-items: space
-    &--nivel2
+    align-items: flex-start
+
+    &__nivel2
       display: flex
       gap: 20px
+      
+      
+      &__Y
+        display: flex
+        gap: 20px
+        flex-direction: column
+        align-items: center
+        width: 153px
+        height: 125px
+        border-radius: 8px
+        margin-top: 8px
+        cursor: pointer
+        &--line4
+          widht: 153px
+          height: 124px
+          cursor: pointer
+        &--line5
+          margin-top: -15px
+          font-size: 12px
+          text-align: center
+          color: $primary-text-color
+          font-family: $font-source
+          font-weight: $light-weight
+          line-height: 139.176% /* 16.701px */
+          cursor: pointer
 
-.activity-2
-  width: 153px
-  height: 125px
-  border-radius: 8px
+
+
+
+
+
+  &__activity__C
+    position: relative
+    &__nivel1
+      margin-top: 83px
+      &__Z
+        position: absolute
+        top: 0
+        left: 0
+        display: flex
+        align-items: center
+        gap: 10px
+        margin-top: 130px
+        margin-left: 24px
+        &--line6
+          width: 100%
+          height: auto
+          border-radius: 8px
+          position: relative
+          
+          &:before
+            content: ""
+            position: absolute
+            top: 0
+            left: 0
+            width: 100%
+            height: 100%
+            background: linear-gradient(180deg, rgba(255, 251, 251, 0.27) 0%, rgba(149, 173, 144, 0.42) 59.9%, rgba(78, 121, 73, 0.70) 100%, rgba(205, 226, 128, 0.22) 100%)
+            opacity: 1
+            
+        &--line7
+          cursor: pointer    
+      
+        &--line8
+          color: $light-color
+          font-family: $font-source
+          font-size: 16px
+          font-weight: $bold-weight
+          line-height: 87.741% /* 14.039px */
+          letter-spacing: 1.44px
+          

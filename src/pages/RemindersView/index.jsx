@@ -6,8 +6,14 @@ import ballon from '../../assets/images/ballon.png'
 import balance from '../../assets/images/balance.png'
 import books from '../../assets/images/books.png'
 import './styles.sass'
+import { useNavigate } from 'react-router-dom';
 
 const RemindersView = () => {
+
+  const navigate = useNavigate()
+
+  const goTo = () => navigate('/reminders-detail')
+  const goTo1 = () => navigate('/home')
 
   const categoryInfo = [
     {
@@ -28,7 +34,7 @@ const RemindersView = () => {
   ]
   return (
     <main className='reminders-view'>
-      <button className='content-detail__back-button m-3'>
+      <button className='content-detail__back-button m-3' onClick={() => goTo1()}>
         <FaChevronLeft />
       </button>
       <span className="reminders-view__title">
@@ -45,7 +51,7 @@ const RemindersView = () => {
           })
         }
       </div>
-      <button className='icon-add-reminder-background'></button>
+      <button className='icon-add-reminder-background' onClick={() => goTo()}></button>
       <MdOutlineAddAlarm className='icon-add'/>
     </main>
   )

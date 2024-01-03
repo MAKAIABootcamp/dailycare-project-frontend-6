@@ -10,6 +10,8 @@ import Footer from '../../components/Footer'
 
 
 const UserProfile = () => {
+  
+
   return (
     <main className='sign-in user-profile'>
       <section className='sign-in__wallpaper-container'>
@@ -23,13 +25,13 @@ const UserProfile = () => {
         <span className='user-profile__contact-info--text'>Company name</span>
         <span className='user-profile__contact-info--span'>Resumen</span>
       </section>
-      <TotalScore />
+      {/* <TotalScore /> */}
       <Link className='close-edit'>
         <IoClose />
       </Link>
       <section className='sign-in__form-wrapper'>
-        {/* <EditProfileForm /> */}
-        <PersonalContent />
+        <EditProfileForm />
+        {/* <PersonalContent /> */}
       </section>
       <Footer />
     </main>

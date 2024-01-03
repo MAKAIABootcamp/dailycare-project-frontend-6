@@ -5,6 +5,7 @@ import { FiActivity } from 'react-icons/fi'
 import './styles.sass'
 
 const Footer = () => {
+
   return (
     <nav className='footer'>
       <Link to='/'>

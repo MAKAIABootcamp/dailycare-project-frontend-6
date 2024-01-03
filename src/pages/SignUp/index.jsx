@@ -1,9 +1,28 @@
+import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { useForm } from 'react-hook-form'
+import { createAnAccountAsync } from '../../store/users/userThunks'
 import { MdOutlineMailOutline, MdOutlineLock  } from 'react-icons/md'
 import { FaRegUser } from 'react-icons/fa6'
 import wallpaper from '../../assets/images/wallpaper-2.png'
-import { Link } from 'react-router-dom'
 
 const SignUp = () => {
+  
+  const dispatch = useDispatch()
+
+  const { register, formState: { errors }, handleSubmit } = useForm()
+
+  const handleRegister = ( registerData ) => {
+    const userData = {
+      name: registerData.name,
+      email: registerData.email,
+      password: registerData.password,
+      confirmPassword: registerData.confirmPassword
+    }
+    console.log(userData)
+    dispatch(createAnAccountAsync(userData))
+  }
+
   return (
     <main className='sign-in'>
       <section className='sign-in__wallpaper-container'>
@@ -11,7 +30,10 @@ const SignUp = () => {
       </section>
       <section className='sign-in__form-wrapper'>
         <h2 className='sign-in__form-wrapper--title'>Crear cuenta</h2>
-        <form className='sign-in__form-wrapper--form form'>
+        <form 
+          className='sign-in__form-wrapper--form form'
+          onSubmit={handleSubmit(handleRegister)}
+        >
           <div className='form__input-label'>
             <label 
               htmlFor='name-input'
@@ -24,12 +46,16 @@ const SignUp = () => {
                 <FaRegUser />
               </label>
               <input 
-                type='email' 
+                type='text' 
                 placeholder='Jane Doe' 
                 id='name-input' 
                 className='input'
+                autoComplete='off'
+                { ...register('name', { required: true, minLength: 3 }) }
+                aria-invalid={errors.name ? 'true' : 'false'}
               />
             </div>
+            {errors.name && <p className='text-rose-500' role='alert'>Campo requerido</p>}
           </div>
           <div className='form__input-label'>
             <label 
@@ -47,8 +73,11 @@ const SignUp = () => {
                 placeholder='example@email.com' 
                 id='email-input' 
                 className='input'
+                autoComplete='off'
+                { ...register('email', { required: true }) }
               />
             </div>
+            {errors.email && <p className='text-rose-500' role='alert'>Campo requerido</p>}
           </div>
           <div className='form__input-label'>
             <label 
@@ -66,8 +95,10 @@ const SignUp = () => {
                 placeholder='***********' 
                 id='password-input' 
                 className='input'
+                { ...register('password', { required: true, minLength: 8 }) }
               />
             </div>
+            {errors.password && <p className='text-rose-500' role='alert'>La contraseña debe tener al menos 8 caracteres</p>}
           </div>
           <div className='form__input-label'>
             <label 
@@ -85,12 +116,15 @@ const SignUp = () => {
                 placeholder='***********' 
                 id='password-confirm-input' 
                 className='input'
+                { ...register('confirmPassword', { required: true, minLength: 8 }) }
               />
             </div>
+            {errors.confirmPassword && <p className='text-rose-500' role='alert'>Campo requerido</p>}
           </div>
           <div className='form__buttons-container'>
             <button
               className='form__buttons-container--sign-in'
+              type='submit'
             >
               Crear cuenta
             </button>

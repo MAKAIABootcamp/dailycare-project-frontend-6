@@ -1,0 +1,8 @@
+@use "../../styles/_variables" as *;
+
+.divider {
+  margin: 1.5rem 0;
+  width: 100%;
+  height: 2px;
+  background-color: #dfdfdf;
+}

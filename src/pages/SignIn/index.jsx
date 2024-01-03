@@ -1,19 +1,59 @@
+import { useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link, useNavigate } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { loginWithEmailAndPassword, loginWithGoogle } from '../../store/users/userThunks'
 import { MdOutlineMailOutline, MdOutlineLock  } from 'react-icons/md'
 import { FiPhone } from 'react-icons/fi'
 import { FcGoogle } from 'react-icons/fc'
 import wallpaper from '../../assets/images/wallpaper-1.png'
+import Swal from 'sweetalert2'
 import './styles.sass'
-import { Link } from 'react-router-dom'
 
 const SignIn = () => {
+
+  const dispatch =  useDispatch()
+  const navigate = useNavigate()
+  const { user, error } = useSelector(( store ) => store.user)
+  const { register, formState: { errors }, handleSubmit } = useForm()
+
+
+  const handleLoginWithGoogle = () => {
+    dispatch(loginWithGoogle())
+  }
+
+  const handleLoginWithEmailAndPassword = ( userData ) => {
+    dispatch(loginWithEmailAndPassword(userData))
+  }
+
+  useEffect(() => {
+    if (error) {
+      Swal.fire({
+        title: 'Ooops!',
+        text: 'Ha ocurrido un error, por favor verifique sus credenciales',
+        icon: 'error'
+      })
+    } 
+    if (error === false) { /** esta pasando derecho sin entrar aca  */
+      Swal.fire({
+        title: `Bienvenido ${user?.name}`,
+        text: 'Has iniciado sesión exitosamente',
+        icon: 'success'
+      })
+    }
+  }, [error])
+
   return (
     <main className='sign-in'>
       <section className='sign-in__wallpaper-container'>
-        <img src={wallpaper} alt='' />
+        <img src={wallpaper} alt='background image' />
       </section>
       <section className='sign-in__form-wrapper'>
         <h2 className='sign-in__form-wrapper--title'>Iniciar sesión</h2>
-        <form className='sign-in__form-wrapper--form form'>
+        <form 
+          className='sign-in__form-wrapper--form form'
+          onSubmit={handleSubmit(handleLoginWithEmailAndPassword)}
+        >
           <div className='form__input-label'>
             <label 
               htmlFor='email-input'
@@ -30,8 +70,12 @@ const SignIn = () => {
                 placeholder='example@email.com' 
                 id='email-input' 
                 className='input'
+                autoComplete='off'
+                { ...register('email', { required: 'Correo electrónico requerido' }) }
+                aria-invalid={errors.email ? 'true' : 'false'}
               />
             </div>
+            {errors.email && <p className='text-rose-500' role='alert'>{errors.email.message}</p>}
           </div>
           <div className='form__input-label'>
             <label 
@@ -49,17 +93,21 @@ const SignIn = () => {
                 placeholder='***********' 
                 id='password-input' 
                 className='input'
-              />
+                { ...register('password', { required: true, minLength: 8 }) }
+                />
             </div>
+            {errors.password && <p className='text-rose-500' role='alert'>La contraseña debe tener al menos 8 caracteres</p> }
           </div>
           <div className='form__buttons-container'>
             <button
               className='form__buttons-container--sign-in'
+              type='submit'
             >
               Iniciar sesión
             </button>
             <button
               className='form__buttons-container--google flex'
+              onClick={() => handleLoginWithGoogle()}
             >
               <span>Google</span>
               <span>
@@ -68,6 +116,7 @@ const SignIn = () => {
             </button>
             <button
               className='form__buttons-container--phone'
+              onClick={() => navigate('/sign-in-phone')}
             >
               <FiPhone />
             </button>

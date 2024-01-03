@@ -1,12 +1,22 @@
+import { useForm } from 'react-hook-form'
 import { FaRegUser, FaRegHeart  } from 'react-icons/fa6'
 import { MdModeEdit, MdOutlineLock } from 'react-icons/md' 
 import { TbTargetArrow } from 'react-icons/tb'
 
 const EditProfileForm = () => {
+  const { register, formState: { errors }, handleSubmit } = useForm()
+
+  const onSubmit = ( userData ) => {
+    console.log(userData)
+  }
+
   return (
     <>
       <h2 className='sign-in__form-wrapper--title'>Tu información personal</h2>
-      <form className='sign-in__form-wrapper--form form'>
+      <form 
+        className='sign-in__form-wrapper--form form'
+        onSubmit={handleSubmit(onSubmit)}
+      >
         <div className='form__input-label'>
           <label 
             htmlFor='name-input'
@@ -23,8 +33,10 @@ const EditProfileForm = () => {
               placeholder='Jane Doe' 
               id='name-input' 
               className='input'
+              { ...register('name', { minLength: 3 }) }
             />
           </div>
+          {errors.name && <p className='text-rose-500' role='alert'>Mínimo 3 caracteres</p>}
         </div>
         <div className='form__input-label'>
           <label 
@@ -37,14 +49,19 @@ const EditProfileForm = () => {
             <label htmlFor='genre-input' className='icon'>
               <FaRegHeart />
             </label>
-            <select name='' id='genre-input' className='input'>
-              <option value=''>Femenino</option>
-              <option value=''>Masculino</option>
-              <option value=''>No binario</option>
-              <option value=''>Agénero</option>
-              <option value=''>Bigénero</option>
-              <option value=''>Fluido</option>
-              <option value=''>Tercer género</option>
+            <select 
+              name='gender' 
+              id='genre-input' 
+              className='input text-green-800'
+              { ...register('gender') }
+            >
+              <option value='female'>Femenino</option>
+              <option value='male'>Masculino</option>
+              <option value='nonBinary'>No binario</option>
+              <option value='agender'>Agénero</option>
+              <option value='bigender'>Bigénero</option>
+              <option value='fluid'>Fluido</option>
+              <option value='thirdGender'>Tercer género</option>
             </select>
           </div>
         </div>
@@ -64,6 +81,7 @@ const EditProfileForm = () => {
               placeholder='Mi frase favorita' 
               id='quote-input' 
               className='input'
+              { ...register('quote') }
             />
           </div>
         </div>
@@ -78,7 +96,7 @@ const EditProfileForm = () => {
             <label htmlFor='goals-input' className='icon'>
               <TbTargetArrow />
             </label>
-            <select name='' id='goals-input' className='input'>
+            <select name='activities' id='goals-input' className='input text-green-800'>
               <option value=''>Aliviar estrés</option>
               <option value=''>Relaciones interpersonales</option>
               <option value=''>Concentración y memoria</option>
@@ -104,12 +122,15 @@ const EditProfileForm = () => {
               placeholder='***********' 
               id='password-confirm-input' 
               className='input'
+              { ...register('password', { minLength: 8 }) }
             />
           </div>
+          {errors.name && <p className='text-rose-500' role='alert'>Mínimo 8 caracteres</p>}
         </div>
         <div className='form__buttons-container'>
           <button
             className='form__buttons-container--sign-in user-profile-button'
+            type='submit'
           >
             Actualizar perfil
           </button>
