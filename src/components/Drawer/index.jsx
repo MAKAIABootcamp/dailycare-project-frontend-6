@@ -1,13 +1,16 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router";
 import { Drawer } from "antd";
 import { FaRegClock } from "react-icons/fa6";
 import { LuShieldCheck } from "react-icons/lu";
 import NotificationsModal from "../NotificationsModal";
 import "./styles.sass";
+import { useDispatch } from "react-redux";
+import { logoutAsync } from "../../store/users/userThunks";
 
 const DrawerAntD = () => {
 
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const goTo = () => navigate('/reminders-view');
   const goTo1 = () => navigate('/welcome')
@@ -48,7 +51,10 @@ const DrawerAntD = () => {
                 </span>
             </button>
           </div>
-          <button className="buttons-container__logout" onClick={() => goTo1()}>
+          <button 
+            className="buttons-container__logout"
+            onClick={() => dispatch(logoutAsync())}
+          >
             Cerrar sesión
           </button>
         </div>
