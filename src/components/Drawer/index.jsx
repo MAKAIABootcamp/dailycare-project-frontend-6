@@ -1,13 +1,13 @@
-import { Drawer } from "antd";
-import { IoNotificationsOutline } from "react-icons/io5";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import { FaRegClock } from "react-icons/fa6";
-import { LuShieldCheck } from "react-icons/lu";
-import NotificationsModal from "../NotificationsModal";
-import "./styles.sass";
-import { useDispatch } from "react-redux";
-import { logoutAsync } from "../../store/users/userThunks";
+import { Drawer } from 'antd'
+import { IoNotificationsOutline } from 'react-icons/io5'
+import { useNavigate } from 'react-router-dom'
+import { useState } from 'react'
+import { FaRegClock } from 'react-icons/fa6'
+import { LuShieldCheck } from 'react-icons/lu'
+import NotificationsModal from '../NotificationsModal'
+import { useDispatch } from 'react-redux'
+import { logoutAsync } from '../../store/users/userThunks'
+import './styles.sass'
 
 
 const DrawerAntD = () => {
@@ -15,17 +15,17 @@ const DrawerAntD = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const goTo = () => navigate('/reminders-view');
+  const goTo = () => navigate('/reminders-view')
   
   const goTo1 = () => navigate('/welcome')
 
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
   const showDrawer = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
   const onClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
   return (
     <>
       <div className='menuContainer' onClick={showDrawer}>
@@ -67,4 +67,4 @@ const DrawerAntD = () => {
     </>
   )
 }
-export default DrawerAntD;
+export default DrawerAntD
