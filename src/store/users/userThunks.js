@@ -9,7 +9,7 @@ export const createAnAccountAsync = ( newUser ) => async ( dispatch ) => {
     const { user } = await createUserWithEmailAndPassword(
       auth,
       newUser.email,
-      newUser.password
+      newUser.password,
     )
     await updateProfile(auth.currentUser, {
       displayName: newUser.name,
@@ -17,9 +17,12 @@ export const createAnAccountAsync = ( newUser ) => async ( dispatch ) => {
     })
     const userLogged = await createUserInCollection(user.uid, {
       name: newUser.name,
-      // photoURL: newUser.photoURL,
+      photoURL: newUser.photoURL,
       accessToken: user.accessToken,
-      email: newUser.email
+      email: newUser.email,
+      gender: newUser.gender,
+      category: newUser.category,
+      company: newUser.company
     })
     console.log(user)
     dispatch(
