@@ -4,17 +4,17 @@ import "@splidejs/react-splide/css";
 import Divider from "../../components/Divider";
 import DrawerAntD from "../../components/Drawer";
 import { useNavigate } from "react-router";
+import Footer from "../../components/Footer";
 
 const Home = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-    const goTo2 = () => navigate('/reading-detail');
-    const goTo3 = () => navigate('/video-detail')
-    
+  const goTo2 = () => navigate("/reading-detail");
+  const goTo3 = () => navigate("/video-detail");
 
   return (
     <main className="homeMain">
-      <DrawerAntD/>
+      <DrawerAntD />
       <div className="padding">
         <h1 className="title">
           Bienvenido <span className="title-user">Usuario</span>
@@ -294,6 +294,7 @@ const Home = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </main>
   );
 };
