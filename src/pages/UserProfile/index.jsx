@@ -29,7 +29,7 @@ const UserProfile = () => {
         </Link>
       </div>
       <section className='user-profile__contact-info'>
-        <h2 className='user-profile__contact-info--title'>Username</h2>
+        <h2 className='user-profile__contact-info--title'>{user.name}</h2>
         <span className='user-profile__contact-info--text'>Company name</span>
         <span className='user-profile__contact-info--span'>Resumen</span>
       </section>

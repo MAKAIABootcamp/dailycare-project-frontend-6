@@ -5,8 +5,10 @@ import Divider from "../../components/Divider";
 import DrawerAntD from "../../components/Drawer";
 import { useNavigate } from "react-router";
 import Footer from "../../components/Footer";
+import { useSelector } from "react-redux";
 
 const Home = () => {
+  const { user } = useSelector((store) => store.user)
   const navigate = useNavigate();
 
   const goTo2 = () => navigate("/reading-detail");
@@ -17,7 +19,7 @@ const Home = () => {
       <DrawerAntD />
       <div className="padding">
         <h1 className="title">
-          Bienvenido <span className="title-user">Usuario</span>
+          Bienvenido <span className="title-user">{user.name}</span>
         </h1>
         <h3 className='subtitle'>Sesiones del día</h3>
         <Splide
