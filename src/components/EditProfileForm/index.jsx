@@ -5,9 +5,9 @@ import { MdModeEdit } from 'react-icons/md'
 import { TbTargetArrow } from 'react-icons/tb'
 import { saveImage } from '../../helpers/uploadFile'
 import profilePicture from '../../assets/images/profile-picture.jpg'
-import './styles.sass'
 import { useDispatch, useSelector } from 'react-redux'
 import { updateProfileAsync } from '../../store/users/userThunks'
+import './styles.sass'
 
 const EditProfileForm = () => {
   const { user } = useSelector((store) => store.user)
