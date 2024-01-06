@@ -1,24 +1,23 @@
-import { Splide, SplideSlide } from '@splidejs/react-splide'
-import '@splidejs/react-splide/css'
-import Divider from '../../components/Divider'
-import DrawerAntD from '../../components/Drawer'
-import { useNavigate } from 'react-router-dom'
-import './styles.scss'
-import Footer from '../../components/Footer'
+import "./styles.scss";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/react-splide/css";
+import Divider from "../../components/Divider";
+import DrawerAntD from "../../components/Drawer";
+import { useNavigate } from "react-router";
+import Footer from "../../components/Footer";
 
 const Home = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const goTo2 = () => navigate('/reading-detail')
-  const goTo3 = () => navigate('/video-detail')
-  
+  const goTo2 = () => navigate("/reading-detail");
+  const goTo3 = () => navigate("/video-detail");
 
   return (
-    <main className='homeMain'>
-      <DrawerAntD/>
-      <div className='padding'>
-        <h1 className='title'>
-          Bienvenido <span className='title-user'>Usuario</span>
+    <main className="homeMain">
+      <DrawerAntD />
+      <div className="padding">
+        <h1 className="title">
+          Bienvenido <span className="title-user">Usuario</span>
         </h1>
         <h3 className='subtitle'>Sesiones del día</h3>
         <Splide
