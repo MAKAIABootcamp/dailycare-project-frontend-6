@@ -4,8 +4,8 @@ import wallpaper from '../../assets/images/wallpaper-profile.png'
 import TotalScore from '../../components/TotalScore'
 import PersonalContent from '../../components/PersonalContent'
 import Footer from '../../components/Footer'
-import './styles.sass'
 import { useSelector } from 'react-redux'
+import './styles.sass'
 
 
 const UserProfile = () => {
