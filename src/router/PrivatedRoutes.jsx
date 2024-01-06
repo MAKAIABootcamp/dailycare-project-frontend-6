@@ -1,5 +1,5 @@
+import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import Footer from "../components/Footer";
 
 const PrivatedRoutes = ({
   isAuthenticated,
@@ -7,12 +7,7 @@ const PrivatedRoutes = ({
   children,
 }) => {
   if (!isAuthenticated) return <Navigate to={redirectPath} />;
-  return (
-    <div style={{ marginBottom: "70px" }}>
-      {children ? children : <Outlet />}
-      <Footer />
-    </div>
-  );
+  return <>{children ? children : <Outlet />}</>;
 };
 
 export default PrivatedRoutes;

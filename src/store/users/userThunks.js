@@ -1,7 +1,7 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from 'firebase/auth'
 import { auth } from '../../firebase/firebaseConfig'
-import { setError, setIsAuthenticated, setUser } from './userSlice'
-import { createUserInCollection, getUserFromCollection, loginFromFirestore } from '../../services/userServices'
+import { setError, setIsAuthenticated, setUser, updateUser } from './userSlice'
+import { createUserInCollection, getUserFromCollection, loginFromFirestore, updateUserFromCollection } from '../../services/userServices'
 
 
 export const createAnAccountAsync = ( newUser ) => async ( dispatch ) => {
@@ -61,7 +61,6 @@ export const loginWithGoogle = () => {
   }
 }
 
-
 export const loginWithEmailAndPassword = ({ email, password }) => async ( dispatch ) => {
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password)
@@ -111,6 +110,21 @@ export const loginWithPhoneCodeAsync = ( code ) => async ( dispatch ) => {
         dispatch(setError(false))
       })
   } catch (error) {
+    dispatch(
+      setError({ error: true, code: error.code, message: error.message })
+    )
+  }
+}
+
+export const updateProfileAsync = ({name, photoURL, id})=> async(dispatch)=>{
+  try {
+    await updateProfile(auth.currentUser, {
+      displayName: name, photoURL: photoURL, 
+    });
+    await updateUserFromCollection({name, photoURL, id});
+    dispatch(updateUser({name, photoURL}))
+  } catch (error) {
+    console.error(error);
     dispatch(
       setError({ error: true, code: error.code, message: error.message })
     )

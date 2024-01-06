@@ -1,21 +1,50 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { FaRegUser, FaRegHeart  } from 'react-icons/fa6'
 import { MdModeEdit } from 'react-icons/md' 
 import { TbTargetArrow } from 'react-icons/tb'
 import { saveImage } from '../../helpers/uploadFile'
+import profilePicture from '../../assets/images/profile-picture.jpg'
+import './styles.sass'
+import { useDispatch, useSelector } from 'react-redux'
+import { updateProfileAsync } from '../../store/users/userThunks'
 
 const EditProfileForm = () => {
-  const { register, formState: { errors }, handleSubmit } = useForm()
+  const { user } = useSelector((store) => store.user)
+  const dispatch = useDispatch()
+  const [ imagePreview, setImagePreview ] = useState(profilePicture)
+  // const [image, setImage] = useState(() => user.photoURL || '')
+  const { register, formState: { errors }, handleSubmit } = useForm({
+    defaultValues: {
+      name: user.name || '',
+      email: user.email || '',
+      photoURL: user.photoURL || ''
+    }
+  })
 
   const onSubmit = async ( userData ) => {
     console.log(userData)
     const file = userData.photoURL[0]
     const imageUrl = await saveImage(file)
-    const newUserData = {
-      ...userData,
-      photoURL: imageUrl
+    // const newUserData = {
+    //   ...userData,
+    //   photoURL: imageUrl
+    // }
+    // console.log(newUserData)
+    userData.photoURL = imageUrl || user.photoURL,
+    userData.id = user.id
+    dispatch(updateProfileAsync(userData))
+  }
+
+  const handleImageChange = event => {
+    const chosenImage = event.target.files[0]
+    const imageReaderAPI = new FileReader()
+    imageReaderAPI.onloadend = () => {
+      setImagePreview(imageReaderAPI.result)
     }
-    console.log(newUserData)
+    if (chosenImage) {
+      imageReaderAPI.readAsDataURL(chosenImage)
+    }
   }
 
   return (
@@ -25,10 +54,29 @@ const EditProfileForm = () => {
         className='sign-in__form-wrapper--form form'
         onSubmit={handleSubmit(onSubmit)}
       >
-        <input 
+        <div className='picture-wrapper'>
+          <div className='profile-picture'>
+            <figure className='profile-picture__image-container'>
+              <img className='current-picture' src={imagePreview} alt='profile photo' />
+            </figure>
+            <div className='profile-picture__input-container'>
+              <input 
+                type="file"
+                id='input-url' 
+                className='profile-picture__input-container--input-image'
+                { ...register('photoURL') }
+                name='photoURL'
+                accept='image/*'
+                onChange={handleImageChange}  
+              />
+              <label htmlFor="input-url">Editar foto</label>
+            </div>
+          </div>
+        </div>
+        {/* <input 
           type='file' 
           { ...register('photoURL') }
-        />
+        /> */}
         <div className='form__input-label'>
           <label 
             htmlFor='name-input'

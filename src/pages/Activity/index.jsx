@@ -5,7 +5,7 @@ import Footer from '../../components/Footer'
 import './styles.sass'
 
 const Activity = () => {
-  return (
+  return (<>
     <main className='activity'>
       <div className='activity__hi'>
         <h3 className='activity__hi--title'>Hola, <span>usuario</span></h3>
@@ -29,9 +29,9 @@ const Activity = () => {
         <ActivityCard />
         <ActivityCard />
       </section>
-      <Footer />
     </main>
-  )
+    <Footer />
+  </>)
 }
 
 export default Activity

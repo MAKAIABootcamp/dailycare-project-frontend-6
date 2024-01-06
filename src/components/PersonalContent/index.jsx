@@ -43,6 +43,11 @@ const PersonalContent = () => {
         <PersonalContentCard />
         <PersonalContentCard />
         <PersonalContentCard />
+        <PersonalContentCard />
+        <PersonalContentCard />
+        <PersonalContentCard />
+        <PersonalContentCard />
+        <PersonalContentCard />
       </div>
     </section>
   )

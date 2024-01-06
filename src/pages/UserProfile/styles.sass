@@ -2,10 +2,23 @@
 @use '../../styles/_mixins' as *
 
 .user-profile
+  width: 100%
   &__contact-info
     @include profileContent($light-color)
   &__picture-container
     @include profilePictureStyles
+  .edit-profile
+    font-size: 1.8rem
+    color: rgba($primary-text-color, 0.37)
+    position: absolute
+    top: 115px
+    left: 25px
+    z-index: 6
+    span
+      width: 56px
+      font-weight: $medium-weight
+      font-size: 1.4rem
+      line-height: 15px
   .close-edit
     position: absolute
     top: 200px
