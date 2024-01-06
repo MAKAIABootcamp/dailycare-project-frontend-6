@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { FaRegUser, FaRegHeart  } from 'react-icons/fa6'
-import { MdModeEdit, MdOutlineLock } from 'react-icons/md' 
+import { MdModeEdit } from 'react-icons/md' 
 import { TbTargetArrow } from 'react-icons/tb'
 import { saveImage } from '../../helpers/uploadFile'
 
