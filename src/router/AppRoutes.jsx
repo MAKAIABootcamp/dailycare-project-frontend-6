@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from '../firebase/firebaseConfig'
+import { setIsAuthenticated, setUser } from '../store/users/userSlice'
 import Home from '../pages/Home'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
@@ -17,9 +20,7 @@ import PublicRoutes from './PublicRoutes'
 import PrivatedRoutes from './PrivatedRoutes'
 import CodeForm from '../pages/CodeForm'
 import SignInWithPhone from '../pages/SignInWithPhone'
-import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from '../firebase/firebaseConfig'
-import { setIsAuthenticated, setUser } from '../store/users/userSlice'
+import UpdateUserProfile from '../pages/UpdateUserProfile'
 
 const AppRoutes = () => {
   const { isAuthenticated, user } = useSelector( store => store.user )
@@ -65,6 +66,7 @@ const AppRoutes = () => {
             <Route path='reminders-detail' element={<ReminderDetail />} />
             <Route path='activity' element={<Activity />} />
             <Route path='admin-profile' element={<AdminProfile />} />
+            <Route path='edit-profile' element={<UpdateUserProfile />} />
             <Route path='home' element={<Home />} />
             <Route index element={<Home />} />
           </Route>

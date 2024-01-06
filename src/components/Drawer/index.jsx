@@ -16,8 +16,6 @@ const DrawerAntD = () => {
   const navigate = useNavigate()
 
   const goTo = () => navigate('/reminders-view')
-  
-  const goTo1 = () => navigate('/welcome')
 
   const [open, setOpen] = useState(false)
   const showDrawer = () => {
