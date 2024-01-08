@@ -1,23 +1,30 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
+import NotificationsModal from "../NotificationsModal";
+import { logoutAsync } from "../../store/users/userThunks";
 import { Drawer } from "antd";
 import { FaRegClock } from "react-icons/fa6";
 import { LuShieldCheck } from "react-icons/lu";
-import NotificationsModal from "../NotificationsModal";
 import "./styles.sass";
 
 const DrawerAntD = () => {
-
+ 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
   const goTo = () => navigate('/reminders-view');
-  const goTo1 = () => navigate('/welcome')
   const [open, setOpen] = useState(false);
+  
   const showDrawer = () => {
     setOpen(true);
   };
   const onClose = () => {
     setOpen(false);
   };
+  const Logout = () => {
+    dispatch(logoutAsync())
+    navigate('/welcome')
+  }
   return (
     <>
       <div className="menuContainer" onClick={showDrawer}>
@@ -48,7 +55,7 @@ const DrawerAntD = () => {
                 </span>
             </button>
           </div>
-          <button className="buttons-container__logout" onClick={() => goTo1()}>
+          <button className="buttons-container__logout" onClick={Logout}>
             Cerrar sesión
           </button>
         </div>
