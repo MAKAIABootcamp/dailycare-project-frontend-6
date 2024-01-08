@@ -1,37 +1,41 @@
 import { Link } from 'react-router-dom'
-import { IoClose } from 'react-icons/io5'
+import { MdOutlineModeEditOutline } from 'react-icons/md'
 import wallpaper from '../../assets/images/wallpaper-profile.png'
-import profilePicture from '../../assets/images/profile-picture.jpg'
-import './styles.sass'
-import EditProfileForm from '../../components/EditProfileForm'
 import TotalScore from '../../components/TotalScore'
 import PersonalContent from '../../components/PersonalContent'
 import Footer from '../../components/Footer'
+import { useSelector } from 'react-redux'
+import './styles.sass'
 
 
 const UserProfile = () => {
-  
+  const { user } = useSelector((store) => store.user)
 
   return (
     <main className='sign-in user-profile'>
       <section className='sign-in__wallpaper-container'>
         <img src={wallpaper} alt='background wallpaper' />
       </section>
-      <section className='user-profile__picture-container'>
-        <img src={profilePicture} alt='profile picture' />
-      </section>
+      <div>
+        <section className='user-profile__picture-container'>
+          <img src={user.photoURL} alt='profile picture' />
+        </section>
+        <Link 
+          className='flex gap-3 items-center edit-profile'
+          to='/edit-profile'
+        >
+          <MdOutlineModeEditOutline />
+          <span>Editar perfil</span>
+        </Link>
+      </div>
       <section className='user-profile__contact-info'>
-        <h2 className='user-profile__contact-info--title'>Username</h2>
+        <h2 className='user-profile__contact-info--title'>{user.name}</h2>
         <span className='user-profile__contact-info--text'>Company name</span>
         <span className='user-profile__contact-info--span'>Resumen</span>
       </section>
-      {/* <TotalScore /> */}
-      <Link className='close-edit'>
-        <IoClose />
-      </Link>
+      <TotalScore />
       <section className='sign-in__form-wrapper'>
-        <EditProfileForm />
-        {/* <PersonalContent /> */}
+        <PersonalContent />
       </section>
       <Footer />
     </main>

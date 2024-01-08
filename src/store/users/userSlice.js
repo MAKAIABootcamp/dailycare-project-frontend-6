@@ -16,11 +16,16 @@ const userSlice = createSlice({
     },
     setIsAuthenticated: ( state, action ) => {
       state.isAuthenticated = action.payload
+    },
+    updateUser: (state, action) => {
+      state.user = {
+        ...state.user, ...action.payload
+      }
     }
   }
 })
 
 
-export const { setUser, setError, setIsAuthenticated } = userSlice.actions
+export const { setUser, setError, setIsAuthenticated, updateUser } = userSlice.actions
 
 export default userSlice.reducer

@@ -16,8 +16,8 @@ const DrawerAntD = () => {
   const [open, setOpen] = useState(false);
   
   const showDrawer = () => {
-    setOpen(true);
-  };
+    setOpen(true)
+  }
   const onClose = () => {
     setOpen(false);
   };
@@ -27,28 +27,28 @@ const DrawerAntD = () => {
   }
   return (
     <>
-      <div className="menuContainer" onClick={showDrawer}>
-        <img src="src/assets/icons/menu.svg" alt="Hamburger Menu" />
+      <div className='menuContainer' onClick={showDrawer}>
+        <img src='src/assets/icons/menu.svg' alt='Hamburger Menu' />
       </div>
       <Drawer
-        placement="right"
+        placement='right'
         onClose={onClose}
         open={open}
       >
-        <div className="buttons-container">
-          <div className="buttons-container__main-btns">
+        <div className='buttons-container'>
+          <div className='buttons-container__main-btns'>
             <NotificationsModal />
-            <button className="buttons-container__main-btns--btn-styles" onClick={() => goTo()}>
-                <span className="span-btn">
-                    <label htmlFor="notification-style" className="icon">
+            <button className='buttons-container__main-btns--btn-styles' onClick={() => goTo()}>
+                <span className='span-btn'>
+                    <label htmlFor='notification-style' className='icon'>
                         <FaRegClock />
                     </label>
                     Recordatorios
                 </span>
             </button>
-            <button className="buttons-container__main-btns--btn-styles">
-                <span className="span-btn">
-                    <label htmlFor="notification-style" className="icon-privacy">
+            <button className='buttons-container__main-btns--btn-styles'>
+                <span className='span-btn'>
+                    <label htmlFor='notification-style' className='icon-privacy'>
                         <LuShieldCheck />
                     </label>
                     Política de privacidad
@@ -63,4 +63,4 @@ const DrawerAntD = () => {
     </>
   )
 }
-export default DrawerAntD;
+export default DrawerAntD
