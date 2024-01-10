@@ -16,6 +16,7 @@ import PublicRoutes from './PublicRoutes'
 import PrivatedRoutes from './PrivatedRoutes'
 import CodeForm from '../pages/CodeForm'
 import SignInWithPhone from '../pages/SignInWithPhone'
+import RemindersEdit from '../pages/RemindersEdit'
 
 const AppRoutes = () => {
   const { isAuthenticated } = useSelector( store => store.user )
@@ -25,6 +26,7 @@ const AppRoutes = () => {
         <Route path='/'>
           <Route element={<PublicRoutes isAuthenticated={isAuthenticated} />}>
             <Route path='welcome' element={<Welcome />} />
+            <Route path='reminders-edit' element={<RemindersEdit />} />
             <Route path='sign-in' element={<SignIn />} />
             <Route path='sign-in-phone' element={<SignInWithPhone />} />
             <Route path='code-form' element={<CodeForm />} />
