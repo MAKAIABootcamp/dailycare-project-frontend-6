@@ -10,6 +10,7 @@ const Home = () => {
 
     const goTo2 = () => navigate('/reading-detail');
     const goTo3 = () => navigate('/video-detail')
+    const goTo4 = () => navigate('/explore-activity')
     
 
   return (
@@ -32,7 +33,7 @@ const Home = () => {
           aria-label="My Favorite Images"
         >
           <SplideSlide>
-            <div className="img-container" onClick={() => goTo2()}>
+            <div className="img-container" onClick={() => goTo4()}>
               <p className="overText">Correr</p>
               <img
                 className="img"
@@ -42,7 +43,7 @@ const Home = () => {
             </div>
           </SplideSlide>
           <SplideSlide>
-            <div className="img-container" onClick={() => goTo3()}>
+            <div className="img-container" onClick={() => goTo4()}>
               <p className="overText">Estirar</p>
               <img
                 className="img"
