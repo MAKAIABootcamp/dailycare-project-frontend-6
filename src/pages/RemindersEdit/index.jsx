@@ -8,17 +8,27 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { TbReload } from "react-icons/tb";
 import { TbClockPlus } from "react-icons/tb";
 import { BiCategoryAlt } from "react-icons/bi";
-import wallpaper from "../../assets/images/wallpaper-4.png";
+import { DownOutlined } from '@ant-design/icons';
+import { Dropdown, Space } from 'antd';
 import {
   CategoriesPicker,
   DatePickerAntD,
   DatePickerPeriod,
 } from "../../components/DatePicker";
+import wallpaper from "../../assets/images/wallpaper-4.png";
 import "./styles.sass";
 
 const { TextArea } = Input;
 
 const RemindersEdit = () => {
+
+  const items = [
+    {
+      label: <span><FaTrashAlt /> Eliminar</span>,
+      key: '0',
+    },
+   
+  ];
 
   const [open, setOpen] = useState(false);
   const showDrawer = () => {
@@ -30,16 +40,30 @@ const RemindersEdit = () => {
   
   const navigate = useNavigate()
 
-  const goTo = () => navigate('/reminders-view')
+  const goToRemindersView = () => navigate('/reminders-view')
 
   return (
     <main className="reminder-edit">
       <button className="reminder-edit__back-button m-3" onClick={() => goTo()}>
         <FaChevronLeft />
       </button>
-      <button className="reminder-edit__fi-more" onClick={showDrawer}>
-        <FiMoreVertical />
-      </button>
+      <Dropdown
+        menu={
+          {items,}
+        }
+        trigger={['click']}
+      >
+        {/* <a onClick={(e) => e.preventDefault()}>
+          <Space>
+            Click me
+            <DownOutlined />
+          </Space>
+        </a> */}
+        <button className="reminder-edit__fi-more" /* onClick={showDrawer} */>
+          <FiMoreVertical />
+        </button>
+      </Dropdown>
+  
       <div className="reminder-title">
         <Input placeholder="Nombre actividad" bordered={false} />
       </div>
@@ -111,14 +135,14 @@ const RemindersEdit = () => {
             <div className="reminder-edit__description-section__content--category">
               <CategoriesPicker />
             </div>
-            <Drawer
+            {/* <Drawer
         placement="right"
         onClose={onClose}
         open={open}
       >
         <div className="buttons-container-trash">
           <div className="buttons-container-trash__main-btns">
-            <button className="buttons-container-trash__main-btns--btn-styles" onClick={() => goTo()}>
+            <button className="buttons-container-trash__main-btns--btn-styles" onClick={() => goTo()} >
                 <span className="span-btn">
                     <label htmlFor="notification-style" className="icon">
                         <FaTrashAlt />
@@ -128,7 +152,7 @@ const RemindersEdit = () => {
             </button>
           </div>
         </div>
-      </Drawer>
+      </Drawer> */}
           </section>
         </section>
       </div>
