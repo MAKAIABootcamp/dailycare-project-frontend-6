@@ -2,13 +2,15 @@ import wavingHand from '../../assets/icons/waving-hand.svg'
 import star from '../../assets/icons/star.svg'
 import ActivityCard from '../../components/ActivityCard'
 import Footer from '../../components/Footer'
+import { useSelector } from 'react-redux'
 import './styles.sass'
 
 const Activity = () => {
-  return (
+  const { user } = useSelector((store) => store.user)
+  return (<>
     <main className='activity'>
       <div className='activity__hi'>
-        <h3 className='activity__hi--title'>Hola, <span>usuario</span></h3>
+        <h3 className='activity__hi--title'>Hola, <span>{user.name}</span></h3>
         <img src={wavingHand} alt='waving hand icon' />
       </div>
       <h2 className='activity__welcome'>¡Bienvenido de nuevo!</h2>
@@ -29,9 +31,9 @@ const Activity = () => {
         <ActivityCard />
         <ActivityCard />
       </section>
-      <Footer />
     </main>
-  )
+    <Footer />
+  </>)
 }
 
 export default Activity

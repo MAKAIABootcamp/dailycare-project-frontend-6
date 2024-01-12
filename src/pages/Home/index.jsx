@@ -115,7 +115,7 @@ const Home = () => {
           aria-label="My Favorite Images"
         >
           <SplideSlide>
-            <div className="card altcard" onClick={() => navigate('/reading-detail')}>
+            <div className="card altcard" onClick={() => goTo2()}>
               <img
                 className="img todayImage"
                 src="src/assets/images/run.jpg"
