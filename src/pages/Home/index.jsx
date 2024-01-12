@@ -11,6 +11,7 @@ const Home = () => {
     const goTo2 = () => navigate('/reading-detail');
     const goTo3 = () => navigate('/video-detail')
     const goTo4 = () => navigate('/explore-activity')
+    const goTo5 = () => navigate('/user-profile')
     
 
   return (
@@ -70,7 +71,7 @@ const Home = () => {
         >
           <SplideSlide>
             <div className="card">
-              <div className="img-container" onClick={() => goTo3()}>
+              <div className="img-container" onClick={() => goTo5()}>
                 <img
                   className="img"
                   src="src/assets/images/run.jpg"
@@ -114,7 +115,7 @@ const Home = () => {
           aria-label="My Favorite Images"
         >
           <SplideSlide>
-            <div className="card altcard" onClick={() => goTo2()}>
+            <div className="card altcard" onClick={() => navigate('/reading-detail')}>
               <img
                 className="img todayImage"
                 src="src/assets/images/run.jpg"
