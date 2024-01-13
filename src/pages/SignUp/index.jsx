@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
@@ -6,12 +7,27 @@ import { MdOutlineMailOutline, MdOutlineLock  } from 'react-icons/md'
 import { FaRegUser, FaRegHeart  } from 'react-icons/fa6'
 import { TbTargetArrow } from 'react-icons/tb'
 import wallpaper from '../../assets/images/wallpaper-2.png'
+import './styles.sass'
 
 const SignUp = () => {
+  // const [labelClicked, setLabelClicked] = useState(false)
+  const [labelStates, setLabelStates] = useState({
+    'check-relieve-stress': false,
+    'check-relationships': false,
+    'check-stretching': false,
+    'check-creative': false,
+  })
   
   const dispatch = useDispatch()
 
   const { register, formState: { errors }, handleSubmit } = useForm()
+
+  const handleLabelClick = ( labelId ) => {
+    setLabelStates((prevLabelStates) => ({
+      ...prevLabelStates,
+      [labelId]: !prevLabelStates[labelId]
+    }))
+  }
 
   const handleRegister = ( registerData ) => {
     const userData = {
@@ -111,13 +127,12 @@ const SignUp = () => {
             </div>
           </div>
           <div className='form__input-label'>
-            <label 
-              htmlFor='goals-input'
+            <span 
               className='form__input-label--label'
             >
               Metas de bienestar
-            </label>
-            <div className='form__input-label--wrapper'>
+            </span>
+            {/* <div className='form__input-label--wrapper'>
               <label htmlFor='goals-input' className='icon'>
                 <TbTargetArrow />
               </label>
@@ -131,8 +146,101 @@ const SignUp = () => {
                 <option value='concentracion-memoria'>Concentración y memoria</option>
                 <option value='estiramientos'>Estiramientos</option>
                 <option value='pensamiento-creativo'>Pensamiento creativo</option>
-                <option value='comunicacion-asertiva'>Comunicación asertiva</option>
               </select>
+            </div> */}
+            <div className='options-group'>
+              <div className='flex items-center justify-center'>
+                <input
+                  type='checkbox'
+                  name=''
+                  id='check-relieve-stress'
+                  className='check-input'
+                />
+                <label
+                  htmlFor='check-relieve-stress'
+                  className='check-label'
+                  style={{
+                    color: labelStates['check-relieve-stress']
+                      ? '#FFFFFF'
+                      : '#3F615A',
+                    backgroundColor: labelStates['check-relieve-stress']
+                      ? '#4E7949'
+                      : '#EDF1DF',
+                  }}
+                  onClick={() => handleLabelClick('check-relieve-stress')}
+                >
+                  Aliviar el estrés
+                </label>
+              </div>
+              <div className='flex items-center justify-center'>
+                <input
+                  type='checkbox'
+                  name=''
+                  id='check-relationships'
+                  className='check-input'
+                />
+                <label
+                  htmlFor='check-relationships'
+                  className='check-label'
+                  style={{
+                    color: labelStates['check-relationships']
+                      ? '#FFFFFF'
+                      : '#3F615A',
+                    backgroundColor: labelStates['check-relationships']
+                      ? '#4E7949'
+                      : '#EDF1DF',
+                }}
+                  onClick={() => handleLabelClick('check-relationships')}
+                >
+                  Relaciones interpersonales
+                </label>
+              </div>
+              <div className='flex items-center justify-center'>
+                <input
+                  type='checkbox'
+                  name=''
+                  id='check-stretching'
+                  className='check-input'
+                />
+                <label
+                  htmlFor='check-stretching'
+                  className='check-label'
+                  style={{
+                    color: labelStates['check-stretching']
+                      ? '#FFFFFF'
+                      : '#3F615A',
+                    backgroundColor: labelStates['check-stretching']
+                    ? '#4E7949'
+                    : '#EDF1DF',
+                  }}
+                  onClick={() => handleLabelClick('check-stretching')}
+                >
+                  Estiramientos
+                </label>
+              </div>
+              <div className='flex items-center justify-center'>
+                <input
+                  type='checkbox'
+                  name=''
+                  id='check-creative'
+                  className='check-input'
+                />
+                <label
+                  htmlFor='check-creative'
+                  className='check-label'
+                  style={{
+                    color: labelStates['check-creative']
+                      ? '#FFFFFF'
+                      : '#3F615A',
+                    backgroundColor: labelStates['check-creative']
+                      ? '#4E7949'
+                      : '#EDF1DF',
+                  }}
+                  onClick={() => handleLabelClick('check-creative')}
+                >
+                  Pensamiento creativo
+                </label>
+              </div>
             </div>
           </div>
           <div className='form__input-label'>
