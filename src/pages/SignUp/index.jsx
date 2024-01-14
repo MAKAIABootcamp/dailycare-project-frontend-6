@@ -20,7 +20,13 @@ const SignUp = () => {
   
   const dispatch = useDispatch()
 
-  const { register, formState: { errors }, handleSubmit } = useForm()
+  const { 
+    register, 
+    formState: { errors }, 
+    handleSubmit,
+    control, 
+    watch
+  } = useForm()
 
   const handleLabelClick = ( labelId ) => {
     setLabelStates((prevLabelStates) => ({
@@ -29,12 +35,14 @@ const SignUp = () => {
     }))
   }
 
+  const selectedGoals = watch('goals', [])
+
   const handleRegister = ( registerData ) => {
     const userData = {
       name: registerData.name,
       email: registerData.email,
       gender: registerData.gender,
-      category: registerData.activities,
+      category: selectedGoals,
       password: registerData.password,
       photoURL: '',
       company: 'Company LLC'
@@ -152,9 +160,10 @@ const SignUp = () => {
               <div className='flex items-center justify-center'>
                 <input
                   type='checkbox'
-                  name=''
                   id='check-relieve-stress'
                   className='check-input'
+                  value='aliviar el estres'
+                  { ...register('goals') }
                 />
                 <label
                   htmlFor='check-relieve-stress'
@@ -175,9 +184,10 @@ const SignUp = () => {
               <div className='flex items-center justify-center'>
                 <input
                   type='checkbox'
-                  name=''
                   id='check-relationships'
                   className='check-input'
+                  value='relaciones interpersonales'
+                  { ...register('goals') }
                 />
                 <label
                   htmlFor='check-relationships'
@@ -198,9 +208,10 @@ const SignUp = () => {
               <div className='flex items-center justify-center'>
                 <input
                   type='checkbox'
-                  name=''
                   id='check-stretching'
                   className='check-input'
+                  value='estiramientos'
+                  { ...register('goals') }
                 />
                 <label
                   htmlFor='check-stretching'
@@ -221,9 +232,10 @@ const SignUp = () => {
               <div className='flex items-center justify-center'>
                 <input
                   type='checkbox'
-                  name=''
                   id='check-creative'
                   className='check-input'
+                  value='pensamiento creativo'
+                  { ...register('goals') }
                 />
                 <label
                   htmlFor='check-creative'
