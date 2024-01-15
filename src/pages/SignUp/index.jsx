@@ -10,7 +10,6 @@ import wallpaper from '../../assets/images/wallpaper-2.png'
 import './styles.sass'
 
 const SignUp = () => {
-  // const [labelClicked, setLabelClicked] = useState(false)
   const [labelStates, setLabelStates] = useState({
     'check-relieve-stress': false,
     'check-relationships': false,
@@ -24,7 +23,6 @@ const SignUp = () => {
     register, 
     formState: { errors }, 
     handleSubmit,
-    control, 
     watch
   } = useForm()
 
@@ -140,22 +138,6 @@ const SignUp = () => {
             >
               Metas de bienestar
             </span>
-            {/* <div className='form__input-label--wrapper'>
-              <label htmlFor='goals-input' className='icon'>
-                <TbTargetArrow />
-              </label>
-              <select 
-                id='goals-input' 
-                className='input text-green-800'
-                { ...register('activities') }
-              >
-                <option value='aliviar-estres'>Aliviar estrés</option>
-                <option value='relaciones-interpersonales'>Relaciones interpersonales</option>
-                <option value='concentracion-memoria'>Concentración y memoria</option>
-                <option value='estiramientos'>Estiramientos</option>
-                <option value='pensamiento-creativo'>Pensamiento creativo</option>
-              </select>
-            </div> */}
             <div className='options-group'>
               <div className='flex items-center justify-center'>
                 <input
