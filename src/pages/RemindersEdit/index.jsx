@@ -8,14 +8,13 @@ import { FaTrashAlt } from 'react-icons/fa';
 import { TbReload } from "react-icons/tb";
 import { TbClockPlus } from "react-icons/tb";
 import { BiCategoryAlt } from "react-icons/bi";
-import { DownOutlined } from '@ant-design/icons';
 import { Dropdown, Space } from 'antd';
 import {
   CategoriesPicker,
   DatePickerAntD,
   DatePickerPeriod,
 } from "../../components/DatePicker";
-import wallpaper from "../../assets/images/wallpaper-4.png";
+import wallpaper from "../../assets/images/wallpaper-3.png";
 import "./styles.sass";
 
 const { TextArea } = Input;
@@ -24,7 +23,7 @@ const RemindersEdit = () => {
 
   const items = [
     {
-      label: <span><FaTrashAlt /> Eliminar</span>,
+      label: <span className="FaTrashAlt"><FaTrashAlt /> Eliminar</span>,
       key: '0',
     },
    
@@ -53,17 +52,10 @@ const RemindersEdit = () => {
         }
         trigger={['click']}
       >
-        {/* <a onClick={(e) => e.preventDefault()}>
-          <Space>
-            Click me
-            <DownOutlined />
-          </Space>
-        </a> */}
-        <button className="reminder-edit__fi-more" /* onClick={showDrawer} */>
+        <button className="reminder-edit__fi-more">
           <FiMoreVertical />
         </button>
       </Dropdown>
-  
       <div className="reminder-title">
         <Input placeholder="Nombre actividad" bordered={false} />
       </div>
@@ -103,7 +95,7 @@ const RemindersEdit = () => {
       <div className="reminder-edit__description-section">
         <section className="sign-in user-profile">
           <section className="sign-in__wallpaper-container">
-            <img src={wallpaper} alt="background wallpaper" />
+            <img src={wallpaper} alt="background wallpaper" objectfit:cover />
           </section>
           <section className="reminder-edit__description-section__content">
             <h1 className="reminder-edit__description-section__content--title">
