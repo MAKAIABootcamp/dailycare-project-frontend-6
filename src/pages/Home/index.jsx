@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router'
 import Footer from '../../components/Footer'
 import LoadingScreen from '../../components/LoadingScreen'
 import { useIsLoginScreen } from '../../context/loginScreenContext'
+import { LuFilter } from 'react-icons/lu'
 import './styles.scss'
 
 const Home = () => {
@@ -36,7 +37,10 @@ const Home = () => {
           <h1 className='title'>
             Bienvenido <span className='title-user'>{user.name}</span>
           </h1>
-          <h3 className='subtitle'>Sesiones del día</h3>
+          <div className='flex justify-between items-center'>
+            <h3 className='subtitle'>Sesiones del día</h3>
+            <button className='text-3xl'><LuFilter /></button>
+          </div>
           <Splide
             options={{
               type: 'loop',
@@ -72,7 +76,10 @@ const Home = () => {
         </div>
         <Divider />
         <div className='padding'>
-          <h3 className='subtitle'>Pausas activas</h3>
+          <div className='flex justify-between items-center'>
+            <h3 className='subtitle'>Pausas activas</h3>
+            <button className='text-3xl'><LuFilter /></button>
+          </div>
           <Splide
             options={{
               type: 'loop',
