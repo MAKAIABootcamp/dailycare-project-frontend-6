@@ -39,6 +39,7 @@ const AppRoutes = () => {
             email: userLogged.email,
             name: userLogged.displayName,
             accessToken: userLogged.accessToken,
+            photoURL: userLogged.photoURL
           })
         )
       }
