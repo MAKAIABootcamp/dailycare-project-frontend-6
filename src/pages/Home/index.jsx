@@ -1,18 +1,29 @@
-import "./styles.scss";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
+import { useDispatch, useSelector } from "react-redux";
+import { setNotificationCheck } from "../../store/users/userSlice";
+import { getUserFromCollection } from "../../services/userServices";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import "@splidejs/react-splide/css";
 import Divider from "../../components/Divider";
 import DrawerAntD from "../../components/Drawer";
-import { useNavigate } from "react-router";
 import Footer from "../../components/Footer";
-import { useSelector } from "react-redux";
+import "@splidejs/react-splide/css";
+import "./styles.scss";
 
 const Home = () => {
   const { user } = useSelector((store) => store.user)
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const goTo2 = () => navigate("/reading-detail");
   const goTo3 = () => navigate("/video-detail");
+
+  useEffect(() => {
+    getUserFromCollection(user.id)
+    .then(response => {
+      dispatch(setNotificationCheck(response.notificationCheck))
+    })
+  }, [])
 
   return (
     <main className="homeMain">

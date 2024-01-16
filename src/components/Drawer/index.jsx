@@ -43,7 +43,7 @@ const DrawerAntD = () => {
                     <label htmlFor='notification-style' className='icon'>
                         <FaRegClock />
                     </label>
-                    Recordatorios
+                    Mis metas
                 </span>
             </button>
             <button className='buttons-container__main-btns--btn-styles'>

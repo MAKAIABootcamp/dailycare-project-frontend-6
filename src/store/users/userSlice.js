@@ -5,7 +5,8 @@ const userSlice = createSlice({
   initialState: {
     isAuthenticated: false,
     user: null,
-    error: null
+    error: null,
+    notificationCheck: false
   },
   reducers: {
     setUser: ( state, action ) => {
@@ -21,11 +22,14 @@ const userSlice = createSlice({
       state.user = {
         ...state.user, ...action.payload
       }
+    },
+    setNotificationCheck: (state, action) => {
+      state.notificationCheck = action.payload
     }
   }
 })
 
 
-export const { setUser, setError, setIsAuthenticated, updateUser } = userSlice.actions
+export const { setUser, setError, setIsAuthenticated, setNotificationCheck, updateUser } = userSlice.actions
 
 export default userSlice.reducer
