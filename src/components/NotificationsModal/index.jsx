@@ -1,10 +1,17 @@
-import React, { useState } from "react";
-import { Modal } from "antd";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setNotificationCheck } from "../../store/users/userSlice";
+import { getUserFromCollection, updateNotificationCheck } from "../../services/userServices";
+import { Modal, Switch } from "antd";
 import { FaRegBell } from "react-icons/fa6";
-import { Switch } from 'antd';
 
 const NotificationsModal = () => {
+  const { user, notificationCheck } = useSelector(store => store.user)
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [checkedNotifications, setCheckedNotifications] = useState(notificationCheck)
+  const [checkedAlerts, setCheckedAlerts] = useState(false)
+  const dispatch = useDispatch()
+  
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -14,6 +21,15 @@ const NotificationsModal = () => {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+  const handleSwitchNotifications = async () => {
+    setCheckedNotifications(!checkedNotifications)
+    dispatch(setNotificationCheck(!checkedNotifications))
+    await updateNotificationCheck(user.id, !checkedNotifications)
+  }
+  const handleSwitchAlerts = () => {
+    setCheckedAlerts(!checkedAlerts)
+    // console.log(checkedAlerts);
+  }
   return (
     <>
       <button onClick={showModal} className="buttons-container__main-btns--btn-styles">
@@ -47,17 +63,12 @@ const NotificationsModal = () => {
         <div className="notifications-config">
             <span className="notifications-config__span">
                 <p>Recomendaciones</p>
-                <Switch defaultChecked />
+                <Switch checked={checkedNotifications} onClick={handleSwitchNotifications} />
             </span>
             <hr className="notifications-config--hr"/>
             <span className="notifications-config__span">
-                <p>Mensajes motivacionales</p>
-                <Switch defaultChecked />
-            </span>
-            <hr className="notifications-config--hr"/>
-            <span className="notifications-config__span">
-                <p>Recordatorios</p>
-                <Switch defaultChecked />
+                <p>Alertas: Mis metas</p>
+                <Switch checked={!checkedAlerts}  onClick={handleSwitchAlerts}/>
             </span>
         </div>
       </Modal>

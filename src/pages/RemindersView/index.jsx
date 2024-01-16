@@ -41,9 +41,9 @@ const RemindersView = () => {
           <label htmlFor="icon-modal-notification" className="icon">
             <FaRegClock />
           </label>
-          <h1 className="reminders-view__title--text">Mis recordatorios</h1>
+          <h1 className="reminders-view__title--text">Mis metas</h1>
       </span>
-      <p className='reminders-view--description-text'>Estos son los que tienes activos hasta el momento</p>
+      <p className='reminders-view--description-text'>Estos son las que tienes activas hasta el momento</p>
       <div className='reminders-view--container'>
         {
           categoryInfo.map((reminder,index) => {

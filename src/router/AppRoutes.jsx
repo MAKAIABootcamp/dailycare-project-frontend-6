@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { onAuthStateChanged } from 'firebase/auth'
-import { auth } from '../firebase/firebaseConfig'
+import { getToken, onMessage } from 'firebase/messaging'
+import { auth, messaging } from '../firebase/firebaseConfig'
 import { setIsAuthenticated, setUser } from '../store/users/userSlice'
+import { toast } from 'react-toastify'
 import Home from '../pages/Home'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
@@ -23,13 +25,37 @@ import SignInWithPhone from '../pages/SignInWithPhone'
 import UpdateUserProfile from '../pages/UpdateUserProfile'
 import RemindersEdit from '../pages/RemindersEdit'
 import { LoginScreenProvider } from '../context/loginScreenContext'
+import 'react-toastify/dist/ReactToastify.css'
+import './AppRoutes.sass'
 
 const AppRoutes = () => {
-  const { isAuthenticated, user } = useSelector((store) => store.user)
+  const { isAuthenticated, user, notificationCheck } = useSelector((store) => store.user)
   const [checking, setChecking] = useState(true)
   const dispatch = useDispatch()
 
+  const activateMessages = async () => {
+    const token = await getToken(messaging, {
+      vapidKey: 'BKIg25jAz7puC5EMJqK4qfjMx9FQU_RXrZPxlx20dozytA44Sl1iUREedEWvuofKGJ9ePLLjOMRj7vGQY-6m5CY'
+    }).catch(error => console.log("Error al generar el token"));
+
+    if(token) console.log("Token:", token);
+    else console.log("No hay token");
+  }
+
+  const Msg = (props) => (
+    <div className='message-container'>
+      <figure>
+        <img src={props.message.notification.image}/>
+      </figure>
+      <h3>{props.message.notification.title}</h3>
+    </div>
+  )
+
   useEffect(() => {
+    onMessage(messaging, (message) => {
+      console.log("Mensaje", message)
+      toast(<Msg message={message} />)
+    })
     onAuthStateChanged(auth, (userLogged) => {
       if (userLogged?.uid && !user) {
         dispatch(setIsAuthenticated(true))
@@ -42,8 +68,11 @@ const AppRoutes = () => {
             photoURL: userLogged.photoURL
           })
         )
+        console.log(notificationCheck);
+        activateMessages()
       }
     })
+    
     setChecking(false)
   }, [dispatch, user])
 

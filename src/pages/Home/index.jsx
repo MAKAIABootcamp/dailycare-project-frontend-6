@@ -1,16 +1,18 @@
 import { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from "react-router"
+import { useDispatch, useSelector } from "react-redux"
 import { useForm } from 'react-hook-form'
-import { Splide, SplideSlide } from '@splidejs/react-splide'
-import '@splidejs/react-splide/css'
-import Divider from '../../components/Divider'
-import DrawerAntD from '../../components/Drawer'
-import { useNavigate } from 'react-router'
-import Footer from '../../components/Footer'
+import { setNotificationCheck } from "../../store/users/userSlice"
+import { getUserFromCollection } from "../../services/userServices"
+import { Splide, SplideSlide } from "@splidejs/react-splide"
+import Divider from "../../components/Divider"
+import DrawerAntD from "../../components/Drawer"
+import Footer from "../../components/Footer"
 import LoadingScreen from '../../components/LoadingScreen'
 import { useIsLoginScreen } from '../../context/loginScreenContext'
 import { LuFilter } from 'react-icons/lu'
 import { getData } from '../../store/content/contentThunks'
+import "@splidejs/react-splide/css";
 import './styles.scss'
 
 const Home = () => {
@@ -31,8 +33,13 @@ const Home = () => {
 
 
   useEffect(() => {
+    getUserFromCollection(user.id)
+    .then(response => {
+      dispatch(setNotificationCheck(response.notificationCheck))
+    })
     dispatch(getData(category))
   }, [category])
+
   
   useEffect(() => {
     const cargaSimulada = setTimeout(() => {

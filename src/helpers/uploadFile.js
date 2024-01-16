@@ -1,11 +1,11 @@
 import axios from 'axios'
-const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/dkd5jyxby/auto/upload'
+const CLOUDINARY_URL = 'https://api.cloudinary.com/v1_1/ddsed1j6u/auto/upload'
 
 export const saveImage = async file => {
   const body = {
     file,
-    api_key: 357824561481388,
-    upload_preset: 't4dskobq'
+    cloud_name: 'ddsed1j6u',
+    upload_preset: 'dailycare'
   }
   const headers = {
     "Content-Type": "multipart/form-data",

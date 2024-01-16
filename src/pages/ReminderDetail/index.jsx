@@ -72,7 +72,7 @@ const ReminderDetail = () => {
             </h1>
             <div className="reminder-detail__description-section__content--text-area">
               <TextArea
-                placeholder="¡Recuerda que tienes esta actividad pendiente!"
+                placeholder="Escribe en una frase corta la meta que quieres alcanzar"
                 autoSize={{
                   minRows: 2,
                   maxRows: 6,

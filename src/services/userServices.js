@@ -68,3 +68,15 @@ export const updateUserFromCollection = async ({id, name, photoURL, gender, cate
     return null
   }
 }
+
+export const updateNotificationCheck = async ( id, state ) => {
+  try {
+    const userRef = doc(firestore, collectionName, id);
+    await setDoc(userRef, {notificationCheck: state}, { merge: true })
+    return true;
+    
+  } catch (error) {
+    console.error(error);
+    return null
+  }
+}
