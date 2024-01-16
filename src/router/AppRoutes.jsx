@@ -22,6 +22,7 @@ import CodeForm from "../pages/CodeForm";
 import SignInWithPhone from "../pages/SignInWithPhone";
 import UpdateUserProfile from "../pages/UpdateUserProfile";
 import { LoginScreenProvider } from "../context/loginScreenContext";
+import AdminHome from "../pages/AdminHome";
 
 const AppRoutes = () => {
   const { isAuthenticated, user } = useSelector((store) => store.user);
@@ -69,6 +70,7 @@ const AppRoutes = () => {
             <Route path="reminders-view" element={<RemindersView />} />
             <Route path="reminders-detail" element={<ReminderDetail />} />
             <Route path="activity" element={<Activity />} />
+            <Route path="admin-home" element={<AdminHome />} />
             <Route path="admin-profile" element={<AdminProfile />} />
             <Route path="edit-profile" element={<UpdateUserProfile />} />
             <Route path="home" element={<Home />} />
