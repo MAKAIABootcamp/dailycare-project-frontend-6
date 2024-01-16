@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
 import Divider from '../../components/Divider'
@@ -9,25 +9,34 @@ import Footer from '../../components/Footer'
 import LoadingScreen from '../../components/LoadingScreen'
 import { useIsLoginScreen } from '../../context/loginScreenContext'
 import { LuFilter } from 'react-icons/lu'
+import { getData } from '../../store/content/contentThunks'
 import './styles.scss'
 
 const Home = () => {
   const { setLoginScreen, loginScreen } = useIsLoginScreen()
   const { user } = useSelector((store) => store.user)
+  const { content } = useSelector((store) => store.content)
+  const dispatch = useDispatch()
+
   const navigate = useNavigate()
 
+  const goTo2 = () => navigate('/reading-detail')
+  const goTo3 = () => navigate('/video-detail')
+  const goTo4 = () => navigate('/explore-activity')
+  const goTo5 = () => navigate('/user-profile')
+  
+  console.log(content)
+
+  useEffect(() => {
+    dispatch(getData())
+  }, [])
+  
   useEffect(() => {
     const cargaSimulada = setTimeout(() => {
       setLoginScreen(false)
     }, 1500)
     return () => clearTimeout(cargaSimulada)
   }, [])
-
-  const goTo2 = () => navigate('/reading-detail')
-  const goTo3 = () => navigate('/video-detail')
-  const goTo4 = () => navigate('/explore-activity')
-  const goTo5 = () => navigate('/user-profile')
-
   return (
     <>
       {loginScreen && <LoadingScreen />}
@@ -91,22 +100,26 @@ const Home = () => {
             }}
             aria-label='My Favorite Images'
           >
-            <SplideSlide>
-              <div className='card'>
-                <div className='img-container' onClick={() => goTo5()}>
-                  <img
-                    className='img'
-                    src='src/assets/images/run.jpg'
-                    alt='Image 1'
-                  />
-                </div>
-                <div className='card-text'>
-                  <p className='text-time'>5 minutos</p>
-                  <p className='text-title'>Ejercicios de yoga</p>
-                  <p className='text-subtitle'>Relajación - Antiestres</p>
-                </div>
-              </div>
-            </SplideSlide>
+              {
+                content.map((item, index) => (
+                  <SplideSlide key={index}>
+                    <div className='card'>
+                      <div className='img-container' onClick={() => goTo5()}>
+                        <img
+                          className='img'
+                          src={item.img}
+                          alt='Image 1'
+                        />
+                      </div>
+                      <div className='card-text'>
+                        <p className='text-time'>{item.lenght} min</p>
+                        <p className='text-title'>{item.title}</p>
+                        <p className='text-subtitle'>{item.tag}</p>
+                      </div>
+                    </div>
+                </SplideSlide>
+                ))
+              }
             <SplideSlide>
               <div className='card'>
                 <div className='img-container' onClick={() => goTo3()}>
