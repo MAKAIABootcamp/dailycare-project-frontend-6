@@ -2,13 +2,18 @@
 @use '../../styles/_mixins' as *
 
 
-.reminder-detail
+.reminder-edit
     width: 100%
     height: 100%
-    background-color: $light-color
-    background-image: url("../../assets/images/wallpaper-4.png")
+    background-image: url('../../assets/images/wallpaper-3.png')  // Ruta correcta a tu imagen
     background-size: cover
-    &__back-button
+    background-repeat: no-repeat
+    background-position: center
+    &__fi-more
+        position: fixed
+        top: 10px
+        right: 30px
+        z-index: 1000
         font-size: 3rem
     &__info-time
         &__frequency
@@ -23,6 +28,7 @@
                     color: black
                     font-size: 15px
                     font-weight: $medium-weight
+                
         &__hour
             @include flexCenter(row, center, center, 5px)
             .ant-input
@@ -68,6 +74,13 @@
                 display: flex
                 justify-self: center
                 width: 320px
+                font-weight: $extrabold-weight 
+                background-color: white
+                border-radius: 10px
+                color: black
+                border: 1px solid grey
+                margin-top: 10px
+
                 .ant-input
                     color: #324D30
                     font-size: 1.6rem
@@ -81,3 +94,44 @@
 .ant-select-open, .ant-select-focused
     .ant-select-selector
         border-color: $primary-color !important
+
+.buttons-container-trash
+    @include flexCenter(column, center, center, 60px)    
+    color: $primary-text-color
+    font-family: $font-source
+    font-weight: $medium-weight
+    &__main-btns
+        @include flexCenter(column, center, center, 20px)    
+        &--btn-styles
+            @include flexCenter(row, center, center, 0)
+            .span-btn
+                display: flex
+                align-items: center
+                gap: 7px
+                width: 80%
+                .icon
+                    @include iconStyle(1.5rem, $primary-text-color)
+
+
+.FaTrashAlt
+    display: flex
+    margin-right: 5px
+    gap: 10px
+    align-items: center
+    color: $primary-text-color
+    font-family: $font-source
+    font-weight: $medium-weight
+    
+.sign-in__wallpaper-container
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    z-index: -1
+    
+.Wallpaper2
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    z-index: -3

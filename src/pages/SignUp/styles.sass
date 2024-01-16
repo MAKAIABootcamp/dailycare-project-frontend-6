@@ -1,0 +1,26 @@
+@use '../../styles/_variables' as *
+@use '../../styles/_mixins' as *
+
+.options-group
+  width: 100%
+  height: auto
+  display: grid 
+  grid-template-areas: "stress relationships" "stretching creative"
+  row-gap: 10px
+  .check-input
+    opacity: 0
+  .check-label
+    cursor: pointer
+    border-radius: 20px
+    background-color: rgba($tertiary-color, 0.37)
+    padding: 10px
+    font-size: 1.2rem
+    letter-spacing: 0.3px
+  #check-relieve-stress
+    grid-area: stress
+  #check-relationships
+    grid-area: relationships
+  #check-stretching
+    grid-area: stretching
+  #check-creative
+    grid-area: creative

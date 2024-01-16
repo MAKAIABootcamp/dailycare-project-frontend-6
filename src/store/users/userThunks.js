@@ -116,13 +116,13 @@ export const loginWithPhoneCodeAsync = ( code ) => async ( dispatch ) => {
   }
 }
 
-export const updateProfileAsync = ({name, photoURL, id})=> async(dispatch)=>{
+export const updateProfileAsync = ({name, photoURL, id, gender, category, email})=> async(dispatch)=>{
   try {
     await updateProfile(auth.currentUser, {
-      displayName: name, photoURL: photoURL, 
+      displayName: name, photoURL: photoURL
     });
-    await updateUserFromCollection({name, photoURL, id});
-    dispatch(updateUser({name, photoURL}))
+    await updateUserFromCollection({name, photoURL, id, gender, category, email});
+    dispatch(updateUser({name, photoURL, gender, category, email}))
   } catch (error) {
     console.error(error);
     dispatch(

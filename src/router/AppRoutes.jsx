@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from 'react-redux'
 import { onAuthStateChanged } from 'firebase/auth'
 import { getToken, onMessage } from 'firebase/messaging'
 import { auth, messaging } from '../firebase/firebaseConfig'
-import { getUserFromCollection } from '../services/userServices'
 import { setIsAuthenticated, setUser } from '../store/users/userSlice'
 import { toast } from 'react-toastify'
 import Home from '../pages/Home'
@@ -24,11 +23,13 @@ import PrivatedRoutes from './PrivatedRoutes'
 import CodeForm from '../pages/CodeForm'
 import SignInWithPhone from '../pages/SignInWithPhone'
 import UpdateUserProfile from '../pages/UpdateUserProfile'
+import RemindersEdit from '../pages/RemindersEdit'
+import { LoginScreenProvider } from '../context/loginScreenContext'
 import 'react-toastify/dist/ReactToastify.css'
 import './AppRoutes.sass'
 
 const AppRoutes = () => {
-  const { isAuthenticated, user, notificationCheck } = useSelector( store => store.user )
+  const { isAuthenticated, user, notificationCheck } = useSelector((store) => store.user)
   const [checking, setChecking] = useState(true)
   const dispatch = useDispatch()
 
@@ -58,13 +59,15 @@ const AppRoutes = () => {
     onAuthStateChanged(auth, (userLogged) => {
       if (userLogged?.uid && !user) {
         dispatch(setIsAuthenticated(true))
-        dispatch(setUser({
-          id: userLogged.uid,
-          email: userLogged.email,
-          name: userLogged.displayName,
-          // photoURL: userLogged.photoURL,
-          accessToken: userLogged.accessToken
-        }))
+        dispatch(
+          setUser({
+            id: userLogged.uid,
+            email: userLogged.email,
+            name: userLogged.displayName,
+            accessToken: userLogged.accessToken,
+            photoURL: userLogged.photoURL
+          })
+        )
         console.log(notificationCheck);
         activateMessages()
       }
@@ -78,6 +81,7 @@ const AppRoutes = () => {
   }
 
   return (
+    <LoginScreenProvider>
       <Routes>
         <Route path='/'>
           <Route element={<PublicRoutes isAuthenticated={isAuthenticated} />}>
@@ -94,6 +98,7 @@ const AppRoutes = () => {
             <Route path='user-profile' element={<UserProfile />} />
             <Route path='reminders-view' element={<RemindersView />} />
             <Route path='reminders-detail' element={<ReminderDetail />} />
+            <Route path='reminders-edit' element={<RemindersEdit />} />
             <Route path='activity' element={<Activity />} />
             <Route path='admin-profile' element={<AdminProfile />} />
             <Route path='edit-profile' element={<UpdateUserProfile />} />
@@ -102,8 +107,8 @@ const AppRoutes = () => {
           </Route>
         </Route>
       </Routes>
+    </LoginScreenProvider>
   )
 }
-
 
 export default AppRoutes

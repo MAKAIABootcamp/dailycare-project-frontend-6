@@ -1,4 +1,6 @@
 import "./styles.sass";
+import { useNavigate } from "react-router";
+import { FaChevronLeft } from 'react-icons/fa'
 import enfoqueImage from "../../assets/images/w-meditation.png";
 import vueltaImage from "../../assets/images/m-meditation.png";
 import yogaImage from "../../assets/images/woman-yoga.png";
@@ -7,9 +9,18 @@ import estresImage from "../../assets/images/reducir-estres.png";
 import playlistImage from "../../assets/images/playlist.png";
 import playImage from "../../assets/images/playImage.png";
 
+
 const ExploreActivity = () => {
+
+  const navigate = useNavigate()
+
+  const goTo = () => navigate('/home')
+
   return (
     <main className="main-explore">
+      <button className='content-detail__back-button m-3' onClick={() => goTo()}>
+        <FaChevronLeft />
+      </button>
       <div className="container3">
         <div className="container3__title">
           <h1>Explorar Actividad</h1>
