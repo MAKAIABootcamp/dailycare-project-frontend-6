@@ -11,7 +11,7 @@ import { useIsLoginScreen } from '../../context/loginScreenContext'
 import { LuFilter } from 'react-icons/lu'
 import { getData } from '../../store/content/contentThunks'
 import HerramientasGestionEstres from '../../components/HerramientasGestionEstres'
-import { Modal, Button } from 'antd'
+import { Modal } from 'antd'
 import './styles.scss'
 
 const Home = () => {
@@ -85,7 +85,7 @@ const Home = () => {
               ]}
             >
               <div className='w-full p-8'>
-                <div className='flex gap-2'>
+                <div className='flex gap-3'>
                   <input
                     type='radio'
                     value='estiramientos'
@@ -96,7 +96,7 @@ const Home = () => {
                   />
                   <label htmlFor='input-estiramientos'>Estiramientos</label>
                 </div>
-                <div className='flex gap-2'>
+                <div className='flex gap-3'>
                   <input
                     type='radio'
                     value='aliviar estres'
@@ -104,9 +104,9 @@ const Home = () => {
                     name='category'
                     onChange={() => setCategory('aliviar')}
                   />
-                  <label htmlFor='input-estres'>Aliviar el estres</label>
+                  <label htmlFor='input-estres'>Aliviar el estrés</label>
                 </div>
-                <div className='flex gap-2'>
+                <div className='flex gap-3'>
                   <input
                     type='radio'
                     value='pensamiento creativo'
@@ -116,7 +116,7 @@ const Home = () => {
                   />
                   <label htmlFor='input-creativo'>Pensamiento creativo</label>
                 </div>
-                <div className='flex gap-2'>
+                <div className='flex gap-3'>
                   <input
                     type='radio'
                     value='concentración y memoria'
@@ -207,34 +207,24 @@ const Home = () => {
             }}
             aria-label='My Favorite Images'
           >
-            <SplideSlide>
-              <div className='card altcard' onClick={() => goToContentDetail()}>
-                <img
-                  className='img todayImage'
-                  src='src/assets/images/run.jpg'
-                  alt='Image 1'
-                />
-                <div className='card-text'>
-                  <p className='text-time'>5 minutos</p>
-                  <p className='text-title'>Ejercicios de yoga</p>
-                  <p className='text-subtitle'>Relajación - Antiestres</p>
-                </div>
-              </div>
-            </SplideSlide>
-            <SplideSlide>
-              <div className='card altcard' onClick={() => goToContentDetail()}>
-                <img
-                  className='img todayImage'
-                  src='src/assets/images/stretch.png'
-                  alt='Image 2'
-                />
-                <div className='card-text'>
-                  <p className='text-time'>5 minutos</p>
-                  <p className='text-title'>Ejercicios de yoga</p>
-                  <p className='text-subtitle'>Relajación - Antiestres</p>
-                </div>
-              </div>
-            </SplideSlide>
+            {
+              content.map((item, index) => (
+                <SplideSlide key={index}>
+                  <div className='card altcard' onClick={() => goToContentDetail()}>
+                    <img
+                      className='img todayImage'
+                      src={item.cardImage}
+                      alt={item.title}
+                    />
+                    <div className='card-text'>
+                      <p className='text-time'>{item.lenght} minutos</p>
+                      <p className='text-title'>{item.title}</p>
+                      <p className='text-subtitle'>Relajación - Antiestres</p>
+                    </div>
+                  </div>
+                </SplideSlide>
+              ))
+            }
           </Splide>
           <h3 className='subtitle'>Recomendados para ti</h3>
           <Splide
@@ -251,7 +241,7 @@ const Home = () => {
           >
             <SplideSlide>
               <div className='card'>
-                <div className='img-container' onClick={() => goTo2()}>
+                <div className='img-container' onClick={() => goToContentDetail()}>
                   <img
                     className='img todayImage'
                     src='src/assets/images/run.jpg'
@@ -287,7 +277,15 @@ const Home = () => {
         <div className='padding homeFooter'>
           <h3 className='subtitle'>Herramientas Gestión del estrés</h3>
           <div className='cardContainer'>
-            <HerramientasGestionEstres />
+            {
+              content.map((item, index) => (
+                <HerramientasGestionEstres 
+                  key={index}
+                  details={item} 
+                  onClick={() => goToContentDetail()}
+                />
+              ))
+            }
           </div>
         </div>
         <Footer />
