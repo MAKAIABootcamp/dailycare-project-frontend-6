@@ -92,7 +92,7 @@ const AppRoutes = () => {
             <Route path='sign-up' element={<SignUp />} />
           </Route>
           <Route element={<PrivatedRoutes isAuthenticated={isAuthenticated} />}>
-            <Route path='reading-detail' element={<ReadingDetail />} />
+            <Route path='reading-detail/:id' element={<ReadingDetail />} />
             <Route path='video-detail' element={<VideoDetail />} />
             <Route path='explore-activity' element={<ExploreActivity />} />
             <Route path='user-profile' element={<UserProfile />} />
