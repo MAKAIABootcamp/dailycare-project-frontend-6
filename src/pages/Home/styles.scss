@@ -1,5 +1,8 @@
 @use "../../styles/_variables" as *;
 
+$grey-background: #ffffff;
+$scroll-bar-background: #D9D9D9;
+
 .homeMain {
   width: 100%;
   background-color: $light-color;
@@ -54,6 +57,10 @@
   color: $dark-color;
   font-size: 12px;
   font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100px;
+  white-space: nowrap;
 }
 .text-subtitle {
   color: #a5a5a5;
@@ -111,13 +118,42 @@
   }
 }
 .cardContainer {
+  height: 450px;
   display: flex;
   flex-direction: column;
   gap: 20px;
+  overflow-y: hidden;
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 5px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgba($grey-background, 0.2);
+    border-radius: 100px;
+  }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    border: 10px solid rgba($tertiary-color, 0.4);
+    border-left: 0;
+    border-right: 0;
+    background-clip: content-box;
+    background-color: rgba($tertiary-color, 0.4);
+  }
+  &:hover {
+    overflow-y: scroll;
+  }
 }
 .subtitle {
   color: #959595;
   font-weight: 400;
   font-size: 20px;
   margin: 20px 0;
+}
+
+:where(.css-dev-only-do-not-override-6j9yrn).ant-modal-root .ant-modal-wrap {
+  display: grid;
+}
+
+:where(.css-dev-only-do-not-override-6j9yrn).ant-modal-root .ant-modal {
+  width: $mobile-width !important;
 }

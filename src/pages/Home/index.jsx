@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useForm } from 'react-hook-form'
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import '@splidejs/react-splide/css'
 import Divider from '../../components/Divider'
@@ -11,9 +10,13 @@ import LoadingScreen from '../../components/LoadingScreen'
 import { useIsLoginScreen } from '../../context/loginScreenContext'
 import { LuFilter } from 'react-icons/lu'
 import { getData } from '../../store/content/contentThunks'
+import HerramientasGestionEstres from '../../components/HerramientasGestionEstres'
+import { Modal, Button } from 'antd'
 import './styles.scss'
 
 const Home = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false)
+
   const [category, setCategory] = useState('')
   const { setLoginScreen, loginScreen } = useIsLoginScreen()
   const { user } = useSelector((store) => store.user)
@@ -22,13 +25,23 @@ const Home = () => {
 
   const navigate = useNavigate()
 
-  const goTo2 = () => navigate('/reading-detail')
-  const goTo3 = () => navigate('/video-detail')
   const goTo4 = () => navigate('/explore-activity')
-  const goTo5 = () => navigate('/user-profile')
-  
-  console.log(content)
 
+  const goToContentDetail = ( id ) => {
+    navigate(`/reading-detail/${id}`)
+  }
+
+  const showModal = () => {
+    setIsModalOpen(true)
+  };
+
+  const handleOk = () => {
+    setIsModalOpen(false)
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false)
+  };
 
   useEffect(() => {
     dispatch(getData(category))
@@ -51,50 +64,70 @@ const Home = () => {
           </h1>
           <div className='flex justify-between items-center'>
             <h3 className='subtitle'>Sesiones del día</h3>
-            <button className='text-3xl'><LuFilter /></button>
-            <div>
-              <div>
-                <label htmlFor='input-estiramientos'>Estiramientos</label>
-                <input
-                  type='radio'
-                  value='estiramientos'
-                  id='input-estiramientos'
-                  name='category'
-                  onChange={() => setCategory('estiramientos')}
-                  defaultChecked
-                />
+            <button 
+              className='text-3xl'
+              onClick={showModal}
+            >
+              <LuFilter />
+            </button>
+            <Modal 
+              open={isModalOpen} 
+              onOk={handleOk} 
+              onCancel={handleCancel}
+              footer={[
+                <button
+                  key={1}
+                  className='bg-green-800 text-white font-semibold tracking-wider px-8 py-2 mr-8 rounded-lg'
+                  onClick={handleOk}
+                >
+                  Aplicar filtro
+                </button>
+              ]}
+            >
+              <div className='w-full p-8'>
+                <div className='flex gap-2'>
+                  <input
+                    type='radio'
+                    value='estiramientos'
+                    id='input-estiramientos'
+                    name='category'
+                    onChange={() => setCategory('estiramientos')}
+                    defaultChecked
+                  />
+                  <label htmlFor='input-estiramientos'>Estiramientos</label>
+                </div>
+                <div className='flex gap-2'>
+                  <input
+                    type='radio'
+                    value='aliviar estres'
+                    id='input-estres'
+                    name='category'
+                    onChange={() => setCategory('aliviar')}
+                  />
+                  <label htmlFor='input-estres'>Aliviar el estres</label>
+                </div>
+                <div className='flex gap-2'>
+                  <input
+                    type='radio'
+                    value='pensamiento creativo'
+                    id='input-creativo'
+                    name='category'
+                    onChange={() => setCategory('pensamiento creativo')}
+                  />
+                  <label htmlFor='input-creativo'>Pensamiento creativo</label>
+                </div>
+                <div className='flex gap-2'>
+                  <input
+                    type='radio'
+                    value='concentración y memoria'
+                    id='input-memoria'
+                    name='category'
+                    onChange={() => setCategory('concentra')}
+                  />
+                  <label htmlFor='input-memoria'>Concentracion y memoria</label>
+                </div>
               </div>
-              <div>
-                <label htmlFor='input-estres'>Aliviar el estres</label>
-                <input
-                  type='radio'
-                  value='aliviar estres'
-                  id='input-estres'
-                  name='category'
-                  onChange={() => setCategory('aliviar')}
-                />
-              </div>
-              <div>
-                <label htmlFor='input-creativo'>Pensamiento creativo</label>
-                <input
-                  type='radio'
-                  value='pensamiento creativo'
-                  id='input-creativo'
-                  name='category'
-                  onChange={() => setCategory('pensamiento creativo')}
-                />
-              </div>
-              <div>
-                <label htmlFor='input-memoria'>Concentracion y memoria</label>
-                <input
-                  type='radio'
-                  value='concentración y memoria'
-                  id='input-memoria'
-                  name='category'
-                  onChange={() => setCategory('concentra')}
-                />
-              </div>
-            </div>
+            </Modal>
           </div>
           <Splide
             options={{
@@ -110,11 +143,15 @@ const Home = () => {
             {
               content.map((item, index) => (
                 <SplideSlide key={index}>
-                  <div className='img-container' onClick={() => goTo4()}>
+                  <div 
+                    className='img-container w-96 h-64' 
+                    onClick={() => goTo4()}
+                    id={item.id}
+                  >
                     <p className='overText'>{item.title}</p>
                     <img
                       className='img'
-                      src={item.img}
+                      src={item.cardImage}
                       alt='Image 1'
                     />
                   </div>
@@ -125,10 +162,7 @@ const Home = () => {
         </div>
         <Divider />
         <div className='padding'>
-          <div className='flex justify-between items-center'>
-            <h3 className='subtitle'>Pausas activas</h3>
-            <button className='text-3xl'><LuFilter /></button>
-          </div>
+          <h3 className='subtitle'>Pausas activas</h3>
           <Splide
             options={{
               type: 'loop',
@@ -143,11 +177,11 @@ const Home = () => {
               {
                 content.map((item, index) => (
                   <SplideSlide key={index}>
-                    <div className='card'>
-                      <div className='img-container' onClick={() => goTo5()}>
+                    <div className='card' id={item.id}>
+                      <div className='img-container' onClick={() => goToContentDetail(item.id)}>
                         <img
-                          className='img'
-                          src={item.img}
+                          className='img w-32 h-32'
+                          src={item.cardImage}
                           alt='Image 1'
                         />
                       </div>
@@ -160,22 +194,6 @@ const Home = () => {
                 </SplideSlide>
                 ))
               }
-            <SplideSlide>
-              <div className='card'>
-                <div className='img-container' onClick={() => goTo3()}>
-                  <img
-                    className='img'
-                    src='src/assets/images/stretch.png'
-                    alt='Image 2'
-                  />
-                </div>
-                <div className='card-text'>
-                  <p className='text-time'>5 minutos</p>
-                  <p className='text-title'>Ejercicios de yoga</p>
-                  <p className='text-subtitle'>Relajación - Antiestres</p>
-                </div>
-              </div>
-            </SplideSlide>
           </Splide>
         </div>
         <Divider />
@@ -190,7 +208,7 @@ const Home = () => {
             aria-label='My Favorite Images'
           >
             <SplideSlide>
-              <div className='card altcard' onClick={() => goTo2()}>
+              <div className='card altcard' onClick={() => goToContentDetail()}>
                 <img
                   className='img todayImage'
                   src='src/assets/images/run.jpg'
@@ -204,7 +222,7 @@ const Home = () => {
               </div>
             </SplideSlide>
             <SplideSlide>
-              <div className='card altcard' onClick={() => goTo2()}>
+              <div className='card altcard' onClick={() => goToContentDetail()}>
                 <img
                   className='img todayImage'
                   src='src/assets/images/stretch.png'
@@ -264,111 +282,12 @@ const Home = () => {
               </div>
             </SplideSlide>
           </Splide>
-          <Splide
-            options={{
-              type: 'loop',
-              gap: '1rem',
-              padding: {
-                right: '10rem',
-              },
-              pagination: false,
-            }}
-            aria-label='My Favorite Images'
-          >
-            <SplideSlide>
-              <div className='card'>
-                <div className='img-container' onClick={() => goTo3()}>
-                  <img
-                    className='img todayImage'
-                    src='src/assets/images/run.jpg'
-                    alt='Image 1'
-                  />
-                </div>
-                <div className='card-text'>
-                  <p className='text-time'>5 minutos</p>
-                  <p className='text-title'>Meditación</p>
-                  <p className='text-subtitle'>Antiestres</p>
-                </div>
-              </div>
-            </SplideSlide>
-            <SplideSlide>
-              <div className='card'>
-                <div className='img-container' onClick={() => goTo3()}>
-                  <img
-                    className='img todayImage'
-                    src='src/assets/images/stretch.png'
-                    alt='Image 2'
-                  />
-                </div>
-                <div className='card-text'>
-                  <p className='text-time'>5 minutos</p>
-                  <p className='text-title'>Ejercicios de yoga</p>
-                  <p className='text-subtitle'>Relajación - Antiestres</p>
-                </div>
-              </div>
-            </SplideSlide>
-          </Splide>
         </div>
         <Divider />
         <div className='padding homeFooter'>
           <h3 className='subtitle'>Herramientas Gestión del estrés</h3>
           <div className='cardContainer'>
-            <div className='card simpleAltcard'>
-              <div className='img-container' onClick={() => goTo3()}>
-                <img
-                  className='img todayImage'
-                  src='src/assets/images/run.jpg'
-                  alt='Image 1'
-                />
-              </div>
-              <div className='card-text'>
-                <p className='text-time'>5 minutos</p>
-                <p className='text-title'>Ejercicios de yoga</p>
-                <p className='text-subtitle'>Relajación - Antiestres</p>
-              </div>
-            </div>
-            <div className='card simpleAltcard'>
-              <div className='img-container' onClick={() => goTo3()}>
-                <img
-                  className='img todayImage'
-                  src='src/assets/images/run.jpg'
-                  alt='Image 1'
-                />
-              </div>
-              <div className='card-text'>
-                <p className='text-time'>5 minutos</p>
-                <p className='text-title'>Ejercicios de yoga</p>
-                <p className='text-subtitle'>Relajación - Antiestres</p>
-              </div>
-            </div>
-            <div className='card simpleAltcard'>
-              <div className='img-container' onClick={() => goTo3()}>
-                <img
-                  className='img todayImage'
-                  src='src/assets/images/run.jpg'
-                  alt='Image 1'
-                />
-              </div>
-              <div className='card-text'>
-                <p className='text-time'>5 minutos</p>
-                <p className='text-title'>Ejercicios de yoga</p>
-                <p className='text-subtitle'>Relajación - Antiestres</p>
-              </div>
-            </div>
-            <div className='card simpleAltcard'>
-              <div className='img-container' onClick={() => goTo3()}>
-                <img
-                  className='img todayImage'
-                  src='src/assets/images/run.jpg'
-                  alt='Image 1'
-                />
-              </div>
-              <div className='card-text'>
-                <p className='text-time'>5 minutos</p>
-                <p className='text-title'>Ejercicios de yoga</p>
-                <p className='text-subtitle'>Relajación - Antiestres</p>
-              </div>
-            </div>
+            <HerramientasGestionEstres />
           </div>
         </div>
         <Footer />
