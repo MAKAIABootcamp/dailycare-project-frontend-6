@@ -6,15 +6,15 @@
     width: 100%
     height: 100%
     background-color: $light-color
-    background-image: url("../../assets/images/wallpaper-4.png")
     background-size: cover
     &__back-button
         font-size: 3rem
     &__info-time
+        @include flexCenter(column, center, left, 15px)
         &__frequency
-            @include flexCenter(row, left, center, 80px)
+            @include flexCenter(row, left, center, 32px)
             margin-left: 40px
-            margin-top: 30px
+            margin-top: 40px
             &__title
                 @include flexCenter(row, center, center, 8px)
                 .icon
@@ -25,6 +25,7 @@
                     font-weight: $medium-weight
         &__hour
             @include flexCenter(row, center, center, 5px)
+            margin-bottom: 10px
             .ant-input
                 width: 35px
                 font-size: 3rem
@@ -39,7 +40,7 @@
 
     .reminder-title
         @include flexCenter(row, center, center, none)
-        margin-top: 80px
+        margin-top: 50px
         .ant-input
             border-radius: 0
             font-family: $font-source
@@ -70,7 +71,7 @@
                 width: 320px
                 .ant-input
                     color: #324D30
-                    font-size: 1.6rem
+                    font-size: 1.5rem
             &--category
                 margin-top: 20px
                 text-align: center
@@ -81,3 +82,15 @@
 .ant-select-open, .ant-select-focused
     .ant-select-selector
         border-color: $primary-color !important
+.ant-picker-focused
+    border-color: $primary-color !important
+.ant-picker-cell-selected
+    background-color: #4e79491c !important
+.ant-picker-cell-in-view.ant-picker-cell-selected
+    .ant-picker-cell-inner
+        background-color: $primary-text-color !important
+.ant-picker-cell-in-view.ant-picker-cell-today 
+    .ant-picker-cell-inner::before
+        border: 1px solid $primary-text-color !important
+.ant-picker-today-btn
+    color: $primary-color !important

@@ -35,7 +35,7 @@ const ReminderDetail = () => {
               <TbReload />
             </label>
             <h1 className="reminder-detail__info-time__frequency__title--text">
-              Frecuencia
+              Fecha límite
             </h1>
           </span>
           <DatePickerAntD />

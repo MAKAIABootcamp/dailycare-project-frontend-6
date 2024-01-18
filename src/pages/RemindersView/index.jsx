@@ -1,3 +1,7 @@
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { getGoals } from '../../store/goals/goalThunks';
 import ReminderContentCard from '../../components/ReminderContentCard'
 import { FaChevronLeft } from 'react-icons/fa'
 import { FaRegClock } from "react-icons/fa6";
@@ -6,11 +10,13 @@ import ballon from '../../assets/images/ballon.png'
 import balance from '../../assets/images/balance.png'
 import books from '../../assets/images/books.png'
 import './styles.sass'
-import { useNavigate } from 'react-router-dom';
 
 const RemindersView = () => {
 
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { goals } = useSelector( store => store.goal );
+  const { user } = useSelector( store => store.user );
 
   const goTo = () => navigate('/reminders-detail')
   const goTo1 = () => navigate('/home')
@@ -32,6 +38,12 @@ const RemindersView = () => {
       icon: books
     }
   ]
+
+  useEffect(()=> {
+    dispatch(getGoals())
+    console.log(user);
+  },[])
+
   return (
     <main className='reminders-view'>
       <button className='content-detail__back-button m-3' onClick={() => goTo1()}>
@@ -46,8 +58,12 @@ const RemindersView = () => {
       <p className='reminders-view--description-text'>Estos son las que tienes activas hasta el momento</p>
       <div className='reminders-view--container'>
         {
-          categoryInfo.map((reminder,index) => {
-            return <ReminderContentCard key={index} categoryColor={reminder.color} categoryIcon={reminder.icon} />
+          goals.map((goal,index) => {
+            console.log('goal', goal.userToken);
+            console.log('user', user.accessToken);
+            return (
+              goal.userToken === user.accessToken ? <ReminderContentCard key={index} data={goal} /> : null
+            )
           })
         }
       </div>

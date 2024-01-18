@@ -1,24 +1,28 @@
 import { useState } from 'react';
-import { Select, Space } from 'antd';
+import { Select, Space, DatePicker } from 'antd';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+dayjs.extend(customParseFormat);
+const dateFormatList = ['DD/MM/YYYY', 'DD/MM/YY', 'DD-MM-YYYY', 'DD-MM-YY'];
 const { Option } = Select;
 import ballon from '../../assets/images/ballon.png'
 import balance from '../../assets/images/balance.png'
 import './styles.sass'
 
-export const DatePickerAntD = () => {
-  const [type, setType] = useState('time');
-  return (
-    <Space>
-      <Select value={type} onChange={setType}>
-        <Option value="time">Tiempo</Option>
-        <Option value="date">Día</Option>
-        <Option value="week">Semana</Option>
-        <Option value="month">Mes</Option>
-        <Option value="year">Año</Option>
-      </Select>
-    </Space>
-  );
-};
+// export const DatePickerAntD = () => {
+//   const [type, setType] = useState('time');
+//   return (
+//     <Space>
+//       <Select value={type} onChange={setType}>
+//         <Option value="time">Tiempo</Option>
+//         <Option value="date">Día</Option>
+//         <Option value="week">Semana</Option>
+//         <Option value="month">Mes</Option>
+//         <Option value="year">Año</Option>
+//       </Select>
+//     </Space>
+//   );
+// };
 
 export const DatePickerPeriod = () => {
     const [type, setType] = useState('AM');
@@ -31,6 +35,12 @@ export const DatePickerPeriod = () => {
         </Space>
     );
 };
+
+export const DatePickerAntD = () => (
+  <Space direction="vertical" size={12}>
+    <DatePicker defaultValue={dayjs('01/01/2024', 'DD/MM/YYYY')} format={dateFormatList} />
+  </Space>
+);
 
 export const CategoriesPicker = () => {
     const [type, setType] = useState('Selecciona una categoría');
