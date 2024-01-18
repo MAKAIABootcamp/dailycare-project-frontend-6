@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom'
 import { MdOutlineModeEditOutline } from 'react-icons/md'
 import wallpaper from '../../assets/images/wallpaper-profile.png'
 import TotalScore from '../../components/TotalScore'
-import PersonalContent from '../../components/PersonalContent'
 import Footer from '../../components/Footer'
 import profilePicture from '../../assets/images/profile-picture.jpg'
+import PersonalContent from '../../components/PersonalContent'
 import './styles.sass'
 
 
