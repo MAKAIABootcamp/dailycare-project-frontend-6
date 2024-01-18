@@ -12,9 +12,9 @@ import { LuFilter } from 'react-icons/lu'
 import { getData } from '../../store/content/contentThunks'
 import HerramientasGestionEstres from '../../components/HerramientasGestionEstres'
 import { Modal } from 'antd'
-import './styles.scss'
 import { getUserFromCollection } from '../../services/userServices'
 import { setNotificationCheck } from '../../store/users/userSlice'
+import './styles.scss'
 
 const Home = () => {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -264,7 +264,7 @@ const Home = () => {
             </SplideSlide>
             <SplideSlide>
               <div className='card'>
-                <div className='img-container' onClick={() => goTo2()}>
+                <div className='img-container' onClick={() => goToContentDetail()}>
                   <img
                     className='img todayImage'
                     src='src/assets/images/stretch.png'
