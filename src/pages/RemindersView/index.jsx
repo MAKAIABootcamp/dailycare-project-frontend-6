@@ -25,17 +25,17 @@ const RemindersView = () => {
     {
       name: 'Motivación',
       color: 'rgba(251, 227, 191, 0.75)',
-      icon: ballon
+      icon: 'https://res.cloudinary.com/ddsed1j6u/image/upload/v1705642097/ballon_vdoiad.png'
     },
     {
       name: 'Meditación',
       color: '#CED9A7',
-      icon: balance
+      icon: 'https://res.cloudinary.com/ddsed1j6u/image/upload/v1705642097/balance_xqltw1.png'
     },
     {
       name: 'Motivación',
       color: '#FFFFFF',
-      icon: books
+      icon: 'https://res.cloudinary.com/ddsed1j6u/image/upload/v1705642097/books_zwwrxi.png'
     }
   ]
 
@@ -49,20 +49,20 @@ const RemindersView = () => {
       <button className='content-detail__back-button m-3' onClick={() => goTo1()}>
         <FaChevronLeft />
       </button>
-      <span className="reminders-view__title">
-          <label htmlFor="icon-modal-notification" className="icon">
-            <FaRegClock />
-          </label>
-          <h1 className="reminders-view__title--text">Mis metas</h1>
-      </span>
-      <p className='reminders-view--description-text'>Estos son las que tienes activas hasta el momento</p>
+      <div>
+        <span className="reminders-view__title">
+            <label htmlFor="icon-modal-notification" className="icon">
+              <FaRegClock />
+            </label>
+            <h1 className="reminders-view__title--text">Mis metas</h1>
+        </span>
+        <p className='reminders-view--description-text'>Estos son las que tienes activas hasta el momento</p>
+      </div>
       <div className='reminders-view--container'>
         {
-          goals.map((goal,index) => {
-            console.log('goal', goal.userToken);
-            console.log('user', user.accessToken);
+          goals.map((goal, index) => {
             return (
-              goal.userToken === user.accessToken ? <ReminderContentCard key={index} data={goal} /> : null
+              goal.user === user.email ? <ReminderContentCard key={index} data={goal} /> : null
             )
           })
         }

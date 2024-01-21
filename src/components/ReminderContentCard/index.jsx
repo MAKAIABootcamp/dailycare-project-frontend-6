@@ -5,9 +5,9 @@ const ReminderContentCard = (props) => {
   return (
     <section className='reminder-card'>
         <div className="reminder-card__category-icon">
-            {/* <figure style={{backgroundColor: props.categoryColor}}>
-                <img src={props.categoryIcon}/>
-            </figure> */}
+            <figure style={{backgroundColor: props.data.category[1]}}>
+                <img src={props.data.category[2]}/>
+            </figure>
         </div>
         <div className='reminder-card__content'>
             <p className='reminder-card__content--title'>{props.data.title}</p>
@@ -17,8 +17,8 @@ const ReminderContentCard = (props) => {
         <hr className='reminder-card__hr-reminder'/>
         <div className="reminder-card__time-detail">
             <p className="reminder-card__time-detail--time">{props.data.deadlineTime}</p>
-            <p className="reminder-card__time-detail--day-period">AM</p>
-            <p className="reminder-card__time-detail--frequency">{props.data.deadline}</p>
+            <p className="reminder-card__time-detail--day-period">{props.data.deadlinePeriod}</p>
+            <p className="reminder-card__time-detail--frequency">{props.data.deadlineDate}</p>
         </div>
     </section>
     

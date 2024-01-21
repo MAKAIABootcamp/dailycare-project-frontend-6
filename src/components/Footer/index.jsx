@@ -12,7 +12,6 @@ const Footer = () => {
   const { notificationCheck } = useSelector( (store) => store.user )
   return (
     <nav className="footer">
-      {notificationCheck ? <ToastContainer/> : ''}
       <Link to="/">
         <div className="option flex flex-col justify-center items-center gap-1">
           <HomeIcon active={pathname === "/"} />
@@ -43,6 +42,7 @@ const Footer = () => {
           </span>
         </div>
       </Link>
+      <div style={{position: 'absolute'}}>{notificationCheck ? <ToastContainer /> : ''}</div>
     </nav>
   );
 };
