@@ -5,7 +5,6 @@ import { useForm } from 'react-hook-form'
 import { createAnAccountAsync } from '../../store/users/userThunks'
 import { MdOutlineMailOutline, MdOutlineLock  } from 'react-icons/md'
 import { FaRegUser, FaRegHeart  } from 'react-icons/fa6'
-import { TbTargetArrow } from 'react-icons/tb'
 import wallpaper from '../../assets/images/wallpaper-2.png'
 import './styles.sass'
 
@@ -23,7 +22,8 @@ const SignUp = () => {
     register, 
     formState: { errors }, 
     handleSubmit,
-    watch
+    watch, 
+    setValue
   } = useForm()
 
   const handleLabelClick = ( labelId ) => {
@@ -34,6 +34,11 @@ const SignUp = () => {
   }
 
   const selectedGoals = watch('goals', [])
+  const selectedRol = watch('rol')
+
+  const handleRadioClick = ( value ) => {
+    setValue('rol', value)
+  }
 
   const handleRegister = ( registerData ) => {
     const userData = {
@@ -42,8 +47,10 @@ const SignUp = () => {
       gender: registerData.gender,
       category: selectedGoals,
       password: registerData.password,
+      rol: registerData.rol,
       photoURL: '',
-      company: 'Company LLC'
+      company: 'Company LLC',
+      notificationCheck: false
     }
     console.log(userData)
     dispatch(createAnAccountAsync(userData))
@@ -104,6 +111,48 @@ const SignUp = () => {
               />
             </div>
             {errors.email && <p className='text-rose-500' role='alert'>Campo requerido</p>}
+          </div>
+          <div className='form__input-label'>
+            <span 
+              className='form__input-label--label'
+            >
+              Eres
+            </span>
+            <div className='options-group flex justify-center'>
+              <div className='flex items-center justify-center'>
+                <input
+                  defaultChecked
+                  type='radio'
+                  id='rol-admin'
+                  className='radio-input'
+                  value='admin'
+                  { ...register('rol') }
+                />
+                <label
+                  htmlFor='rol-admin'
+                  className={`radio-label ${selectedRol === 'admin' ? 'selected-radio' : ''}`}
+                  onClick={() => handleRadioClick('admin')}
+                >
+                  Admin
+                </label>
+              </div>
+              <div className='flex items-center justify-center'>
+                <input
+                  type='radio'
+                  id='rol-employee'
+                  className='radio-input'
+                  value='employee'
+                  { ...register('rol') }
+                />
+                <label
+                  htmlFor='rol-employee'
+                  className={`radio-label ${selectedRol === 'employee' ? 'selected-radio' : ''}`}
+                  onClick={() => handleRadioClick('employee')}
+                >
+                  Empleado
+                </label>
+              </div>
+            </div>
           </div>
           <div className='form__input-label'>
             <label 
@@ -181,7 +230,7 @@ const SignUp = () => {
                     backgroundColor: labelStates['check-relationships']
                       ? '#4E7949'
                       : '#EDF1DF',
-                }}
+                  }}
                   onClick={() => handleLabelClick('check-relationships')}
                 >
                   Relaciones interpersonales
@@ -258,27 +307,6 @@ const SignUp = () => {
             </div>
             {errors.password && <p className='text-rose-500' role='alert'>La contraseña debe tener al menos 8 caracteres</p>}
           </div>
-          {/* <div className='form__input-label'>
-            <label 
-              htmlFor='password-confirm-input'
-              className='form__input-label--label'
-            >
-              Confirmar contraseña
-            </label>
-            <div className='form__input-label--wrapper'>
-              <label htmlFor='password-confirm-input' className='icon'>
-                <MdOutlineLock />
-              </label>
-              <input 
-                type='password' 
-                placeholder='***********' 
-                id='password-confirm-input' 
-                className='input'
-                { ...register('confirmPassword', { required: true, minLength: 8 }) }
-              />
-            </div>
-            {errors.confirmPassword && <p className='text-rose-500' role='alert'>Campo requerido</p>}
-          </div> */}
           <div className='form__buttons-container'>
             <button
               className='form__buttons-container--sign-in'

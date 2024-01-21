@@ -22,7 +22,10 @@ export const createAnAccountAsync = ( newUser ) => async ( dispatch ) => {
       email: newUser.email,
       gender: newUser.gender,
       category: newUser.category,
-      company: newUser.company
+      company: newUser.company,
+      notificationCheck: newUser.notificationCheck,
+      rol: newUser.rol, 
+      
     })
     console.log(user)
     dispatch(

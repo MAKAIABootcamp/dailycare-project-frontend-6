@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { onAuthStateChanged } from 'firebase/auth'
@@ -25,6 +25,7 @@ import SignInWithPhone from '../pages/SignInWithPhone'
 import UpdateUserProfile from '../pages/UpdateUserProfile'
 import RemindersEdit from '../pages/RemindersEdit'
 import { LoginScreenProvider } from '../context/loginScreenContext'
+import AdminHome from '../pages/AdminHome'
 import 'react-toastify/dist/ReactToastify.css'
 import './AppRoutes.sass'
 
@@ -36,10 +37,10 @@ const AppRoutes = () => {
   const activateMessages = async () => {
     const token = await getToken(messaging, {
       vapidKey: 'BKIg25jAz7puC5EMJqK4qfjMx9FQU_RXrZPxlx20dozytA44Sl1iUREedEWvuofKGJ9ePLLjOMRj7vGQY-6m5CY'
-    }).catch(error => console.log("Error al generar el token"));
+    }).catch(error => console.log('Error al generar el token'));
 
-    if(token) console.log("Token:", token);
-    else console.log("No hay token");
+    if(token) console.log('Token:', token);
+    else console.log('No hay token');
   }
 
   const Msg = (props) => (
@@ -53,7 +54,7 @@ const AppRoutes = () => {
 
   useEffect(() => {
     onMessage(messaging, (message) => {
-      console.log("Mensaje", message)
+      console.log('Mensaje', message)
       toast(<Msg message={message} />)
     })
     onAuthStateChanged(auth, (userLogged) => {
@@ -92,7 +93,7 @@ const AppRoutes = () => {
             <Route path='sign-up' element={<SignUp />} />
           </Route>
           <Route element={<PrivatedRoutes isAuthenticated={isAuthenticated} />}>
-            <Route path='reading-detail' element={<ReadingDetail />} />
+            <Route path='reading-detail/:id' element={<ReadingDetail />} />
             <Route path='video-detail' element={<VideoDetail />} />
             <Route path='explore-activity' element={<ExploreActivity />} />
             <Route path='user-profile' element={<UserProfile />} />
@@ -100,6 +101,7 @@ const AppRoutes = () => {
             <Route path='reminders-detail' element={<ReminderDetail />} />
             <Route path='reminders-edit' element={<RemindersEdit />} />
             <Route path='activity' element={<Activity />} />
+            <Route path='admin-home' element={<AdminHome />} />
             <Route path='admin-profile' element={<AdminProfile />} />
             <Route path='edit-profile' element={<UpdateUserProfile />} />
             <Route path='home' element={<Home />} />
