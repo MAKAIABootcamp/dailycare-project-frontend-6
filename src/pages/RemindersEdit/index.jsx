@@ -9,11 +9,6 @@ import { TbReload } from "react-icons/tb";
 import { TbClockPlus } from "react-icons/tb";
 import { BiCategoryAlt } from "react-icons/bi";
 import { Dropdown, Space } from 'antd';
-import {
-  CategoriesPicker,
-  DatePickerAntD,
-  DatePickerPeriod,
-} from "../../components/DatePicker";
 import wallpaper from "../../assets/images/wallpaper-3.png";
 import "./styles.sass";
 
