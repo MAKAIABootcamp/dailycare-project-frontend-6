@@ -25,7 +25,7 @@ const AdminHome = () => {
       <div className="container">
         <div>
           <section className='container__picture-container'>
-            <img src={user.photoURL} alt='profile picture' />
+            <img src={user.photoURL} alt='container__img' />
           </section>
           <Link 
             className='flex gap-3 items-center edit-profile'
@@ -50,6 +50,14 @@ const AdminHome = () => {
                     <p className='personal-content-card__description--text'>{item.rol}</p>
                 </div>
             </article>
+            <article className='personal-content-card'>
+              <img className='personal-content-card__image' src={face} alt="" />
+              <div className='personal-content-card__bar'></div>
+              <div className='personal-content-card__description'>
+                <h3 className='personal-content-card__description--title'>Escucha activa</h3>
+                <p className='personal-content-card__description--text'>Practica la escucha activa, intenta escuchar, y luego repetir y resumir.</p>
+              </div>
+            </article>
           </section>
         )}
       </div>
@@ -58,3 +66,4 @@ const AdminHome = () => {
 }
 
 export default AdminHome
+
