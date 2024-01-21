@@ -77,7 +77,7 @@ const EditProfileForm = () => {
         <div className='picture-wrapper'>
           <div className='profile-picture'>
             <figure className='profile-picture__image-container'>
-              <img className='current-picture' src={imagePreview} alt='profile photo' />
+              <img className='current-picture' src={user.photoURL ? user.photoURL : imagePreview} alt='profile photo' />
             </figure>
             <div className='profile-picture__input-container'>
               <input 
