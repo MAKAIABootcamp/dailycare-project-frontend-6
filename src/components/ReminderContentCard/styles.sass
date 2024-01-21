@@ -23,11 +23,15 @@ body
             border-radius: 50%
             height: 100%
     &__content
-        max-width: 140px
+        width: 130px
+        height: 80px
         color: $primary-text-color
+        overflow: hidden
+        text-overflow: ellipsis
         &--title
             font-size: 1.4rem
             font-weight: $medium-weight
+            margin-bottom: 5px
         &--description
             font-size: 0.8rem
             font-weight: $medium-weight
@@ -44,7 +48,7 @@ body
         color: $secondary-color
         font-weight: $medium-weight
         &--time
-            font-size: 2rem
+            font-size: 1.8rem
             margin-bottom: -3px
         &--day-period, &--frequency
             font-size: 1.3rem
