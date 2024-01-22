@@ -7,6 +7,7 @@
     height: 100%
     background-color: $light-color
     background-size: cover
+    position: relative
     &__back-button
         margin: 10px
         font-size: 3rem
@@ -78,6 +79,33 @@
                 text-align: center
                 @include flexCenter(row, center, center, 0)
 
+    .btn-create-goal
+        display: flex
+        justify-self: center
+        position: fixed
+        z-index: 10
+        bottom: 90px
+        height: 30px
+        background-color: rgba(126, 161, 119, 0.87)
+        color: $light-color
+        border-radius: 8px
+        cursor: pointer
+
+.select-content
+    display: flex
+    justify-content: space-between
+    align-items: center
+    &--color
+        width: 18px
+        height: 18px
+        border-radius: 50%
+    &--icon
+        width: 15px
+        height: 15px
+        img
+            width: 100%
+.ant-space-item
+    width: 100% !important
 .ant-select-item-option-selected
     background-color: #4e79491c !important
 .ant-select-open, .ant-select-focused

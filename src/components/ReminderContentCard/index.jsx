@@ -1,9 +1,19 @@
+import { useNavigate } from 'react-router'
+import { useDispatch } from 'react-redux'
+import { setGoalById } from '../../store/goals/goalSlice'
 import './styles.sass'
 
 const ReminderContentCard = (props) => {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const handleSelectGoal = () => {
+        dispatch(setGoalById(props.data))
+        navigate(`/reminders-edit/${props.data.id}`)
+    }
 
   return (
-    <section className='reminder-card'>
+    <section className='reminder-card' onClick={handleSelectGoal}>
         <div className="reminder-card__category-icon">
             <figure style={{backgroundColor: props.data.category[1]}}>
                 <img src={props.data.category[2]}/>
