@@ -99,7 +99,7 @@ const AppRoutes = () => {
             <Route path='user-profile' element={<UserProfile />} />
             <Route path='reminders-view' element={<RemindersView />} />
             <Route path='reminders-detail' element={<ReminderDetail />} />
-            <Route path='reminders-edit' element={<RemindersEdit />} />
+            <Route path='reminders-edit/:id' element={<RemindersEdit />} />
             <Route path='activity' element={<Activity />} />
             <Route path='admin-home' element={<AdminHome />} />
             <Route path='admin-profile' element={<AdminProfile />} />
