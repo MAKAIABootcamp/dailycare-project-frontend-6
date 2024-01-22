@@ -14,6 +14,7 @@ import { TbReload } from "react-icons/tb";
 import { TbClockPlus } from "react-icons/tb";
 import { BiCategoryAlt } from "react-icons/bi";
 import wallpaper from "../../assets/images/wallpaper-4.png";
+import Swal from 'sweetalert2'
 import "./styles.sass";
 
 const { TextArea } = Input;
@@ -32,9 +33,10 @@ const ReminderDetail = () => {
   const [category, setCategory] = useState('Selecciona una opción')
 
   const categoryOptions = {
-    pensamientoCreativo: ["Pensamiento creativo", "rgba(251, 227, 191, 0.75)", "https://res.cloudinary.com/ddsed1j6u/image/upload/v1705642097/ballon_vdoiad.png"],
-    aliviarEstres: ["Aliviar estrés", "#CED9A7", "https://res.cloudinary.com/ddsed1j6u/image/upload/v1705642097/balance_xqltw1.png"],
-    estiramientos: ["Estiramientos", "#CFE8FF", "https://res.cloudinary.com/ddsed1j6u/image/upload/v1705821879/extension_qndszt.png"]
+    pensamientoCreativo: ["Pensamiento creativo", "rgba(251, 227, 191, 0.75)", "https://res.cloudinary.com/dhhyc88td/image/upload/v1705888498/pensamiento_creativo_mrfo9o.png"],
+    aliviarEstres: ["Aliviar estrés", "#CED9A7", "https://res.cloudinary.com/dhhyc88td/image/upload/v1705888016/el-alivio-del-estres_glh8vn.png"],
+    estiramientos: ["Estiramientos", "#CFE8FF", "https://res.cloudinary.com/dhhyc88td/image/upload/v1705887990/Estiramiento_2_dnbxsh.png"],
+    concentracionYMemoria: ["Concentración y memoria", "#7d64a7", "https://res.cloudinary.com/dhhyc88td/image/upload/v1705888078/Concentraci%C3%B3n_wtbkev.png"]
   }
 
   const handleSubmit = async (e) => {
@@ -50,8 +52,8 @@ const ReminderDetail = () => {
       case "Estiramientos":
           categoryData = categoryOptions.estiramientos
         break;
-      case value:
-        
+      case "Concentración y memoria":
+          categoryData = categoryOptions.concentracionYMemoria
         break;
     }
     const time = `${hour}:${minutes}`
@@ -67,18 +69,12 @@ const ReminderDetail = () => {
     }
     console.log(goalData)
     dispatch(createGoalAsync(goalData))
+    Swal.fire({
+      title: '¡Bien Hecho!',
+      text: 'Has creado tu meta exitosamente',
+      icon: 'success'
+    })
   }
-  // const onSelectDate = ( _ , dateStr) => {
-  //   setDate(dateStr)
-  // }
-
-  // const onSelectPeriod = ( period ) => {
-  //   setDate(period)
-  // }
-
-  // const onSelectCategory = ( category ) => {
-  //   setCategory(category)
-  // }
 
   const goTo = () => navigate('/reminders-view')
 
@@ -88,7 +84,6 @@ const ReminderDetail = () => {
         <FaChevronLeft />
       </button>
       <form
-        // onSubmit={handleSubmit(handleRegister)}
       >
         <div className="reminder-title">
           <Input placeholder="Añade un título" bordered={false} onChange={(e)=>setTitle(e.target.value)} />
@@ -176,7 +171,7 @@ const ReminderDetail = () => {
                                 <span className='select-content--color' style={{backgroundColor: '#FBE3BF'}}></span>
                                 <p>Pensamiento creativo</p>
                                 <span className='select-content--icon'>
-                                    <img src={'https://res.cloudinary.com/ddsed1j6u/image/upload/v1705642097/ballon_vdoiad.png'} />
+                                    <img src={'https://res.cloudinary.com/dhhyc88td/image/upload/v1705888498/pensamiento_creativo_mrfo9o.png'} />
                                 </span>
                             </div>
                         </Option>
@@ -185,7 +180,7 @@ const ReminderDetail = () => {
                                 <span className='select-content--color' style={{backgroundColor: '#CED9A7'}}></span>
                                 <p>Aliviar estrés</p>
                                 <span className='select-content--icon'>
-                                    <img src={'https://res.cloudinary.com/ddsed1j6u/image/upload/v1705642097/balance_xqltw1.png'} />
+                                    <img src={'https://res.cloudinary.com/dhhyc88td/image/upload/v1705888016/el-alivio-del-estres_glh8vn.png'} />
                                 </span>
                             </div>
                         </Option>
@@ -194,14 +189,23 @@ const ReminderDetail = () => {
                                 <span className='select-content--color' style={{backgroundColor: '#CFE8FF'}}></span>
                                 <p>Estiramientos</p>
                                 <span className='select-content--icon'>
-                                    <img src={'https://res.cloudinary.com/ddsed1j6u/image/upload/v1705821879/extension_qndszt.png'} />
+                                    <img src={'https://res.cloudinary.com/dhhyc88td/image/upload/v1705887990/Estiramiento_2_dnbxsh.png '} />
+                                </span>
+                            </div>
+                        </Option>
+                        <Option value="Concentración y memoria">
+                            <div className='select-content'>
+                                <span className='select-content--color' style={{backgroundColor: '#7d64a7'}}></span>
+                                <p>Concentración y memoria</p>
+                                <span className='select-content--icon'>
+                                    <img src={'https://res.cloudinary.com/dhhyc88td/image/upload/v1705888078/Concentraci%C3%B3n_wtbkev.png'} />
                                 </span>
                             </div>
                         </Option>
                     </Select>
                 </Space>
               </div>
-              <button onClick={(e)=>handleSubmit(e)}> Crear </button>
+              <button className="buttons-container__main-btns--btn-styles btn-create-goal" onClick={(e)=>handleSubmit(e)}> Añadir </button>
             </section>
           </section>
         </div>
