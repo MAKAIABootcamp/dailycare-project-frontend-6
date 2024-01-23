@@ -28,6 +28,7 @@ import { LoginScreenProvider } from '../context/loginScreenContext'
 import AdminHome from '../pages/AdminHome'
 import 'react-toastify/dist/ReactToastify.css'
 import './AppRoutes.sass'
+import { Skeleton } from 'antd'
 
 const AppRoutes = () => {
   const { isAuthenticated, user, notificationCheck } = useSelector((store) => store.user)
@@ -78,7 +79,12 @@ const AppRoutes = () => {
   }, [dispatch, user])
 
   if (checking) {
-    return <div>Cargando...</div>
+    return (<>
+      <Skeleton />
+      <Skeleton />
+      <Skeleton />
+      <Skeleton />
+    </>)
   }
 
   return (
