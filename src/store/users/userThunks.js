@@ -71,7 +71,7 @@ export const loginWithEmailAndPassword = ({ email, password }) => async ( dispat
     console.log(userLogged)
     if (userLogged) {
       dispatch(setIsAuthenticated(true))
-      dispatch(setUser({ email: userLogged.email, id: userLogged.uid, name: userLogged.name, photoURL: userLogged.photoURL, accessToken: userLogged.accessToken }))
+      dispatch(setUser({ email: userLogged.email, id: userLogged.uid, name: userLogged.name, photoURL: userLogged.photoURL, accessToken: userLogged.accessToken, rol: userLogged.rol }))
       dispatch(setError(false))
     } else {
       dispatch(setIsAuthenticated(false))
