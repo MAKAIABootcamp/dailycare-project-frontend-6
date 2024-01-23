@@ -3,6 +3,9 @@ import { useForm } from 'react-hook-form'
 import { auth } from '../../firebase/firebaseConfig'
 import { RecaptchaVerifier, signInWithPhoneNumber } from 'firebase/auth'
 import Swal from 'sweetalert2'
+import wallpaper from '../../assets/images/wallpaper-1.png'
+import { MdLocalPhone } from 'react-icons/md'
+import './styles.sass' 
 
 function SignInWithPhone() {
   const { register, handleSubmit } = useForm()
@@ -50,22 +53,44 @@ function SignInWithPhone() {
   }
 
   return (
-    <main>
-      <h1 className='text-3xl font-bold underline my-3'>Inicio sesion con numero celular</h1>
-      <form
-        className='grid justify-start'  
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <input  
-          className='border border-indigo-300 rounded-md my-3 h-10 text-indigo-700 px-5' 
-          type='number' 
-          placeholder='ingrese su número celular' 
-          { ...register('phone') }
-        />
-        <button
-            className='bg-green-400 text-white h-10 rounded-md my-5 p-5 flex place-items-center flex gap-2'
-        >Enviar SMS</button>
-      </form>
+    <main className='sign-in'>
+      <section className='sign-in__wallpaper-container'>
+        <img src={wallpaper} alt='background image' />
+      </section>
+      <section className='sign-in__form-wrapper form-wrapper-phone'>
+        <h2 className='sign-in__form-wrapper--title'>Inicio sesión con su número celular</h2>
+        <form
+          className='sign-in__form-wrapper--form form'
+          onSubmit={handleSubmit(onSubmit)}
+        >
+          <div className='form__input-label'>
+            <label 
+              htmlFor='phone-input'
+              className='form__input-label--label'
+            >
+              Ingrese su número de celular</label>
+            <div className='form__input-label--wrapper'>
+              <label htmlFor='phone-input' className='icon'>
+                <MdLocalPhone />
+              </label>
+              <input
+                id='phone-input'
+                className='input'
+                type='number'
+                placeholder='3101234422'
+                { ...register('phone') }
+              />
+            </div>
+          </div>
+          <div className='form__buttons-container'>
+            <button
+              className='form__buttons-container--sign-in'
+            >
+              Enviar SMS
+            </button>
+          </div>
+        </form>
+      </section>
       <div id='recaptcha-container'></div>
     </main>
   )

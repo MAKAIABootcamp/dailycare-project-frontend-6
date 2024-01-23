@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const PrivatedRoutes = ({
   isAuthenticated,
-  redirectPath = "/welcome",
+  redirectPath = "/sign-in",
   children,
 }) => {
   if (!isAuthenticated) return <Navigate to={redirectPath} />;
