@@ -50,9 +50,9 @@ const SignUp = () => {
       rol: registerData.rol,
       photoURL: '',
       company: 'Company LLC',
-      notificationCheck: false
+      notificationCheck: false,
+      alertsCheck: false
     }
-    console.log(userData)
     dispatch(createAnAccountAsync(userData))
   }
 
