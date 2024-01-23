@@ -181,111 +181,115 @@ const SignUp = () => {
               </select>
             </div>
           </div>
-          <div className='form__input-label'>
-            <span 
-              className='form__input-label--label'
-            >
-              Metas de bienestar
-            </span>
-            <div className='options-group'>
-              <div className='flex items-center justify-center'>
-                <input
-                  type='checkbox'
-                  id='check-relieve-stress'
-                  className='check-input'
-                  value='aliviar el estres'
-                  { ...register('goals') }
-                />
-                <label
-                  htmlFor='check-relieve-stress'
-                  className='check-label'
-                  style={{
-                    color: labelStates['check-relieve-stress']
-                      ? '#FFFFFF'
-                      : '#3F615A',
-                    backgroundColor: labelStates['check-relieve-stress']
+          {
+            selectedRol === 'employee'
+            ? (<div className='form__input-label'>
+              <span 
+                className='form__input-label--label'
+              >
+                Metas de bienestar
+              </span>
+              <div className='options-group'>
+                <div className='flex items-center justify-center'>
+                  <input
+                    type='checkbox'
+                    id='check-relieve-stress'
+                    className='check-input'
+                    value='aliviar el estres'
+                    { ...register('goals') }
+                  />
+                  <label
+                    htmlFor='check-relieve-stress'
+                    className='check-label'
+                    style={{
+                      color: labelStates['check-relieve-stress']
+                        ? '#FFFFFF'
+                        : '#3F615A',
+                      backgroundColor: labelStates['check-relieve-stress']
+                        ? '#4E7949'
+                        : '#EDF1DF',
+                    }}
+                    onClick={() => handleLabelClick('check-relieve-stress')}
+                  >
+                    Aliviar el estrés
+                  </label>
+                </div>
+                <div className='flex items-center justify-center'>
+                  <input
+                    type='checkbox'
+                    id='check-relationships'
+                    className='check-input'
+                    value='relaciones interpersonales'
+                    { ...register('goals') }
+                  />
+                  <label
+                    htmlFor='check-relationships'
+                    className='check-label'
+                    style={{
+                      color: labelStates['check-relationships']
+                        ? '#FFFFFF'
+                        : '#3F615A',
+                      backgroundColor: labelStates['check-relationships']
+                        ? '#4E7949'
+                        : '#EDF1DF',
+                    }}
+                    onClick={() => handleLabelClick('check-relationships')}
+                  >
+                    Relaciones interpersonales
+                  </label>
+                </div>
+                <div className='flex items-center justify-center'>
+                  <input
+                    type='checkbox'
+                    id='check-stretching'
+                    className='check-input'
+                    value='estiramientos'
+                    { ...register('goals') }
+                  />
+                  <label
+                    htmlFor='check-stretching'
+                    className='check-label'
+                    style={{
+                      color: labelStates['check-stretching']
+                        ? '#FFFFFF'
+                        : '#3F615A',
+                      backgroundColor: labelStates['check-stretching']
                       ? '#4E7949'
                       : '#EDF1DF',
-                  }}
-                  onClick={() => handleLabelClick('check-relieve-stress')}
-                >
-                  Aliviar el estrés
-                </label>
+                    }}
+                    onClick={() => handleLabelClick('check-stretching')}
+                  >
+                    Estiramientos
+                  </label>
+                </div>
+                <div className='flex items-center justify-center'>
+                  <input
+                    type='checkbox'
+                    id='check-creative'
+                    className='check-input'
+                    value='pensamiento creativo'
+                    { ...register('goals') }
+                  />
+                  <label
+                    htmlFor='check-creative'
+                    className='check-label'
+                    style={{
+                      color: labelStates['check-creative']
+                        ? '#FFFFFF'
+                        : '#3F615A',
+                      backgroundColor: labelStates['check-creative']
+                        ? '#4E7949'
+                        : '#EDF1DF',
+                    }}
+                    onClick={() => handleLabelClick('check-creative')}
+                  >
+                    Pensamiento creativo
+                  </label>
+                </div>
               </div>
-              <div className='flex items-center justify-center'>
-                <input
-                  type='checkbox'
-                  id='check-relationships'
-                  className='check-input'
-                  value='relaciones interpersonales'
-                  { ...register('goals') }
-                />
-                <label
-                  htmlFor='check-relationships'
-                  className='check-label'
-                  style={{
-                    color: labelStates['check-relationships']
-                      ? '#FFFFFF'
-                      : '#3F615A',
-                    backgroundColor: labelStates['check-relationships']
-                      ? '#4E7949'
-                      : '#EDF1DF',
-                  }}
-                  onClick={() => handleLabelClick('check-relationships')}
-                >
-                  Relaciones interpersonales
-                </label>
-              </div>
-              <div className='flex items-center justify-center'>
-                <input
-                  type='checkbox'
-                  id='check-stretching'
-                  className='check-input'
-                  value='estiramientos'
-                  { ...register('goals') }
-                />
-                <label
-                  htmlFor='check-stretching'
-                  className='check-label'
-                  style={{
-                    color: labelStates['check-stretching']
-                      ? '#FFFFFF'
-                      : '#3F615A',
-                    backgroundColor: labelStates['check-stretching']
-                    ? '#4E7949'
-                    : '#EDF1DF',
-                  }}
-                  onClick={() => handleLabelClick('check-stretching')}
-                >
-                  Estiramientos
-                </label>
-              </div>
-              <div className='flex items-center justify-center'>
-                <input
-                  type='checkbox'
-                  id='check-creative'
-                  className='check-input'
-                  value='pensamiento creativo'
-                  { ...register('goals') }
-                />
-                <label
-                  htmlFor='check-creative'
-                  className='check-label'
-                  style={{
-                    color: labelStates['check-creative']
-                      ? '#FFFFFF'
-                      : '#3F615A',
-                    backgroundColor: labelStates['check-creative']
-                      ? '#4E7949'
-                      : '#EDF1DF',
-                  }}
-                  onClick={() => handleLabelClick('check-creative')}
-                >
-                  Pensamiento creativo
-                </label>
-              </div>
-            </div>
-          </div>
+              </div>)
+            : <></>
+          }
           <div className='form__input-label'>
             <label 
               htmlFor='password-input'

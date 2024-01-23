@@ -95,7 +95,7 @@ const AppRoutes = () => {
           <Route element={<PrivatedRoutes isAuthenticated={isAuthenticated} />}>
             <Route path='reading-detail/:id' element={<ReadingDetail />} />
             <Route path='video-detail' element={<VideoDetail />} />
-            <Route path='explore-activity' element={<ExploreActivity />} />
+            <Route path='explore-activity/:category' element={<ExploreActivity />} />
             <Route path='user-profile' element={<UserProfile />} />
             <Route path='reminders-view' element={<RemindersView />} />
             <Route path='reminders-detail' element={<ReminderDetail />} />

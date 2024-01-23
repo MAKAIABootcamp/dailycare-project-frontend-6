@@ -3,6 +3,7 @@
 
 
 .main-explore
+  width: $mobile-width
   background: $light-color
   display: flex
   flex-direction: column
@@ -43,8 +44,6 @@
     text-align: left
     margin-top: 34px
     margin-left: 0px
-    
-
 
   &__activity__A
     width: 320px
@@ -56,30 +55,21 @@
     margin-top: 10px
 
     &__nivel1
-      display: flex
-      gap: 20px
-     
-
-    
-            
+      display: grid
+      grid-template-columns: repeat(3, 110px)
       &__X
         display: flex
         gap: 20px
         flex-direction: column
         align-items: center
         border-radius: 9px
-        
         img
-           transition: transform 0.3s ease
+          transition: transform 0.3s ease
         &:hover img
           transform: scale(1.3)
           box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25)
           border-radius: 9px
           border: 1px solid #F2F2F2
-          
-
-       
-        
         .line1
           width: 70px
           height: 70px
@@ -90,8 +80,6 @@
           display: flex
           margin-top: 0px
           
-          
-        
         .line3
           margin-top: 0px
           font-size: 12px
@@ -102,34 +90,39 @@
           line-height: 139.176% /* 16.701px */
           cursor: pointer
 
-        
-      
-          
-
-
 
   &__activity__B
-    display: flex
-    gap: 10px
-    align-items: flex-start
+    // display: flex
+    // gap: 10px
+    // align-items: flex-start
+    width: 100%
+    padding: 0 20px
 
     &__nivel2
+      width: 330px
       display: flex
       gap: 20px
-      
+      overflow-x: scroll
+      &::-webkit-scrollbar
+        width: 5px
+        height: 8px
+        background-color: $light-color
+        border-radius: 10px
+      &::-webkit-scrollbar-thumb
+        background-color: rgba($tertiary-color, 0.2)
+        border-radius: 10px
       
       &__Y
         display: flex
         gap: 20px
         flex-direction: column
         align-items: center
-        width: 153px
-        height: 125px
+        min-width: 170px
         border-radius: 8px
         margin-top: 8px
         cursor: pointer
         &--line4
-          widht: 153px
+          widht: 170px
           height: 124px
           cursor: pointer
         &--line5
@@ -139,13 +132,8 @@
           color: $primary-text-color
           font-family: $font-source
           font-weight: $light-weight
-          line-height: 139.176% /* 16.701px */
+          line-height: 16px
           cursor: pointer
-
-
-
-
-
 
   &__activity__C
     position: relative
@@ -173,7 +161,7 @@
             left: 0
             width: 100%
             height: 100%
-            background: linear-gradient(180deg, rgba(255, 251, 251, 0.27) 0%, rgba(149, 173, 144, 0.42) 59.9%, rgba(78, 121, 73, 0.70) 100%, rgba(205, 226, 128, 0.22) 100%)
+            // background: linear-gradient(180deg, rgba(255, 251, 251, 0.27) 0%, rgba(149, 173, 144, 0.42) 59.9%, rgba(78, 121, 73, 0.70) 100%, rgba(205, 226, 128, 0.22) 100%)
             opacity: 1
             
         &--line7
@@ -186,4 +174,23 @@
           font-weight: $bold-weight
           line-height: 87.741% /* 14.039px */
           letter-spacing: 1.44px
-          
+
+.suggested-image
+  width: 70px
+  height: 70px
+  object-fit: cover
+  border-radius: 50%
+
+.basic-card-image
+  width: 170px
+  height: 124px
+  object-fit: cover
+
+.playlist-image-container
+  width: 323px
+  height: 157px
+  img
+    width: 100%
+    height: 100%
+    object-fit: cover
+    border-radius: 20px

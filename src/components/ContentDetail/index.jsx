@@ -40,10 +40,9 @@ const ContentDetail = ({ children, details }) => {
           </div>
         </div>
       </section>
+      <button className='content-detail__check-activity'>Completar</button>
     </section>
-    <div>
-    </div>
-    </>)
+  </>)
 }
 
 export default ContentDetail
