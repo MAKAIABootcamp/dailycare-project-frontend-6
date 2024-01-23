@@ -34,7 +34,7 @@ const PersonalContent = () => {
             onClick={() => setCategory('aliviar')}
           >
             <img className='thumbnail' src={comunication} alt='thumbnail picture' />
-            <span>Aliviar el estrés</span>
+            <span>Aliviar estrés</span>
           </li>
           <li 
             className='item'
