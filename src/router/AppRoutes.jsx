@@ -86,7 +86,7 @@ const AppRoutes = () => {
       <Routes>
         <Route path='/'>
           <Route element={<PublicRoutes isAuthenticated={isAuthenticated} />}>
-            <Route path='welcome' element={<Welcome />} />
+            {/* <Route path='welcome' element={<Welcome />} /> */}
             <Route path='sign-in' element={<SignIn />} />
             <Route path='sign-in-phone' element={<SignInWithPhone />} />
             <Route path='code-form' element={<CodeForm />} />
