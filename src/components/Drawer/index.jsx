@@ -24,7 +24,7 @@ const DrawerAntD = () => {
   };
   const Logout = () => {
     dispatch(logoutAsync());
-    navigate("/welcome");
+    navigate("/sign-in");
     setLoginScreen(true);
   };
   return (
