@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
+import { Tooltip } from 'antd'
 import './styles.sass'
 
 
@@ -15,7 +16,7 @@ const HerramientasGestionEstres = ({ details }) => {
   }
   return (
     <div 
-      className='tools-card'
+      className='tools-card cursor-pointer'
       onClick={() => goToContentDetail(details.id)}
     >
       <div className='tools-card__image-container'>
@@ -26,8 +27,14 @@ const HerramientasGestionEstres = ({ details }) => {
         />
       </div>
       <div className='tools-card__card-text'>
-        <p className='tools-card__card-text--text-time'>{details.length} minutos</p>
-        <p className='tools-card__card-text--text-title'>{details.title}</p>
+        <p className='tools-card__card-text--text-time'>{details.lenght} minutos</p>
+        <Tooltip 
+          title={details.title}
+          color='#f99c46'
+          className='tools-card__card-text--text-title'
+        >
+          <span>{details.title}</span>
+        </Tooltip>
         <p className='text-subtitle'>{details.categories}</p>
       </div>
     </div>
