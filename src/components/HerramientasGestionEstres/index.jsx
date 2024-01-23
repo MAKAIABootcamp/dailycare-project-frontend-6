@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
+import './styles.sass'
 
 
 const HerramientasGestionEstres = ({ details }) => {
@@ -14,19 +15,19 @@ const HerramientasGestionEstres = ({ details }) => {
   }
   return (
     <div 
-      className='card simpleAltcard cursor-pointer'
+      className='tools-card'
       onClick={() => goToContentDetail(details.id)}
     >
-      <div className='img-container'>
+      <div className='tools-card__image-container'>
         <img
-          className='img todayImage'
+          className='tools-card__image-container--image'
           src={details.cardImage}
           alt='Image 1'
         />
       </div>
-      <div className='card-text'>
-        <p className='text-time'>{details.length} minutos</p>
-        <p className='text-title'>{details.title}</p>
+      <div className='tools-card__card-text'>
+        <p className='tools-card__card-text--text-time'>{details.length} minutos</p>
+        <p className='tools-card__card-text--text-title'>{details.title}</p>
         <p className='text-subtitle'>{details.categories}</p>
       </div>
     </div>

@@ -19,6 +19,7 @@ import DailySessions from '../../components/DailySessions'
 import ActiveBreaks from '../../components/ActiveBreaks'
 import DailyExercises from '../../components/DailyExercises'
 
+
 const Home = () => {
   const { setLoginScreen, loginScreen } = useIsLoginScreen()
   const { user } = useSelector((store) => store.user)
@@ -28,6 +29,7 @@ const Home = () => {
   const [dailySessionsCategory, setDailySessionsCategory] = useState('')
   const [activeBreaksCategory, setActiveBreaksCategory] = useState('')
   const [dailyExercisesCategory, setDailyExercisesCategory] = useState('')
+  
 
   const navigate = useNavigate()
 
@@ -49,6 +51,7 @@ const Home = () => {
   }, [])
 
   
+  
   useEffect(() => {
     const cargaSimulada = setTimeout(() => {
       setLoginScreen(false)
@@ -60,10 +63,7 @@ const Home = () => {
       {loginScreen && <LoadingScreen />}
       <main className='homeMain'>
         <DrawerAntD />
-        <DailySessions 
-          onFilter={handleDailySessionsFilter} 
-          category={dailySessionsCategory} 
-        />
+        <DailySessions />
         <Divider />
         <ActiveBreaks 
           onFilter={handleActiveBreaksFilter} 
