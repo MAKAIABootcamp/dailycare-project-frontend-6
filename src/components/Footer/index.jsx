@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 import HomeIcon from "../../assets/icons/HomeIcon";
 import ActivityIcon from "../../assets/icons/ActivityIcon";
 import ProfileIcon from "../../assets/icons/ProfileIcon";
-
+import { ToastContainer } from "react-toastify";
 import "./styles.sass";
-import { useLocation } from "react-router-dom";
 
 const Footer = () => {
   const { pathname } = useLocation();
+  const { notificationCheck } = useSelector( (store) => store.user )
   return (
     <nav className="footer">
       <Link to="/">
@@ -40,6 +42,7 @@ const Footer = () => {
           </span>
         </div>
       </Link>
+      <div style={{position: 'absolute'}}>{notificationCheck ? <ToastContainer /> : ''}</div>
     </nav>
   );
 };

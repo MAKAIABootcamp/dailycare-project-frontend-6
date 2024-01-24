@@ -1,15 +1,17 @@
+import { useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { MdOutlineModeEditOutline } from 'react-icons/md'
 import wallpaper from '../../assets/images/wallpaper-profile.png'
 import TotalScore from '../../components/TotalScore'
 import Footer from '../../components/Footer'
+import profilePicture from '../../assets/images/profile-picture.jpg'
 import PersonalContent from '../../components/PersonalContent'
-import { useSelector } from 'react-redux'
 import './styles.sass'
 
 
 const UserProfile = () => {
   const { user } = useSelector((store) => store.user)
+  console.log(user)
 
   return (
     <main className='sign-in user-profile'>
@@ -18,7 +20,7 @@ const UserProfile = () => {
       </section>
       <div>
         <section className='user-profile__picture-container'>
-          <img src={user.photoURL} alt='profile picture' />
+          <img src={user.photoURL ? user.photoURL : profilePicture} alt='profile picture' />
         </section>
         <Link 
           className='flex gap-3 items-center edit-profile'

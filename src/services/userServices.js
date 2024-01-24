@@ -58,11 +58,23 @@ export const loginFromFirestore = async ( userData ) => {
   }
 }
 
-export const updateUserFromCollection = async ({id, name, photoURL}) => {
+export const updateUserFromCollection = async ({id, name, photoURL, gender, category, email}) => {
   try {
     const userRef = doc(firestore, collectionName, id);
-    setDoc(userRef, {name, photoURL}, { merge: true })
+    setDoc(userRef, {name, photoURL, gender, category, email}, { merge: true })
     return true;
+  } catch (error) {
+    console.error(error);
+    return null
+  }
+}
+
+export const updateNotificationCheck = async ( id, state ) => {
+  try {
+    const userRef = doc(firestore, collectionName, id);
+    await setDoc(userRef, {notificationCheck: state}, { merge: true })
+    return true;
+    
   } catch (error) {
     console.error(error);
     return null

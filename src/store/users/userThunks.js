@@ -22,7 +22,10 @@ export const createAnAccountAsync = ( newUser ) => async ( dispatch ) => {
       email: newUser.email,
       gender: newUser.gender,
       category: newUser.category,
-      company: newUser.company
+      company: newUser.company,
+      notificationCheck: newUser.notificationCheck,
+      rol: newUser.rol, 
+      
     })
     console.log(user)
     dispatch(
@@ -68,7 +71,7 @@ export const loginWithEmailAndPassword = ({ email, password }) => async ( dispat
     console.log(userLogged)
     if (userLogged) {
       dispatch(setIsAuthenticated(true))
-      dispatch(setUser({ email: userLogged.email, id: userLogged.uid, name: userLogged.name, photoURL: userLogged.photoURL, accessToken: userLogged.accessToken }))
+      dispatch(setUser({ email: userLogged.email, id: userLogged.uid, name: userLogged.name, photoURL: userLogged.photoURL, accessToken: userLogged.accessToken, rol: userLogged.rol }))
       dispatch(setError(false))
     } else {
       dispatch(setIsAuthenticated(false))
@@ -116,13 +119,13 @@ export const loginWithPhoneCodeAsync = ( code ) => async ( dispatch ) => {
   }
 }
 
-export const updateProfileAsync = ({name, photoURL, id})=> async(dispatch)=>{
+export const updateProfileAsync = ({name, photoURL, id, gender, category, email})=> async(dispatch)=>{
   try {
     await updateProfile(auth.currentUser, {
-      displayName: name, photoURL: photoURL, 
+      displayName: name, photoURL: photoURL
     });
-    await updateUserFromCollection({name, photoURL, id});
-    dispatch(updateUser({name, photoURL}))
+    await updateUserFromCollection({name, photoURL, id, gender, category, email});
+    dispatch(updateUser({name, photoURL, gender, category, email}))
   } catch (error) {
     console.error(error);
     dispatch(

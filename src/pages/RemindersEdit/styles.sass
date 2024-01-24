@@ -1,0 +1,137 @@
+@use '../../styles/_variables' as *
+@use '../../styles/_mixins' as *
+// @import url('../../assets/images/wallpaper-4.png')
+
+.reminder-edit
+    width: 100%
+    height: 100%
+    background: url('../assets/images/wallpaper-4.png')  // Ruta correcta a tu imagen
+    background-size: cover
+    background-repeat: no-repeat
+    background-position: center
+    &__fi-more
+        position: absolute
+        top: 18px
+        right: 20px
+        z-index: 1000
+        font-size: 3rem
+    &__info-time
+        &__frequency
+            @include flexCenter(row, left, center, 80px)
+            margin-left: 40px
+            margin-top: 30px
+            &__title
+                @include flexCenter(row, center, center, 8px)
+                .icon
+                    @include iconStyle(2.2rem, black)
+                &--text
+                    color: black
+                    font-size: 15px
+                    font-weight: $medium-weight
+                
+        &__hour
+            @include flexCenter(row, center, center, 5px)
+            .ant-input
+                width: 35px
+                font-size: 3rem
+                padding-inline: 0
+                border-bottom: 1px solid black
+                &::placeholder
+                    padding-left: 5px
+            .points
+                color: black
+                font-size: 3rem
+                margin-right: 2px 
+
+    .reminder-title
+        @include flexCenter(row, center, center, none)
+        margin-top: 80px
+        .ant-input
+            border-radius: 0
+            font-family: $font-source
+            font-size: 3rem
+            color: #3F615A
+            width: 320px
+            &:focus
+                border-bottom: 1px solid $primary-color
+                box-shadow: 0px 3px 5px -3px $primary-color
+            &::placeholder
+                color: #3f615a77
+    &__description-section
+        margin-top: 40px
+        &__content
+            display: grid
+            width: 100%
+            position: absolute
+            right: 0
+            top: 50px
+            &--title
+                text-align: center
+                font-size: 2rem
+                color: #324D30
+                font-weight: $medium-weight
+            &--text-area
+                display: flex
+                justify-self: center
+                width: 320px
+                font-weight: $extrabold-weight 
+                background-color: white
+                border-radius: 10px
+                color: black
+                border: 1px solid grey
+                margin-top: 10px
+
+                .ant-input
+                    color: #324D30
+                    font-size: 1.6rem
+            &--category
+                margin-top: 20px
+                text-align: center
+                @include flexCenter(row, center, center, 0)
+
+.ant-select-item-option-selected
+    background-color: #4e79491c !important
+.ant-select-open, .ant-select-focused
+    .ant-select-selector
+        border-color: $primary-color !important
+
+.buttons-container-trash
+    @include flexCenter(column, center, center, 60px)    
+    color: $primary-text-color
+    font-family: $font-source
+    font-weight: $medium-weight
+    &__main-btns
+        @include flexCenter(column, center, center, 20px)    
+        &--btn-styles
+            @include flexCenter(row, center, center, 0)
+            .span-btn
+                display: flex
+                align-items: center
+                gap: 7px
+                width: 80%
+                .icon
+                    @include iconStyle(1.5rem, $primary-text-color)
+
+
+.FaTrashAlt
+    display: flex
+    margin-right: 5px
+    gap: 10px
+    align-items: center
+    color: $primary-text-color
+    font-family: $font-source
+    font-weight: $medium-weight
+    
+.sign-in__wallpaper-container
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    z-index: -1
+    
+.Wallpaper2
+    width: 100%
+    height: 100%
+    top: 0
+    left: 0
+    z-index: -3

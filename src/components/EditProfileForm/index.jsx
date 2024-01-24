@@ -1,8 +1,7 @@
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { FaRegUser, FaRegHeart  } from 'react-icons/fa6'
-import { MdModeEdit } from 'react-icons/md' 
-import { TbTargetArrow } from 'react-icons/tb'
+import { MdModeEdit, MdOutlineMailOutline } from 'react-icons/md' 
 import { saveImage } from '../../helpers/uploadFile'
 import profilePicture from '../../assets/images/profile-picture.jpg'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,11 +9,21 @@ import { updateProfileAsync } from '../../store/users/userThunks'
 import './styles.sass'
 
 const EditProfileForm = () => {
+  const [labelStates, setLabelStates] = useState({
+    'check-relieve-stress': false,
+    'check-relationships': false,
+    'check-stretching': false,
+    'check-creative': false,
+  })
   const { user } = useSelector((store) => store.user)
   const dispatch = useDispatch()
   const [ imagePreview, setImagePreview ] = useState(profilePicture)
-  // const [image, setImage] = useState(() => user.photoURL || '')
-  const { register, formState: { errors }, handleSubmit } = useForm({
+  const { 
+    register, 
+    formState: { errors }, 
+    handleSubmit,
+    watch
+  } = useForm({
     defaultValues: {
       name: user.name || '',
       email: user.email || '',
@@ -22,18 +31,22 @@ const EditProfileForm = () => {
     }
   })
 
+  const selectedGoals = watch('goals', [])
+
   const onSubmit = async ( userData ) => {
     console.log(userData)
     const file = userData.photoURL[0]
     const imageUrl = await saveImage(file)
-    // const newUserData = {
-    //   ...userData,
-    //   photoURL: imageUrl
-    // }
-    // console.log(newUserData)
-    userData.photoURL = imageUrl || user.photoURL,
-    userData.id = user.id
-    dispatch(updateProfileAsync(userData))
+    const newUserData = {
+      ...userData,
+      name: userData.name,
+      photoURL: imageUrl,
+      id: user.id,
+      gender: userData.gender,
+      category: selectedGoals,
+      email: userData.email
+    }
+    dispatch(updateProfileAsync(newUserData))
   }
 
   const handleImageChange = event => {
@@ -47,6 +60,13 @@ const EditProfileForm = () => {
     }
   }
 
+  const handleLabelClick = ( labelId ) => {
+    setLabelStates((prevLabelStates) => ({
+      ...prevLabelStates,
+      [labelId]: !prevLabelStates[labelId]
+    }))
+  }
+
   return (
     <>
       <h2 className='sign-in__form-wrapper--title'>Tu información personal</h2>
@@ -57,7 +77,7 @@ const EditProfileForm = () => {
         <div className='picture-wrapper'>
           <div className='profile-picture'>
             <figure className='profile-picture__image-container'>
-              <img className='current-picture' src={imagePreview} alt='profile photo' />
+              <img className='current-picture' src={user.photoURL ? user.photoURL : imagePreview} alt='profile photo' />
             </figure>
             <div className='profile-picture__input-container'>
               <input 
@@ -73,10 +93,6 @@ const EditProfileForm = () => {
             </div>
           </div>
         </div>
-        {/* <input 
-          type='file' 
-          { ...register('photoURL') }
-        /> */}
         <div className='form__input-label'>
           <label 
             htmlFor='name-input'
@@ -90,7 +106,7 @@ const EditProfileForm = () => {
             </label>
             <input 
               type='text' 
-              placeholder='Jane Doe' 
+              placeholder={user.name ? user.name : 'Jane Doe'} 
               id='name-input' 
               className='input'
               { ...register('name', { minLength: 3 }) }
@@ -99,6 +115,28 @@ const EditProfileForm = () => {
           </div>
           {errors.name && <p className='text-rose-500' role='alert'>Mínimo 3 caracteres</p>}
         </div>
+        <div className='form__input-label'>
+          <label 
+          htmlFor='password-confirm-input'
+          className='form__input-label--label'
+          >
+            Email
+          </label>
+          <div className='form__input-label--wrapper'>
+          <label htmlFor='password-confirm-input' className='icon'>
+            <MdOutlineMailOutline />
+          </label>
+          <input 
+            type='email' 
+            placeholder={user.email ? user.email : 'example@email.com' }
+            id='email-input' 
+            className='input'
+            { ...register('email') }
+          />
+          </div>
+          {errors.name && <p className='text-rose-500' role='alert'>Mínimo 8 caracteres</p>}
+        </div>
+        
         <div className='form__input-label'>
           <label 
             htmlFor='genre-input'
@@ -148,51 +186,110 @@ const EditProfileForm = () => {
           </div>
         </div>
         <div className='form__input-label'>
-          <label 
-            htmlFor='goals-input'
+          <span 
             className='form__input-label--label'
           >
             Metas de bienestar
-          </label>
-          <div className='form__input-label--wrapper'>
-            <label htmlFor='goals-input' className='icon'>
-              <TbTargetArrow />
-            </label>
-            <select 
-              id='goals-input' 
-              className='input text-green-800'
-              { ...register('activities') }
-            >
-              <option value='aliviar-estres'>Aliviar estrés</option>
-              <option value='relaciones-interpersonales'>Relaciones interpersonales</option>
-              <option value='concentracion-memoria'>Concentración y memoria</option>
-              <option value='estiramientos'>Estiramientos</option>
-              <option value='pensamiento-creativo'>Pensamiento creativo</option>
-              <option value='comunicacion-asertiva'>Comunicación asertiva</option>
-            </select>
+          </span>
+          <div className='options-group'>
+            <div className='flex items-center justify-center'>
+              <input
+                type='checkbox'
+                id='check-relieve-stress'
+                className='check-input'
+                value='aliviar el estres'
+                { ...register('goals') }
+              />
+              <label
+                htmlFor='check-relieve-stress'
+                className='check-label'
+                style={{
+                  color: labelStates['check-relieve-stress']
+                    ? '#FFFFFF'
+                    : '#3F615A',
+                  backgroundColor: labelStates['check-relieve-stress']
+                    ? '#4E7949'
+                    : '#EDF1DF',
+                }}
+                onClick={() => handleLabelClick('check-relieve-stress')}
+              >
+                Aliviar el estrés
+              </label>
+            </div>
+            <div className='flex items-center justify-center'>
+              <input
+                type='checkbox'
+                id='check-relationships'
+                className='check-input'
+                value='relaciones interpersonales'
+                { ...register('goals') }
+              />
+              <label
+                htmlFor='check-relationships'
+                className='check-label'
+                style={{
+                  color: labelStates['check-relationships']
+                    ? '#FFFFFF'
+                    : '#3F615A',
+                  backgroundColor: labelStates['check-relationships']
+                    ? '#4E7949'
+                    : '#EDF1DF',
+              }}
+                onClick={() => handleLabelClick('check-relationships')}
+              >
+                Relaciones interpersonales
+              </label>
+            </div>
+            <div className='flex items-center justify-center'>
+              <input
+                type='checkbox'
+                id='check-stretching'
+                className='check-input'
+                value='estiramientos'
+                { ...register('goals') }
+              />
+              <label
+                htmlFor='check-stretching'
+                className='check-label'
+                style={{
+                  color: labelStates['check-stretching']
+                    ? '#FFFFFF'
+                    : '#3F615A',
+                  backgroundColor: labelStates['check-stretching']
+                  ? '#4E7949'
+                  : '#EDF1DF',
+                }}
+                onClick={() => handleLabelClick('check-stretching')}
+              >
+                Estiramientos
+              </label>
+            </div>
+            <div className='flex items-center justify-center'>
+              <input
+                type='checkbox'
+                id='check-creative'
+                className='check-input'
+                value='pensamiento creativo'
+                { ...register('goals') }
+              />
+              <label
+                htmlFor='check-creative'
+                className='check-label'
+                style={{
+                  color: labelStates['check-creative']
+                    ? '#FFFFFF'
+                    : '#3F615A',
+                  backgroundColor: labelStates['check-creative']
+                    ? '#4E7949'
+                    : '#EDF1DF',
+                }}
+                onClick={() => handleLabelClick('check-creative')}
+              >
+                Pensamiento creativo
+              </label>
+            </div>
           </div>
         </div>
-        {/* <div className='form__input-label'>
-          <label 
-            htmlFor='password-confirm-input'
-            className='form__input-label--label'
-          >
-            ¿Quieres cambiar tu contraseña?
-          </label>
-          <div className='form__input-label--wrapper'>
-            <label htmlFor='password-confirm-input' className='icon'>
-              <MdOutlineLock />
-            </label>
-            <input 
-              type='password' 
-              placeholder='***********' 
-              id='password-confirm-input' 
-              className='input'
-              { ...register('password', { minLength: 8 }) }
-            />
-          </div>
-          {errors.name && <p className='text-rose-500' role='alert'>Mínimo 8 caracteres</p>}
-        </div> */}
         <div className='form__buttons-container'>
           <button
             className='form__buttons-container--sign-in user-profile-button'

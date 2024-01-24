@@ -8,6 +8,11 @@
   border-radius: 20px
   padding: 20px
   @include flexCenter(row, space-between, center, 10px)
+  &__image
+    width: 64px
+    height: 64px
+    object-fit: cover
+    border-radius: 20px
   &__bar
     width: 1.5px
     height: 100%
@@ -16,11 +21,14 @@
     width: 180px
     display: grid
     gap: 3px
-    justify-items: center
+    justify-items: start
     &--title
-      font-size: 1.6rem
+      font-size: 1.2rem
       font-weight: $extrabold-weight
       color: $secondary-color
+      line-height: 15px
+      justify-self: start
     &--text
-      font-size: 1.1rem
+      list-style: square inside
+      font-size: 0.8rem
       line-height: 12px

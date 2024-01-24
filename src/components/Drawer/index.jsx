@@ -24,7 +24,7 @@ const DrawerAntD = () => {
   };
   const Logout = () => {
     dispatch(logoutAsync());
-    navigate("/welcome");
+    navigate("/sign-in");
     setLoginScreen(true);
   };
   return (
@@ -36,16 +36,13 @@ const DrawerAntD = () => {
         <div className="buttons-container">
           <div className="buttons-container__main-btns">
             <NotificationsModal />
-            <button
-              className="buttons-container__main-btns--btn-styles"
-              onClick={() => goTo()}
-            >
-              <span className="span-btn">
-                <label htmlFor="notification-style" className="icon">
-                  <FaRegClock />
-                </label>
-                Recordatorios
-              </span>
+            <button className='buttons-container__main-btns--btn-styles' onClick={() => goTo()}>
+                <span className='span-btn'>
+                    <label htmlFor='notification-style' className='icon'>
+                        <FaRegClock />
+                    </label>
+                    Mis metas
+                </span>
             </button>
             <button className="buttons-container__main-btns--btn-styles">
               <span className="span-btn">
