@@ -12,7 +12,6 @@ export const getGoals = () => {
       response.forEach((item) => {
           tempArr.push({ id: item.id, ...item.data() })
       });
-      console.log(tempArr);
       dispatch(setGoals(tempArr));
     } catch (error) {
       dispatch(

@@ -38,14 +38,14 @@ const AppRoutes = () => {
   const activateMessages = async () => {
     const token = await getToken(messaging, {
       vapidKey: 'BKIg25jAz7puC5EMJqK4qfjMx9FQU_RXrZPxlx20dozytA44Sl1iUREedEWvuofKGJ9ePLLjOMRj7vGQY-6m5CY'
-    }).catch(error => console.log('Error al generar el token'));
+    }).catch(error => console.log('Error al generar el token'))
 
-    if(token) console.log('Token:', token);
-    else console.log('No hay token');
+    if(token) console.log('Token:', token)
+    else console.log('No hay token')
   }
 
-  const Msg = (props) => (
-    <div className='message-container'>
+  const NotificationMsg = (props) => (
+    <div className='notification-message-container'>
       <figure>
         <img src={props.message.notification.image}/>
       </figure>
@@ -56,7 +56,7 @@ const AppRoutes = () => {
   useEffect(() => {
     onMessage(messaging, (message) => {
       console.log('Mensaje', message)
-      toast(<Msg message={message} />)
+      toast(<NotificationMsg message={message} />)
     })
     onAuthStateChanged(auth, (userLogged) => {
       if (userLogged?.uid && !user) {
@@ -70,7 +70,6 @@ const AppRoutes = () => {
             photoURL: userLogged.photoURL
           })
         )
-        console.log(notificationCheck);
         activateMessages()
       }
     })

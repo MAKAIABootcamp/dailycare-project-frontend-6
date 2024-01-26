@@ -1,17 +1,41 @@
+import { useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { createActivityAsync } from '../../store/activity/activityThunks'
 import { FaChevronLeft } from 'react-icons/fa'
 import './styles.sass'
+
 
 const ContentDetail = ({ children, details }) => {
   ContentDetail.propTypes = {
     details: PropTypes.object,
     children: PropTypes.object
   }
-
+  
   const navigate = useNavigate()
+  const { user } = useSelector(store => store.user)
+  const dispatch = useDispatch()
 
-    const goTo = () => navigate('/home');
+  const goTo = () => navigate('/home')
+
+  const [btnTrigger, setBtnTrigger] = useState(true)
+  const [btnColor, setBtnColor] = useState('#616161')
+
+  const handleOnClick = () => {
+    dispatch(createActivityAsync(details, user.id))
+    // navigate('/activity')
+  }
+
+  useEffect(() => {
+    const detailsMinutes = parseInt(details.lenght.substring(0,2))
+    const detailsSeconds = parseInt(details.lenght.substring(3,5))
+    const time = (detailsMinutes*60 + detailsSeconds)*1000
+    setTimeout(() => {
+      setBtnTrigger(false)
+      setBtnColor("#4E7949")
+    }, 5000)
+  },[])
 
   return (<>
     <section className='content-detail'>
@@ -40,7 +64,7 @@ const ContentDetail = ({ children, details }) => {
           </div>
         </div>
       </section>
-      <button className='content-detail__check-activity'>Completar</button>
+      <button style={{backgroundColor: btnColor}} className='content-detail__check-activity' onClick={handleOnClick} disabled={btnTrigger}>Completar</button>
     </section>
   </>)
 }
