@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
@@ -24,7 +24,7 @@ const ContentDetail = ({ children, details }) => {
 
   const handleOnClick = () => {
     dispatch(createActivityAsync(details, user.id))
-    // navigate('/activity')
+    navigate('/activity')
   }
 
   useEffect(() => {

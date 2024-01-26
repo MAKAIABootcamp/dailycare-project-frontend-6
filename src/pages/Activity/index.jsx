@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import "./styles.sass";
 import { useEffect, useState } from "react";
 import { getActivities } from "../../store/activity/activityThunks";
+import { setDoneActivities, setTotalScoreG } from "../../store/activity/activitySlice";
 
 const Activity = () => {
   const [totalScore, setTotalScore] = useState(0);
@@ -21,11 +22,11 @@ const Activity = () => {
 
   useEffect(() => {
     if (activities.length > 0) {
-      const accumulatedScore = activities
-        .filter((activity) => activity.userId === user.id)
-        .reduce((sum, activity) => sum + activity.score, 0);
-
-      setTotalScore(accumulatedScore);
+      const userActivities = activities.filter((activity) => activity.userId === user.id)
+      const accumulatedScore = userActivities.reduce((sum, activity) => sum + activity.score, 0);
+      setTotalScore(accumulatedScore)
+      dispatch(setTotalScoreG(accumulatedScore))
+      dispatch(setDoneActivities(userActivities.length))
     }
   }, [activities, user]);
 
