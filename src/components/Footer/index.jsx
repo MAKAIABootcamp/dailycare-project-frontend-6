@@ -14,7 +14,7 @@ const Footer = () => {
   const { pathname } = useLocation();
   const dispatch = useDispatch()
   const { goals } = useSelector( store => store.goal );
-  const { user, notificationCheck } = useSelector( store => store.user );
+  const { user, notificationCheck, alertsCheck } = useSelector( store => store.user );
 
   const AlertMsg = (props) => (
     <div className='alert-message-container'>
@@ -50,20 +50,20 @@ const Footer = () => {
     });
 
     const timer = setInterval(() => {
-        const goalYear = goalsToAlert[0].deadlineDate.substring(6)
-        const goalMonth = goalsToAlert[0].deadlineDate.substring(0,2)
-        const goalDay = goalsToAlert[0].deadlineDate.substring(3,5)
-        const goalMinutes = goalsToAlert[0].deadlineTime.substring(3,5)
-        let goalHour = goalsToAlert[0].deadlineTime.substring(0,2)
+        const goalYear = goalsToAlert[0]?.deadlineDate.substring(6)
+        const goalMonth = goalsToAlert[0]?.deadlineDate.substring(0,2)
+        const goalDay = goalsToAlert[0]?.deadlineDate.substring(3,5)
+        const goalMinutes = goalsToAlert[0]?.deadlineTime.substring(3,5)
+        let goalHour = goalsToAlert[0]?.deadlineTime.substring(0,2)
         if(goalsToAlert[0].deadlinePeriod == 'PM') goalHour = parseInt(goalHour) + 12
         const goalDate = new Date(parseInt(goalYear), parseInt(goalMonth)-1, parseInt(goalDay), parseInt(goalHour), parseInt(goalMinutes), 0)
-        console.log(Math.trunc((goalDate - new Date())/1000))
+        // console.log(Math.trunc((goalDate - new Date())/1000));
         if(Math.trunc((goalDate - new Date())/1000) == 0){
           toast(<AlertMsg title={goalsToAlert[0].title} />)
         }
     }, 1000);
     return () => clearInterval(timer);
-  },[])
+  },[pathname])
 
   return (
     <nav className="footer">
@@ -97,7 +97,7 @@ const Footer = () => {
           </span>
         </div>
       </Link>
-      <div style={{position: 'absolute'}}>{notificationCheck ? <ToastContainer /> : ''}</div>
+      <div style={{position: 'absolute'}}>{notificationCheck || alertsCheck ? <ToastContainer /> : ''}</div>
     </nav>
   );
 };

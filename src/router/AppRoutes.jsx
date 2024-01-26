@@ -11,7 +11,6 @@ import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import ReadingDetail from '../pages/ReadingDetail'
 import VideoDetail from '../pages/VideoDetail'
-import Welcome from '../pages/Welcome'
 import ExploreActivity from '../pages/Explore_activity'
 import UserProfile from '../pages/UserProfile'
 import RemindersView from '../pages/RemindersView'
@@ -31,7 +30,7 @@ import './AppRoutes.sass'
 import { Skeleton } from 'antd'
 
 const AppRoutes = () => {
-  const { isAuthenticated, user, notificationCheck } = useSelector((store) => store.user)
+  const { isAuthenticated, user } = useSelector((store) => store.user)
   const [checking, setChecking] = useState(true)
   const dispatch = useDispatch()
   const activateMessages = async () => {
@@ -55,7 +54,6 @@ const AppRoutes = () => {
 
   useEffect(() => {
     onMessage(messaging, (message) => {
-      console.log('Mensaje', message)
       toast(<NotificationMsg message={message} />)
     })
     onAuthStateChanged(auth, (userLogged) => {
@@ -85,7 +83,6 @@ const AppRoutes = () => {
       <Skeleton />
     </>)
   }
-  console.log(user)
 
   return (
     <LoginScreenProvider>

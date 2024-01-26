@@ -12,7 +12,6 @@ export const getActivities = () => {
       response.forEach((item) => {
           tempArr.push({ id: item.id, ...item.data() })
       });
-      console.log(tempArr);
       dispatch(setActivities(tempArr));
     } catch (error) {
       dispatch(
@@ -33,7 +32,6 @@ export const createActivityAsync = (activity, userId) => {
           userId: userId
       }
       const response = await addDoc(activitiesCollection, tempObject)
-      console.log(response)
       tempObject.id = response.id
       dispatch(addActivity(tempObject))
     } catch (error) {

@@ -1,17 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setNotificationCheck } from "../../store/users/userSlice";
-import { getUserFromCollection, updateNotificationCheck } from "../../services/userServices";
+import { setAlertsCheck, setNotificationCheck } from "../../store/users/userSlice";
+import { updateAlertsCheck, updateNotificationCheck } from "../../services/userServices";
 import { Modal, Switch } from "antd";
 import { FaRegBell } from "react-icons/fa6";
 
 const NotificationsModal = () => {
-  const { user, notificationCheck } = useSelector(store => store.user)
+  const { user, notificationCheck, alertsCheck } = useSelector(store => store.user)
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [checkedNotifications, setCheckedNotifications] = useState(notificationCheck)
-  const [checkedAlerts, setCheckedAlerts] = useState(false)
+  const [checkedAlerts, setCheckedAlerts] = useState(user.alertsCheck)
   const dispatch = useDispatch()
-  
+  console.log(user.alertsCheck);
   const showModal = () => {
     setIsModalOpen(true);
   };
@@ -26,9 +26,10 @@ const NotificationsModal = () => {
     dispatch(setNotificationCheck(!checkedNotifications))
     await updateNotificationCheck(user.id, !checkedNotifications)
   }
-  const handleSwitchAlerts = () => {
+  const handleSwitchAlerts = async () => {
     setCheckedAlerts(!checkedAlerts)
-    // console.log(checkedAlerts);
+    dispatch(setAlertsCheck(!checkedAlerts))
+    await updateAlertsCheck(user.id, !checkedAlerts)
   }
   return (
     <>
@@ -68,7 +69,7 @@ const NotificationsModal = () => {
             <hr className="notifications-config--hr"/>
             <span className="notifications-config__span">
                 <p>Alertas: Mis metas</p>
-                <Switch checked={!checkedAlerts}  onClick={handleSwitchAlerts}/>
+                <Switch checked={checkedAlerts}  onClick={handleSwitchAlerts}/>
             </span>
         </div>
       </Modal>

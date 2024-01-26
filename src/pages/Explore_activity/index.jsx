@@ -38,7 +38,6 @@ const ExploreActivity = () => {
     dispatch(getDataFromSuggestedContent(category))
   }, [])
 
-  console.log(suggestedContent[0].exercise)
 
   return (
     <main className='main-explore'>

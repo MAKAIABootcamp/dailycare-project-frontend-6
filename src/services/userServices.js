@@ -80,3 +80,15 @@ export const updateNotificationCheck = async ( id, state ) => {
     return null
   }
 }
+
+export const updateAlertsCheck = async ( id, state ) => {
+  try {
+    const userRef = doc(firestore, collectionName, id);
+    await setDoc(userRef, {alertsCheck: state}, { merge: true })
+    return true;
+    
+  } catch (error) {
+    console.error(error);
+    return null
+  }
+}

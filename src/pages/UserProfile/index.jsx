@@ -11,7 +11,6 @@ import './styles.sass'
 
 const UserProfile = () => {
   const { user } = useSelector((store) => store.user)
-  console.log(user)
 
   return (
     <main className='sign-in user-profile'>

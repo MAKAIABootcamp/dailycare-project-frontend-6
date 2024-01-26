@@ -17,7 +17,6 @@ const Activity = () => {
 
   useEffect(() => {
     dispatch(getActivities());
-    console.log(user);
   }, []);
 
   useEffect(() => {

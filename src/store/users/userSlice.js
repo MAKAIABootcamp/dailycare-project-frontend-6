@@ -26,11 +26,14 @@ const userSlice = createSlice({
     },
     setNotificationCheck: (state, action) => {
       state.notificationCheck = action.payload
+    },
+    setAlertsCheck: (state, action) => {
+      state.alertsCheck = action.payload
     }
   }
 })
 
 
-export const { setUser, setError, setIsAuthenticated, setNotificationCheck, updateUser } = userSlice.actions
+export const { setUser, setError, setIsAuthenticated, setNotificationCheck, setAlertsCheck, updateUser } = userSlice.actions
 
 export default userSlice.reducer

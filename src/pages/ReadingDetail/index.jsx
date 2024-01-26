@@ -10,13 +10,11 @@ const ReadingDetail = () => {
   const { content } = useSelector((store) => store.content)
   const dispatch = useDispatch()
   const { id } = useParams()
-  console.log(id)
 
   useEffect(() => {
     dispatch(getDataById(id))
   }, [])
 
-  console.log(content[0])
 
   return (
     <main className='reading-detail'>

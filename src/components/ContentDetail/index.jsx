@@ -34,7 +34,7 @@ const ContentDetail = ({ children, details }) => {
     setTimeout(() => {
       setBtnTrigger(false)
       setBtnColor("#4E7949")
-    }, 5000)
+    }, 10000)
   },[])
 
   return (<>
