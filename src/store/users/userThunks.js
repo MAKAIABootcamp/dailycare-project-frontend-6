@@ -34,7 +34,8 @@ export const createAnAccountAsync = ( newUser ) => async ( dispatch ) => {
         displayName: userLogged.name,
         email: userLogged.email,
         photoURL: userLogged.photoURL, 
-        accessToken: userLogged.accessToken
+        accessToken: userLogged.accessToken,
+        rol: userLogged.rol
       })
     )
     dispatch(setIsAuthenticated(true))
