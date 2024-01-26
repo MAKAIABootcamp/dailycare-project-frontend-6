@@ -25,9 +25,9 @@ const ReminderDetail = () => {
   const { user } = useSelector((store) => store.user)
   const dispatch = useDispatch()
   const [title, setTitle] = useState(null)
-  const [date, setDate] = useState(null)
-  const [hour, setHour] = useState(null)
-  const [minutes, setMinutes] = useState(null)
+  const [date, setDate] = useState('01/01/2024')
+  const [hour, setHour] = useState('10')
+  const [minutes, setMinutes] = useState('00')
   const [period, setPeriod] = useState('AM')
   const [description, setDescription] = useState(null)
   const [category, setCategory] = useState('Selecciona una opción')
@@ -113,7 +113,7 @@ const ReminderDetail = () => {
             </span>
           </div>
           <div className="reminder-detail__info-time__hour">
-            <Input placeholder="H" bordered={false} onChange={(e)=>setHour(e.target.value)} />
+            <Input placeholder="H" bordered={false} onChange={(e)=>setHour(e.target.value)}/>
             <p className="points">:</p>
             <Input
               placeholder="M"
