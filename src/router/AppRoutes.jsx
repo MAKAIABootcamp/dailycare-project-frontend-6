@@ -40,6 +40,7 @@ const AppRoutes = () => {
       vapidKey: 'BKIg25jAz7puC5EMJqK4qfjMx9FQU_RXrZPxlx20dozytA44Sl1iUREedEWvuofKGJ9ePLLjOMRj7vGQY-6m5CY'
     }).catch(error => console.log('Error al generar el token'))
 
+
     if(token) console.log('Token:', token)
     else console.log('No hay token')
   }
@@ -90,14 +91,14 @@ const AppRoutes = () => {
     <LoginScreenProvider>
       <Routes>
         <Route path='/'>
-          <Route element={<PublicRoutes isAuthenticated={isAuthenticated} />}>
+          <Route element={<PublicRoutes isAuthenticated={true} />}>
             {/* <Route path='welcome' element={<Welcome />} /> */}
             <Route path='sign-in' element={<SignIn />} />
             <Route path='sign-in-phone' element={<SignInWithPhone />} />
             <Route path='code-form' element={<CodeForm />} />
             <Route path='sign-up' element={<SignUp />} />
           </Route>
-          <Route element={<PrivatedRoutes isAuthenticated={isAuthenticated} />}>
+          <Route element={<PrivatedRoutes isAuthenticated={true} />}>
             <Route path='reading-detail/:id' element={<ReadingDetail />} />
             <Route path='video-detail' element={<VideoDetail />} />
             <Route path='explore-activity/:category' element={<ExploreActivity />} />
