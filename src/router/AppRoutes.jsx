@@ -34,7 +34,6 @@ const AppRoutes = () => {
   const { isAuthenticated, user, notificationCheck } = useSelector((store) => store.user)
   const [checking, setChecking] = useState(true)
   const dispatch = useDispatch()
-
   const activateMessages = async () => {
     const token = await getToken(messaging, {
       vapidKey: 'BKIg25jAz7puC5EMJqK4qfjMx9FQU_RXrZPxlx20dozytA44Sl1iUREedEWvuofKGJ9ePLLjOMRj7vGQY-6m5CY'
@@ -86,19 +85,20 @@ const AppRoutes = () => {
       <Skeleton />
     </>)
   }
+  console.log(user)
 
   return (
     <LoginScreenProvider>
       <Routes>
         <Route path='/'>
-          <Route element={<PublicRoutes isAuthenticated={true} />}>
+          <Route element={<PublicRoutes isAuthenticated={isAuthenticated} role={user?.rol} />}>
             {/* <Route path='welcome' element={<Welcome />} /> */}
             <Route path='sign-in' element={<SignIn />} />
             <Route path='sign-in-phone' element={<SignInWithPhone />} />
             <Route path='code-form' element={<CodeForm />} />
             <Route path='sign-up' element={<SignUp />} />
           </Route>
-          <Route element={<PrivatedRoutes isAuthenticated={true} />}>
+          <Route element={<PrivatedRoutes isAuthenticated={isAuthenticated} />}>
             <Route path='reading-detail/:id' element={<ReadingDetail />} />
             <Route path='video-detail' element={<VideoDetail />} />
             <Route path='explore-activity/:category' element={<ExploreActivity />} />

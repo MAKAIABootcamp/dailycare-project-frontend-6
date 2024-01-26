@@ -28,14 +28,14 @@ export const createAnAccountAsync = ( newUser ) => async ( dispatch ) => {
       rol: newUser.rol, 
       
     })
-    console.log(user)
     dispatch(
       setUser({
         id: userLogged.uid,
         displayName: userLogged.name,
         email: userLogged.email,
         photoURL: userLogged.photoURL, 
-        accessToken: userLogged.accessToken
+        accessToken: userLogged.accessToken,
+        rol: userLogged.rol
       })
     )
     dispatch(setIsAuthenticated(true))
@@ -69,10 +69,17 @@ export const loginWithEmailAndPassword = ({ email, password }) => async ( dispat
   try {
     const { user } = await signInWithEmailAndPassword(auth, email, password)
     const userLogged = await getUserFromCollection(user.uid)
-    console.log(userLogged)
     if (userLogged) {
       dispatch(setIsAuthenticated(true))
-      dispatch(setUser({ email: userLogged.email, id: userLogged.uid, name: userLogged.name, photoURL: userLogged.photoURL, accessToken: userLogged.accessToken, rol: userLogged.rol }))
+      dispatch(setUser({ 
+        email: userLogged.email, 
+        id: user.uid, 
+        name: userLogged.name, 
+        photoURL: userLogged.photoURL, 
+        accessToken: userLogged.accessToken, 
+        rol: userLogged.rol 
+      }))
+      console.log(userLogged)
       dispatch(setError(false))
     } else {
       dispatch(setIsAuthenticated(false))
