@@ -8,6 +8,7 @@ import { FaRegClock } from "react-icons/fa6";
 import { LuShieldCheck } from "react-icons/lu";
 import "./styles.sass";
 import { useIsLoginScreen } from "../../context/loginScreenContext";
+import { TiThMenu } from "react-icons/ti";
 
 const DrawerAntD = () => {
   const { setLoginScreen } = useIsLoginScreen();
@@ -29,8 +30,12 @@ const DrawerAntD = () => {
   };
   return (
     <>
-      <div className="menuContainer" onClick={showDrawer}>
-        <img src="src/assets/icons/menu.svg" alt="Hamburger Menu" />
+      <div 
+        className="menuContainer text-5xl" 
+        onClick={showDrawer}
+      >
+        {/* <img src="src/assets/icons/menu.svg" alt="Hamburger Menu" /> */}
+        <TiThMenu />
       </div>
       <Drawer placement="right" onClose={onClose} open={open}>
         <div className="buttons-container">
