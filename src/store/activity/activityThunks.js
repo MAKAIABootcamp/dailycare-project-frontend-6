@@ -22,14 +22,20 @@ export const getActivities = () => {
   };
 }
 
-export const createActivityAsync = (activity) => {
+export const createActivityAsync = (activity, userId) => {
   return async (dispatch) => {
     try {
-      let tempObject = { ...activity }
-      const response = await addDoc(activitiesCollection, activity);
-      console.log(response);
-      tempObject.id = response.id;
-      dispatch(addActivity(tempObject));
+      let tempObject = {
+          badge: activity.badge,
+          img: activity.cardImage,
+          name: activity.title,
+          score: activity.score,
+          userId: userId
+      }
+      const response = await addDoc(activitiesCollection, tempObject)
+      console.log(response)
+      tempObject.id = response.id
+      dispatch(addActivity(tempObject))
     } catch (error) {
       dispatch(
         setError({ error: true, code: error.code, message: error.message })

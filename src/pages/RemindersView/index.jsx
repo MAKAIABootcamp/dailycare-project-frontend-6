@@ -21,7 +21,7 @@ const RemindersView = () => {
   useEffect(()=> {
     dispatch(getGoals())
     console.log(user);
-  },[])
+  },[user])
 
   return (
     <>

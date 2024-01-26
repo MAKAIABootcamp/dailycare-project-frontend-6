@@ -24,6 +24,7 @@ export const createAnAccountAsync = ( newUser ) => async ( dispatch ) => {
       category: newUser.category,
       company: newUser.company,
       notificationCheck: newUser.notificationCheck,
+      alertsCheck: newUser.alertsCheck,
       rol: newUser.rol, 
       
     })
