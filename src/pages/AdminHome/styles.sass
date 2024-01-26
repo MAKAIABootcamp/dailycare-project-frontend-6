@@ -2,33 +2,98 @@
 @use '../../styles/_mixins' as *
 
 .main-adminhome
-  background-image: url("../../assets/images/wallpaper-3.png")
+  background-image: url("../../assets/images/wallpaper-4.png")
   background-size: cover
   height: 100vh
   display: flex
+  flex-direction: column
+  justify-content: start
+  align-items: center
+
+  .contact-info
+    width: 100%
+    margin-bottom: 20px
+    color: grey
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 10px
+
+  .contact-title
+    width: 198px
+    height: 50px
+    font-size: 1.5rem  // Tamaño más grande
+    font-weight: bold  // Negrita
+    padding-left: 50px
+    margin-top: 50px
+    font-size: 3.6rem
+    font-weight: $extrabold-weight
+
+  .contact-title2
+    font-weight: bold
+    text-align: center
+    font-size: 1.2rem  // Tamaño más grande
+    font-size: 2rem
+    font-weight: $medium-weight
+    font-weight: $medium-weight
+    padding-left: 110px
 
 .container
   width: 394px
   height: 424px
   background: white
+  margin-top: 140px
   border-top-left-radius: 73px
   border-top-right-radius: 73px
   display: flex
   flex-direction: column
-  align-itmes: center
-  margin-top: 514px
-  &__picture-container
-    width: 92px
+  align-items: center
+  padding: 20px
+
+  &__form-wrapper
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: center
+    gap: 20px
+
+  &__content-card
+    width: 100%
     height: 92px
-    background-color: $light-color
-    position: absolute
-    z-index: 6
-    top: 15px
-    left: 15px
-    display: grid
-    place-content: center
+    background-color: #C6D6A25E
+    border-radius: 20px
+    display: flex
+    align-items: center
+    padding: 20px
+
+  &__image
+    width: 64px
+    height: 64px
+    object-fit: cover
     border-radius: 50%
-    img
-      width: 82px
-      height: 82px
-      border-radius: 50%
+    margin-right: 20px
+
+  &__bar
+    width: 1.5px
+    height: 100%
+    background-color: $secondary-color
+    margin-right: 20px
+
+  &__description
+    display: flex
+    flex-direction: column
+    gap: 3px
+    justify-content: center
+
+    &--title
+      font-size: 1.5rem  // Tamaño más grande
+      font-weight: bold  // Negrita
+      color: $secondary-color
+      line-height: 15px
+
+    &--text
+      list-style: square inside
+      font-size: 0.8rem
+      line-height: 12px
+      font-weight: $bold-weight
+      color: $secondary-color
