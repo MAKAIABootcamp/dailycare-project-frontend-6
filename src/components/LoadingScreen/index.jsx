@@ -3,7 +3,7 @@ import "./styles.scss";
 const LoadingScreen = () => {
   return (
     <div className="loading-screen">
-      <img src="src/assets/images/logo-daily-care.webp" className="loader" />
+      <img src="public/logo-daily-care.webp" className="loader" />
       <div className="typing-indicator">
         <div className="typing-circle"></div>
         <div className="typing-circle"></div>
